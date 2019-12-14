@@ -1,0 +1,27 @@
+/**Created by the LayaAirIDE,do not modify.*/
+package ui {
+	import laya.ui.*;
+	import laya.display.*; 
+	import sg.view.*; 
+	import sg.view.com.*; 
+	import ui.com.hero_icon2UI;
+	import ui.com.country_flag1UI;
+
+    import laya.utils.ClassUtils;
+	public class Box1UI extends Box {
+
+		public static var uiView:Object =/*[STATIC SAFE]*/{"type":"Box","props":{"y":0,"x":0,"width":608,"renderType":"render","height":375},"child":[{"type":"Image","props":{"width":593,"skin":"ad/bg_leitai.png","height":360,"centerY":0,"centerX":0}},{"type":"Image","props":{"skin":"ui/icon_leitai_zi1.png","x":252,"y":95}},{"type":"Box","props":{"width":598,"renderType":"render","height":368,"centerY":0,"centerX":0},"child":[{"type":"Panel","props":{"top":0,"right":0,"renderType":"render","left":0,"bottom":0},"child":[{"type":"Image","props":{"y":1,"x":1,"skin":"ui/img_leitai_sheng1.png","centerX":0}},{"type":"Image","props":{"y":360,"x":1,"skin":"ui/img_leitai_sheng1.png","centerX":0}},{"type":"Image","props":{"y":3,"skin":"ui/img_leitai_sheng1.png","rotation":90,"centerX":6}},{"type":"Image","props":{"y":1,"x":597,"skin":"ui/img_leitai_sheng1.png","rotation":90}}]}]},{"type":"Box","props":{"top":0,"right":0,"renderType":"render","left":0,"bottom":0},"child":[{"type":"Image","props":{"x":582,"top":0,"skin":"ui/img_leitai_1.png"}},{"type":"Image","props":{"x":608,"skin":"ui/img_leitai_1.png","rotation":90,"bottom":0}},{"type":"Image","props":{"y":376,"x":26,"skin":"ui/img_leitai_1.png","rotation":180}},{"type":"Image","props":{"y":26,"x":0,"skin":"ui/img_leitai_1.png","rotation":270}}]},{"type":"Panel","child":[{"type":"Image","props":{"skin":"ad/actPay1_19.png","y":12,"centerX":0,"width":220,"height":144}},{"type":"hero_icon2","props":{"left":0,"right":0,"top":0,"bottom":0,"runtime":"ui.com.hero_icon2UI"}}],"props":{"x":11,"width":221,"height":250,"y":43}},{"type":"Panel","child":[{"type":"Image","props":{"skin":"ad/actPay1_19.png","y":12,"centerX":0,"width":220,"height":144}},{"type":"hero_icon2","props":{"left":0,"right":0,"top":0,"bottom":0,"runtime":"ui.com.hero_icon2UI"}}],"props":{"x":375,"width":221,"height":250,"y":43}},{"type":"Box","child":[{"type":"Image","props":{"width":270,"skin":"ui/icon_zhanli01.png","height":26,"x":0,"y":0,"sizeGrid":"4,0,4,0"}},{"type":"country_flag1","props":{"x":72,"y":12,"scaleX":0.7,"scaleY":0.7,"runtime":"ui.com.country_flag1UI"}},{"type":"Label","props":{"text":"擂主：","x":16,"y":4,"width":43,"height":18,"fontSize":16,"color":"#ffed53"}},{"type":"Label","props":{"text":"玩家五个字","x":94,"y":4,"width":94,"height":16,"fontSize":16,"color":"#ffffff"}}],"props":{"x":10,"y":270}},{"type":"Box","child":[{"type":"Image","props":{"width":270,"skin":"ui/icon_zhanli01.png","height":26,"x":0,"y":0,"sizeGrid":"4,0,4,0"}},{"type":"country_flag1","props":{"x":140,"y":12,"scaleX":0.7,"scaleY":0.7,"runtime":"ui.com.country_flag1UI"}},{"type":"Label","props":{"text":"挑战者：","x":69,"y":4,"width":56,"height":18,"fontSize":16,"color":"#ffed53"}},{"type":"Label","props":{"text":"玩家五个字","x":159,"y":4,"width":94,"height":16,"fontSize":16,"color":"#ffffff"}}],"props":{"x":327,"y":270}},{"type":"Box","child":[{"type":"Image","props":{"skin":"ui/bg_leitai1.png"}},{"type":"Button","props":{"skin":"ui/btn_leitaijiacheng.png","stateNum":1,"x":8,"y":1}},{"type":"Label","props":{"text":"+15%","x":25,"y":4,"width":65,"height":16,"color":"#d4e3ff","fontSize":14,"align":"center"}}],"props":{"x":215,"y":15}},{"type":"Box","child":[{"type":"Image","props":{"skin":"ui/bg_leitai1.png"}},{"type":"Button","props":{"y":1,"x":9,"stateNum":1,"skin":"ui/btn_leitaibi.png","scaleY":0.4,"scaleX":0.4}},{"type":"Label","props":{"text":"00000","x":24,"y":3,"width":65,"height":16,"color":"#d4e3ff","fontSize":14,"align":"center"}}],"props":{"x":111,"y":15}},{"type":"Image","props":{"y":5,"x":20,"skin":"ui/icon_army02_2.png","sizeGrid":"21,0,29,0"}},{"type":"Image","props":{"skin":"ui/icon_leitai1.png","x":456,"y":240}},{"type":"Button","props":{"y":310,"x":436,"stateNum":1,"skin":"ui/btn_tanhao13.png","scaleY":0.8,"scaleX":0.8,"labelSize":22,"labelColors":"#fff493","labelBold":true,"label":"攻 擂","sizeGrid":"0,73,0,73"}},{"type":"Image","props":{"y":72,"x":163,"skin":"ui/bg_leitai_vs.png"}},{"type":"Image","props":{"skin":"ui/icon_leitai1.png","x":39,"y":30,"scaleX":0.5,"scaleY":0.5}},{"type":"Image","props":{"skin":"ui/bar_19.png","x":328,"y":15,"width":265,"height":22}},{"type":"Label","props":{"text":"守擂时间：59分58秒","x":18,"y":306,"width":206,"height":19,"color":"#ffd278","fontSize":16,"align":"left"}},{"type":"Label","props":{"text":"剩余兵力：999999/999999","x":18,"y":334,"width":206,"height":19,"color":"#ffd278","fontSize":16,"align":"left"}},{"type":"Label","props":{"text":"（战斗中：5）","x":234,"y":322,"width":141,"height":19,"color":"#ff0000","fontSize":18,"align":"center","bold":true}},{"type":"Label","props":{"text":"方士擂台","x":26,"y":10,"width":72,"height":19,"color":"#ffffff","fontSize":16,"align":"center"}},{"type":"Label","props":{"text":"攻擂队列中，前面还有48人","x":342,"y":18,"width":247,"height":16,"color":"#ffffff","fontSize":14,"align":"right"}}]};
+		public function Box1UI(){
+		createUI(uiView);
+		}
+		private function createUI(uiData:Object):void
+		{
+			View.regComponent("ui.com.hero_icon2UI",hero_icon2UI);
+			View.regComponent("ui.com.country_flag1UI",country_flag1UI);
+
+			ClassUtils.createByJson(uiData, this, this);
+
+		}
+
+	}
+}
