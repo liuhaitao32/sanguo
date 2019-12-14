@@ -1,0 +1,37 @@
+{
+    "x":0,
+    "type":"ComPayType",
+    "selectedBox":1,
+    "selecteID":1,
+    "props":{"width":60,"sceneColor":"#000000","height":18},
+    "nodeParent":-1,
+    "label":"ComPayType",
+    "isOpen":true,
+    "isDirectory":true,
+    "isAniNode":true,
+    "hasChild":true,
+    "compId":1,
+    "child":[
+        {
+            "x":15,
+            "type":"Label",
+            "props":{"y":0,"x":0,"width":53,"var":"label","text":"105000","height":18,"fontSize":18,"color":"#99ff97","align":"left"},
+            "nodeParent":1,
+            "label":"Label(label)",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":4,
+            "child":[
+                ]
+        }],
+    "animations":[
+        {
+            "nodes":[
+                ],
+            "name":"ani1",
+            "id":1,
+            "frameRate":24,
+            "action":0
+        }]
+}

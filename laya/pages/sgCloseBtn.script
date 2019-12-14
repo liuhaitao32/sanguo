@@ -1,0 +1,3 @@
+<sgCloseBtn className="sg.view.com.sgCloseBtn">
+	<prop name="test" tips="颜色类型" type="color"/>
+</sgCloseBtn>

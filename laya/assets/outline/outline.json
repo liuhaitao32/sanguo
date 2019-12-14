@@ -1,0 +1,38 @@
+{ "height":5,
+ "infinite":false,
+ "layers":[
+        {
+         "data":[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
+         "height":5,
+         "name":"\u5757\u5c42 1",
+         "opacity":1,
+         "type":"tilelayer",
+         "visible":true,
+         "width":6,
+         "x":0,
+         "y":0
+        }],
+ "nextobjectid":1,
+ "orientation":"orthogonal",
+ "renderorder":"right-down",
+ "tiledversion":"1.1.2",
+ "tileheight":172,
+ "tilesets":[
+        {
+         "columns":6,
+         "firstgid":1,
+         "image":"bg.jpg",
+         "imageheight":860,
+         "imagewidth":1374,
+         "margin":0,
+         "name":"bg",
+         "spacing":0,
+         "tilecount":30,
+         "tileheight":172,
+         "tilewidth":229
+        }],
+ "tilewidth":229,
+ "type":"map",
+ "version":1,
+ "width":6
+}
