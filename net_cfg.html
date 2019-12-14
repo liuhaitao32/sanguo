@@ -1,0 +1,45 @@
+<html>
+	<!-- <html><head></head><body></body></html> -->
+<head></head>
+<!-- <html><head></head><body></body></html> -->
+<body>
+	<a id='tta'></a>
+	<script>
+		function getURLexp(key){
+			if (window.location && window.location.search){
+				var str = window.location.search.substr(1);
+				var reg = new RegExp("(^|&)"+ key +"=([^&]*)(&|$)");
+				var arr = str.match(reg);
+				
+				if(arr) {
+					return unescape(arr[2]);
+				} else {
+					return "";
+				} 
+			}
+			return "";
+		}
+		var adtype = getURLexp("bagname");
+		var bagname = "&bagname="+adtype;
+		if(adtype == "com.r2.sgmnz.krone"){
+			window.location.href = "http://r2cdn-kol.r2game.com/static/h5/kr/index.html?mppf=r2g_kr_os&mlan=kr&mlogo=no&ilimg=kr1&v=online22000112"+bagname;
+		}
+		else if(adtype == "com.r2.sgmnz.kr"){
+			window.location.href = "http://r2cdn-kol.r2game.com/static/h5/kr/index.html?mppf=r2g_kr_ad&mlan=kr&mlogo=no&ilimg=kr1&v=online22000112"+bagname;
+		}
+		else if(adtype == "com.r2.sgmnz.krapp"){
+			// var tta = document.getElementById('tta');
+			window.location.href = "http://r2cdn-kol.r2game.com/static/h5/kr/index.html?mppf=r2g_kr_ios&mlan=kr&mlogo=no&ilimg=kr1&v=online22000112"+bagname+"&idfa="+getURLexp("idfa")+"&plocal="+getURLexp("plocal");
+		}
+		else if(adtype == "com.r2.zqwz.kr"){
+			// var tta = document.getElementById('tta');
+			window.location.href = "http://r2cdn-kol.r2game.com/static/h5/kr/index.html?mppf=r2g_kr_ios&mlan=kr&mlogo=no&ilimg=kr1&v=online22000112"+bagname+"&idfa="+getURLexp("idfa")+"&plocal="+getURLexp("plocal");
+		}
+		else if(adtype == "r2g_kr_h5"){
+			var params = window.location.search;
+			params = params.substr(1,params.length);
+			window.location.href = "http://r2cdn-kol.r2game.com/static/h5/kr/indexr2game.html?mppf=r2g_kr_h5&mlan=kr&mlogo=no&ilimg=kr1&v=online22000112"+"&"+params;
+		}
+	</script>
+</body>
+</html>
