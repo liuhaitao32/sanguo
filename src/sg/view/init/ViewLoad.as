@@ -46,6 +46,7 @@ package sg.view.init
 	import sg.utils.ObjectUtil;
 	import sg.activities.model.ModelCostly;
 	import sg.map.utils.TestUtils;
+	import sg.cfg.HelpConfig;
 
 	/**
 	 * 自定义加载,登录,服务器获取配置,登陆http,登陆socket
@@ -134,8 +135,8 @@ package sg.view.init
 			if(this.img1) this.img1.visible = ConfigApp.isPC;
 			// if(this.imgLogo) this.imgLogo.visible = ConfigApp.isPC && ConfigApp.pf != ConfigApp.PF_37_h5;
 
-			mProwidth = ConfigApp.isPC ? 640 + 0 : 640;
-			this.progressBox.width = mProwidth;
+			mProwidth = this.proWidth.width;
+			this.progressBox.width = 640;
 			this.imgProgressBar.width = mProwidth;
 			this.txtShow.color = '#eebb77';
 			this.txtShow.strokeColor = '#332211';

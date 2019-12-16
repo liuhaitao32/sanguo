@@ -1,8 +1,8 @@
 {
     "x":0,
     "type":"ViewPanel",
-    "selectedBox":3,
-    "selecteID":68,
+    "selectedBox":51,
+    "selecteID":57,
     "referenceLines":null,
     "props":{"width":640,"sceneColor":"#000000","height":1280},
     "nodeParent":-1,
@@ -139,13 +139,14 @@
                     "props":{"y":43,"x":12,"width":281,"renderType":"render","height":105},
                     "nodeParent":3,
                     "label":"Box",
-                    "isOpen":false,
+                    "isOpen":true,
                     "isDirectory":true,
                     "isAniNode":true,
                     "hasChild":true,
                     "compId":38,
                     "child":[
                         {
+                            "x":45,
                             "type":"Image",
                             "props":{"y":7,"width":195,"skin":"ui/icon_zhanli01.png","height":26,"centerX":0},
                             "nodeParent":38,
@@ -158,6 +159,7 @@
                                 ]
                         },
                         {
+                            "x":45,
                             "type":"Image",
                             "props":{"y":9,"width":191,"skin":"ui/bar_30_1.png","scaleY":0.6,"scaleX":0.6,"height":36,"centerX":0},
                             "nodeParent":38,
@@ -170,6 +172,7 @@
                                 ]
                         },
                         {
+                            "x":45,
                             "type":"UIView",
                             "source":"com/hero_icon1.ui",
                             "props":{"y":41,"x":40,"var":"head0","scaleY":0.6,"scaleX":0.6},
@@ -183,6 +186,7 @@
                                 ]
                         },
                         {
+                            "x":45,
                             "type":"UIView",
                             "source":"com/country_flag1.ui",
                             "props":{"y":53,"x":114,"var":"country0","scaleY":0.7,"scaleX":0.7},
@@ -196,6 +200,7 @@
                                 ]
                         },
                         {
+                            "x":45,
                             "type":"Label",
                             "props":{"y":8,"x":213,"width":150,"var":"text0","text":"攻擂方","fontSize":22,"color":"#ffdd97","centerX":0,"align":"center"},
                             "nodeParent":38,
@@ -208,8 +213,9 @@
                                 ]
                         },
                         {
+                            "x":45,
                             "type":"Label",
-                            "props":{"y":45,"width":150,"var":"name0","text":"玩家五个字","fontSize":18,"color":"#b2d6ff","centerX":31,"align":"center"},
+                            "props":{"y":45,"x":125,"width":140,"var":"name0","text":"玩家五个字","fontSize":18,"color":"#b2d6ff","align":"left"},
                             "nodeParent":38,
                             "label":"Label(name0)",
                             "isDirectory":false,
@@ -220,6 +226,7 @@
                                 ]
                         },
                         {
+                            "x":45,
                             "type":"Label",
                             "props":{"y":73,"width":150,"var":"info0","text":"己方部队（9/9）","fontSize":18,"color":"#b2d6ff","centerX":27,"align":"center"},
                             "nodeParent":38,
@@ -238,13 +245,14 @@
                     "props":{"y":43,"x":310,"width":281,"renderType":"render","height":105},
                     "nodeParent":3,
                     "label":"Box",
-                    "isOpen":false,
+                    "isOpen":true,
                     "isDirectory":true,
                     "isAniNode":true,
                     "hasChild":true,
                     "compId":51,
                     "child":[
                         {
+                            "x":45,
                             "type":"Image",
                             "props":{"y":7,"width":195,"skin":"ui/icon_zhanli01.png","height":26,"centerX":0},
                             "nodeParent":51,
@@ -257,6 +265,7 @@
                                 ]
                         },
                         {
+                            "x":45,
                             "type":"Image",
                             "props":{"y":9,"width":191,"skin":"ui/bar_30_1.png","scaleY":0.6,"scaleX":0.6,"height":36,"centerX":0},
                             "nodeParent":51,
@@ -269,6 +278,7 @@
                                 ]
                         },
                         {
+                            "x":45,
                             "type":"UIView",
                             "source":"com/hero_icon1.ui",
                             "props":{"y":41,"x":40,"var":"head1","scaleY":0.6,"scaleX":0.6},
@@ -282,6 +292,7 @@
                                 ]
                         },
                         {
+                            "x":45,
                             "type":"UIView",
                             "source":"com/country_flag1.ui",
                             "props":{"y":53,"x":114,"var":"country1","scaleY":0.7,"scaleX":0.7},
@@ -295,6 +306,7 @@
                                 ]
                         },
                         {
+                            "x":45,
                             "type":"Label",
                             "props":{"y":8,"x":213,"width":150,"var":"text1","text":"攻擂方","fontSize":22,"color":"#ffdd97","centerX":0,"align":"center"},
                             "nodeParent":51,
@@ -307,8 +319,9 @@
                                 ]
                         },
                         {
+                            "x":45,
                             "type":"Label",
-                            "props":{"y":45,"width":150,"var":"name1","text":"玩家五个字","fontSize":18,"color":"#b2d6ff","centerX":31,"align":"center"},
+                            "props":{"y":45,"x":125,"width":140,"var":"name1","text":"玩家五个字","fontSize":18,"color":"#b2d6ff","align":"left"},
                             "nodeParent":51,
                             "label":"Label(name1)",
                             "isDirectory":false,
@@ -319,6 +332,7 @@
                                 ]
                         },
                         {
+                            "x":45,
                             "type":"Label",
                             "props":{"y":73,"width":150,"var":"info1","text":"己方部队（9/9）","fontSize":18,"color":"#b2d6ff","centerX":27,"align":"center"},
                             "nodeParent":51,
@@ -337,14 +351,13 @@
                     "props":{"x":404,"bottom":19},
                     "nodeParent":3,
                     "label":"Box",
-                    "isOpen":true,
+                    "isOpen":false,
                     "isDirectory":true,
                     "isAniNode":true,
                     "hasChild":true,
                     "compId":63,
                     "child":[
                         {
-                            "x":45,
                             "type":"Image",
                             "props":{"width":180,"skin":"ui/bg_26.png","height":62},
                             "nodeParent":63,
@@ -357,7 +370,6 @@
                                 ]
                         },
                         {
-                            "x":45,
                             "type":"Image",
                             "props":{"y":32,"x":39,"width":28,"skin":"icon/item1006.png","height":28},
                             "nodeParent":63,
@@ -371,7 +383,6 @@
                                 ]
                         },
                         {
-                            "x":45,
                             "type":"Label",
                             "props":{"y":5,"x":3,"width":173,"var":"text2","text":"当前擂台奖池","height":26,"fontSize":22,"color":"#c5dbff","align":"center"},
                             "nodeParent":63,
@@ -385,7 +396,6 @@
                             "$HIDDEN":false
                         },
                         {
-                            "x":45,
                             "type":"Label",
                             "props":{"y":33,"x":71,"width":107,"var":"text3","text":"000000","height":28,"fontSize":22,"color":"#c5dbff","align":"left"},
                             "nodeParent":63,

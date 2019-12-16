@@ -137,21 +137,13 @@ package sg.model
 					this.event(EVENT_CLOSE_REWARD);
 					//act:0 攻擂成功  1 攻擂失败  2 猜中黑马  3 守擂每分钟增加  4 擂主结算
 					var n:Number = receiveData.act;
-					
-					// if(n==0 || n==1 || n==4){
-					// 	if(!FightMain.inFight){
-					// 		ViewManager.instance.showView(["ViewArenaReward",ViewArenaReward],receiveData);
-					// 	}
-					// }else{
-						if(n == 3){
-							if(receiveData.gift_dict[mItemId]){
-								mTotalGet+=receiveData.gift_dict[mItemId];
-							}
-						}
-						
-						this.event(EVENT_GET_ITEM,receiveData);
-					//}
 					ModelManager.instance.modelUser.updateData(receiveData);
+					if(n == 3){
+						if(receiveData.gift_dict[mItemId]){
+							mTotalGet+=receiveData.gift_dict[mItemId];
+						}
+					}
+					this.event(EVENT_GET_ITEM,receiveData);
 					break;
 			}
 		}

@@ -1434,6 +1434,7 @@ import sg.utils.Tools
 				['UI', uiName.substring(0, uiName.length - 2)],
 				['区ID', user.mergeZone],
 				['UID', user.mUID],
+				['pf', user.pf],
 				['开服天数', user.getGameDate()],
 				["偏移值",  deviationTime],
 				['注册时间', Tools.dateFormat(user.add_time)],

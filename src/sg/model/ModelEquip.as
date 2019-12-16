@@ -554,14 +554,20 @@ package sg.model
                 }
             }
             if(!isMine()){
-                n+=(this.make_item && this.make_item[item_id]) ? this.make_item[item_id] : 0;
+                n += (this.make_item && this.make_item[item_id]) ? this.make_item[item_id] : 0;
             }
+            
+            //制作或者突破当中  其实已经消耗掉了道具
             var cd:Array = ModelManager.instance.modelUser.equip_cd;
-            if(cd.length > 0){//制作或者突破当中  其实已经消耗掉了道具
+            if(cd.length > 0){
                 if(this.id == cd[2]){
-                    if(this.upgrade[_lv+1]){
-                        if(this.upgrade[_lv+1].cost.hasOwnProperty(item_id)){
-                            n -= this.upgrade[_lv+1].cost[item_id];
+                    if(!isMine()){
+                        n -= (this.make_item && this.make_item[item_id]) ? this.make_item[item_id] : 0;
+                    }else{
+                        if(this.upgrade[_lv+1]){
+                            if(this.upgrade[_lv+1].cost.hasOwnProperty(item_id)){
+                                n -= this.upgrade[_lv+1].cost[item_id];
+                            }
                         }
                     }
                 }

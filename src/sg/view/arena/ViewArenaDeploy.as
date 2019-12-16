@@ -137,6 +137,8 @@ package sg.view.arena
             this.country0.setCountryFlag(ModelManager.instance.modelUser.country);
             this.head0.setHeroIcon(ModelUser.getUserHead(ModelManager.instance.modelUser.head));
             
+            Tools.textFitFontSize(this.name0);
+            Tools.textFitFontSize(this.name1);
         }
 
 		private function setHerosForOther():void{

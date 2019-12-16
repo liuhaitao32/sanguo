@@ -236,7 +236,16 @@ package sg.manager
 						}
 					}
 
-					if(b1 && b2){
+					var b3:Boolean = true;
+					if(!ModelManager.instance.modelUser.isMerge){
+						if(o.blind_time){
+							var openDays:Number = ModelManager.instance.modelUser.getGameDate(dt1.getTime() + 1);
+							if(openDays <= o.blind_time)
+								b3 = false;
+						}
+					}
+
+					if(b1 && b2 && b3){
 						arr.push([o.group1,"notice_picture_day"]);
 					}
 				}
