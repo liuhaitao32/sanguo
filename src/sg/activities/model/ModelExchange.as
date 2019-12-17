@@ -64,6 +64,7 @@ package sg.activities.model
             var buyData:Object = goodsData[shopIndex][1];
             if (!goodsId) return false;
             var goodsList:Array = cfg.shoplists[shopIndex][goodsId];
+            if (!goodsList) return false;
             var consume_items:Array = cfg['consume_items'];
             var itemId:String = consume_items[shopIndex];
             var num:int = ModelItem.getMyItemNum(itemId);

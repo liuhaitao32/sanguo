@@ -485,6 +485,7 @@ package sg.view.hero
                     this.tTitle.text = ModelHero.getTitleName(titleTxt);
                     this.btn_title.visible = true;
                 }
+                Tools.textFitFontSize(this.tTitle);
             } 
             this.clipTitle.destroyChildren();
             // this.clipTitle.anchorX=0.5;

@@ -186,8 +186,8 @@
     },
     "dev_kr":{
         "v_1_1_0":{
-            "11http_url":"http://res-kol.r2game.com/gateway/",
-            "http_url":"http://krsh.ptkill.com/gateway/",
+            "http_url":"http://res-kol.r2game.com/gateway/",
+            "22http_url":"http://krsh.ptkill.com/gateway/",
             "assets_base_url":"http://r2cdn-kol.r2game.com/static/h5/kr/",
             "assets_version_url":"http://r2cdn-kol.r2game.com/static/h5/kr/"
         }

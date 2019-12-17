@@ -66,7 +66,7 @@ package
                 var method:String = "";
                 var param:Object = {};
                 var idfa:String = ConfigApp.midfa?ConfigApp.midfa:(ConfigApp.mdevice?ConfigApp.mdevice:"");
-                var ip:String = "0.0.0.0";
+                var ip:String = Browser.window.gameuserzoneip?Browser.window.gameuserzoneip:"0.0.0.0";
                 var ipv6:String = "00000000-0000-0000-0000-000000000000";
                 var tz:String = "+8";
                 var data:Object = {"appid":appKeys[ConfigApp.pf],"context":param};
@@ -136,7 +136,7 @@ package
                     // 
                     data["who"] = sd.uid;
                 }
-                if((ConfigApp.pf == ConfigApp.PF_ios_jj_cn || ConfigApp.pf == ConfigApp.PF_and_jj_meng52) && param){
+                if((ConfigApp.pf == ConfigApp.PF_and_jj_meng52) && param){//ConfigApp.pf == ConfigApp.PF_ios_jj_cn || 
                     
                     if(type==3){
                         param["reyunType"] = "0";

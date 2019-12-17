@@ -371,8 +371,8 @@ package sg.view.menu
 			
 			if(ConfigApp.isPC){
 				if(this.getChildByName("comChat")==null){
-					//var comChat:ComChat = new ComChat();
-					var comChat:ComChat2 = new ComChat2();
+					var comChat:ComChat = new ComChat();
+					//var comChat:ComChat2 = new ComChat2();
 					comChat.name = "comChat";
 					comChat.bottom = 2;
 					comChat.left = 2;	
