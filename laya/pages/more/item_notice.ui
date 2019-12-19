@@ -2,7 +2,7 @@
     "x":0,
     "type":"ItemBase",
     "selectedBox":1,
-    "selecteID":45,
+    "selecteID":36,
     "props":{"width":402,"sceneColor":"#000000","height":74},
     "nodeParent":-1,
     "label":"ItemBase",
@@ -131,7 +131,7 @@
         {
             "x":15,
             "type":"Label",
-            "props":{"y":7,"x":94,"width":136,"var":"tName","text":"军团名字","height":22,"fontSize":20,"color":"#ffffff","align":"left"},
+            "props":{"y":7,"x":91,"width":136,"var":"tName","height":22,"fontSize":20,"color":"#ffffff","align":"left"},
             "nodeParent":1,
             "label":"Label(tName)",
             "isDirectory":false,
@@ -144,7 +144,7 @@
         {
             "x":15,
             "type":"Label",
-            "props":{"y":38,"x":91,"wordWrap":true,"width":304,"var":"tInfo","text":"军团名字","leading":4,"height":35,"fontSize":16,"color":"#ffffff","align":"left"},
+            "props":{"y":36,"x":91,"wordWrap":true,"width":205,"var":"tInfo","valign":"middle","leading":4,"height":35,"fontSize":16,"color":"#ffffff","align":"left"},
             "nodeParent":1,
             "label":"Label(tInfo)",
             "isDirectory":false,

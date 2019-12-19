@@ -117,7 +117,7 @@ package sg.activities.view
 				setData();
 				return;
 			}
-			ModelGame.toPay(this.list.array[index].pid);
+			ModelGame.tryToPay(this.list.array[index].pid);
 			this.closeSelf();
 		}
 

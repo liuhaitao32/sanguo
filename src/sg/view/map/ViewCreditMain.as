@@ -58,12 +58,10 @@ package sg.view.map
 		public function ViewCreditMain(){
 			this.btnUp.on(Event.CLICK,this,click,[0]);
 			this.btnDown.on(Event.CLICK,this,click,[1]);
-			//this.btn0.on(Event.CLICK,this,click,[2]);
+
 			this.btn1.on(Event.CLICK,this,click,[3]);
 			this.tab.labels = Tools.getMsgById("_credit_text01") + "," + Tools.getMsgById("_credit_text02");
 			this.tab.on(Event.CHANGE,this,this.tabChange);
-			//this.list.itemRender=Item;
-			//this.list.renderHandler=new Handler(this,listRender);
 
 			this.userList.scrollBar.visible=false;
 			this.userList.itemRender=Item_User;
@@ -246,10 +244,7 @@ package sg.view.map
 			}
 
 			this.btn.gray=yetArr.length==0 && userRool==mRool;			
-			//trace("------------------",list_data);
-			//list_data.sort(MathUtil.sortByKey("sort",false,false));
 			cur_lv=lv;
-			//this.lvLabel.text=Tools.getMsgById("_credit_text05",[lv+1]);// (lv+1)+"级战功奖励";
 			this.curBox.visible  = c_lv==cur_lv;
 			this.btnUp.visible   = lv!=0;
 			this.btnDown.visible = lv<c_lv+1 && lv<=config_credit.clv_up.length-1;
@@ -260,31 +255,25 @@ package sg.view.map
 				this.upBox.visible=false;
 				this.panel.width=400;
 			}else{
+				this.img.visible = (lv==c_lv);
+
 				this.upBox.visible=true;
 				this.panel.width=500;
 				if(config_credit.clv_up[cur_lv]){
 					this.upNum.setData(AssetsManager.getAssetItemOrPayByID("item041"),config_credit.clv_up[cur_lv]+"");
 					this.upNum.visible=true;
 					this.upLabel.text=this.upBox.visible?cur_lv+2+"":"";
-					//this.upLabel.fontSize=30;
 				}else{
 					this.upNum.visible=false;
 					this.upLabel.text=Tools.getMsgById("_credit_text25");
-					//this.upLabel.fontSize=24;
 				}
 				Tools.textFitFontSize(this.upLabel, null, 70);
-				//this.upBox.visible=lv==c_lv;
 			}
 			if(mIsMerge)
 				this.titleLabel.text= Tools.getMsgById("_credit_text27");
 			else
 				this.titleLabel.text= (lv==c_lv) && is_add ? Tools.getMsgById("_credit_text06",[lv+1]) : Tools.getMsgById("_credit_text05",[lv+1]);
 			
-			if(this.btnDown.visible){
-				//this.text13.text=Tools.getMsgById("_credit_text15",[c_lv+1]);//"主公当前战功奖励为："+(c_lv+1)+"级战功奖励";
-			}else{
-				//this.text13.text=Tools.getMsgById("_credit_text16",[c_lv+1,c_lv+2]);//(c_lv+1)+"级战功达到升级要求，冬季结算后，可到"+(c_lv+2)+"级奖励战功";
-			}
 		}
 
 		public function getGetNum():void{
@@ -298,41 +287,24 @@ package sg.view.map
 
 
 		public function setUI():void{
-			
-			if(!is_add){
-				//EffectManager.changeSprColor(img0,1);
-				//EffectManager.changeSprColor(img1,2);
-				//EffectManager.changeSprColor(img2,3);
-			}else{
-				//EffectManager.changeSprColor(img0,3);
-				//EffectManager.changeSprColor(img1,3);
-				//EffectManager.changeSprColor(img2,3);
-			}
-			
-			//this.list.array=list_data;
 			this.setItemCom();
 			var n:Number=ModelManager.instance.modelUser.year_credit;
 			var nn:Number=config_credit.clv_first[c_lv]*config_credit.clv_first_ratio[config_credit.clv_first_ratio.length-1];
-			var m:Number=c_max;//5000
+			var m:Number=c_max;
 			n-=nn;
 			m-=nn;
-			//trace("=====================",n,m);
-			//var len:Number=config_credit.clv_added_ratio.length;
-			//var mm:Number=Math.floor(nn*config_credit.clv_first_ratio[len]);//3000
-			this.img.width=this.upBox.width;// 96;
+			this.img.width = this.upBox.width;
 			if(n>0 && n<m && c_lv==cur_lv){
-				this.img.visible=true;
+				this.img.visible = true;
 				this.img.width *= (n/m < 0.1 ? 0.1 : n/m>=1 ? 1 : n/m > 0.9 ? 0.9 : n/m);
 			}else{
-				this.img.visible=false;
+				this.img.visible = false;
 			}
 
-			if(c_num>=c_max){
-				this.img.visible=true;
+			if(c_num >= c_max){
+				this.img.visible = true;
 			}
-
 			setRoolCom();
-			
 
 		}
 
@@ -368,8 +340,6 @@ package sg.view.map
 				}else{
 					ani=EffectManager.loadAnimation("glow_credit_rool");
 					ani.blendMode="light";
-					//ani.scaleX=1.2;
-					//ani.scaleY=1.2;
 					ani.name="roolAni";
 					this.roolBox.addChild(ani);
 					ani.pos(roolBox.width/2,78);
@@ -386,18 +356,10 @@ package sg.view.map
 			if(tab.selectedIndex==0){
 				this.box1.visible=true;
 				this.box2.visible=false;
-				//this.botBox.visible=this.topBox.visible=true;
-				//this.imgBg.bottom=69;
-				//this.imgBg.visible=true;
-				//this.comTop.visible=this.comBottom.visible=true;
 				this.midLabel.visible=false;
 			}else if(tab.selectedIndex==1){
 				this.box1.visible=false;
 				this.box2.visible=true;
-				//this.botBox.visible=this.topBox.visible=false;
-				//this.imgBg.bottom=9;
-				//this.imgBg.visible=false;
-				//this.comTop.visible=this.comBottom.visible=false;
 				this.midLabel.visible=this.userList.array.length==0;
 			}
 		}
@@ -408,18 +370,14 @@ package sg.view.map
 				case 0:
 					getCurData(cur_lv-1);
 					this.setItemCom();
-					//this.list.array=list_data;
 					break;
 				case 1:
 					getCurData(cur_lv+1);
 					this.setItemCom();
-					//this.list.array=list_data;
 					break;
 				case 2:					
-					//get_credit_rank(0);
 					break;
 				case 3:
-					//get_credit_rank(1);
 					ViewManager.instance.showView(["ViewCreditGift",ViewCreditGift],[1,0]);
 					break;
 				default:
@@ -449,7 +407,6 @@ package sg.view.map
 			var credit_num:Number=ModelManager.instance.modelUser.year_credit;
 			for (var i:int = 0; i < 15; i++){
 				var cell:item_creditUI = this["com" + i] as item_creditUI;
-				//var cell:item_creditUI=this.box1.getChildByName("com"+i) as item_creditUI;
 				var obj:Object=list_data[i];
 				var ani:Animation;
 				if(cell.getChildByName("ani")){
@@ -499,7 +456,6 @@ package sg.view.map
 					} 
 					cell.imgBg.visible=false;
 				}				
-				//cell.setData(list_data[i],next_credit,cur_lv);
 				cell.off(Event.CLICK,this,this.itemClick);
 				cell.on(Event.CLICK,this,this.itemClick,[list_data[i].index,list_data[i].is_get]);		
 			}
@@ -507,19 +463,11 @@ package sg.view.map
 
 		public function setGet(index:int):void{
 			var cell:item_creditUI = this["com" + index] as item_creditUI;
-			//var cell:item_creditUI=this.box1.getChildByName("com"+index) as item_creditUI;
 			cell.imgGet.visible=true;
 			
 			if(cell.getChildByName("ani")){
 				cell.removeChild(cell.getChildByName("ani"));				
 			}
-		}
-
-
-		public function listRender(cell:Item,index:int):void{
-			//cell.setData(this.list.array[index],next_credit,cur_lv);
-			//cell.off(Event.CLICK,this,this.itemClick,[this.list.array[index].index,this.list.array[index].is_get]);
-			//cell.on(Event.CLICK,this,this.itemClick,[this.list.array[index].index,this.list.array[index].is_get]);			
 		}
 
 		public function userListRender(cell:Item_User,index:int):void{
@@ -567,13 +515,11 @@ package sg.view.map
 				ModelManager.instance.modelUser.updateData(np.receiveData);
 				user_credit_get=ModelManager.instance.modelUser.credit_get_gifts;
 				ViewManager.instance.showIcon(np.receiveData.gift_dict_list[0],pos.x,pos.y);
-				//(list.getCell(list.array[index].index) as Item).setGet();
 				setGet(index);
 				if(yetArr.indexOf(index)!=-1){
 					yetArr.splice(yetArr.indexOf(index),1);
 				}
 				getGetNum();
-				//trace(yetArr);
 				if(getNum==15){
 					setData();
 					setUI();
@@ -593,10 +539,8 @@ package sg.view.map
 				NetSocket.instance.send("get_credit_gift",sendData,new Handler(this,function(np:NetPackage):void{
 					ModelManager.instance.modelUser.updateData(np.receiveData);
 					user_credit_get=ModelManager.instance.modelUser.credit_get_gifts;
-					//ViewManager.instance.showIcon(np.receiveData.gift_dict,mouseX,mouseY);
 					ViewManager.instance.showRewardPanel(np.receiveData.gift_dict_list);
 					for(var i:int=0;i<15;i++){
-					//	(list.getCell(list.array[i].index) as Item).setGet();
 						setGet(i);
 					}
 					setData();
@@ -622,11 +566,8 @@ package sg.view.map
 			next_time_day-=1000;
 			next_time_year-=1000;
 			if(this.tab.selectedIndex==0){
-				//this.timerLabel.text=Tools.getTimeStyle(next_time_day);
 				this.text11.text=Tools.getTimeStyle(next_time_year);
 			}else if(this.tab.selectedIndex==1){
-				//this.timerLabel.text=Tools.getTimeStyle(next_time_year);
-				//this.text22.text=Tools.getTimeStyle(next_time_day);
 				this.text22.text=Tools.getTimeStyle(next_time_year);
 			}
 		}
@@ -638,7 +579,7 @@ package sg.view.map
 					o={};
 				}else{
 					var n:Number=ModelManager.instance.modelUser.credit_year;
-					if(o["credit_year"]!=n){//&& ModelManager.instance.modelUser.is_credit_lv_up==1
+					if(o["credit_year"]!=n){
 						var oo:Object={};
 						oo["num0"]=o["credit_lv"];
 						oo["num1"]=ModelManager.instance.modelUser.credit_lv;
@@ -768,8 +709,6 @@ class Item_User extends item_credit_userUI{
 		Tools.textFitFontSize(this.nameLabel);
 		this.comHead.setHeroIcon(ModelUser.getUserHead(arr[2]));
 		this.comCountry.setCountryFlag(arr[3]);
-		//this.guildLabel.text="";//arr[4]?arr[4]:Tools.getMsgById("_guild_text87");
-		//this.comNum.setData(AssetsManager.getAssetItemOrPayByID("item041"),arr[5]+"");
 		this.comNum.text=arr[5]+"";
 	}
 
@@ -790,7 +729,6 @@ class Item_User extends item_credit_userUI{
 		var it:ModelItem=ModelManager.instance.modelProp.getItemProp(a[0]);
 		if(it){
 			var num:Number=a[1]==null?1:a[1];
-			//item.setData(it.icon,it.ratity,"",num+"");	
 			item.setData(it.id,num, -1);
 		}else{
 			item.setData(a[0]);	

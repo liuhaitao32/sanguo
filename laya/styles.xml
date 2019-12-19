@@ -130,7 +130,7 @@
    <item name="ui/army1.png" type="Image" compress="0" pack="0" quality="80" props="sizeGrid=1,2,1,2" picType="0" scale="0"/>
    <item name="ui/bar_11.png" type="Image" compress="0" pack="0" quality="80" props="sizeGrid=0,101,0,101" picType="0" scale="0"/>
    <item name="ui/icon_yes02.png" type="Image" compress="0" pack="0" quality="80" props="sizeGrid=3,3,3,3" picType="0" scale="0"/>
-   <item name="ui/bar_10.png" type="Image" compress="0" pack="0" quality="80" props="sizeGrid=0,19,0,157" picType="0" scale="0"/>
+   <item name="ui/bar_10.png" type="Image" compress="0" pack="2" quality="80" props="sizeGrid=0,19,0,157" picType="0" scale="0"/>
    <item name="bitmapFont" type="" compress="0" pack="2" quality="80" props="" picType="0" scale="0"/>
    <item name="ui/bar_18.png" type="Image" compress="0" pack="0" quality="80" props="sizeGrid=15,13,13,15" picType="0" scale="0"/>
    <item name="ui/redbar.png" type="ProgressBar" compress="0" pack="0" quality="80" props="sizeGrid=2,2,2,2" picType="0" scale="0"/>

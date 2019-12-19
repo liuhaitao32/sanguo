@@ -138,9 +138,11 @@ package sg.view.init
 			mProwidth = this.proWidth.width;
 			this.progressBox.width = 640;
 			this.imgProgressBar.width = mProwidth;
-			this.txtShow.color = '#eebb77';
-			this.txtShow.strokeColor = '#332211';
-			this.txtShow.stroke = 2;
+			if(HelpConfig.type_app == HelpConfig.TYPE_SG){
+				this.txtShow.color = '#eebb77';
+				this.txtShow.strokeColor = '#332211';
+				this.txtShow.stroke = 2;
+			}
 		}
 		private function click_register():void
 		{

@@ -1441,6 +1441,18 @@ package sg.model
 				Platform.pay(payObj,false);
 			}
 		}
+		/**
+		 * 
+		 */
+		public static function tryToPay(pids:String):void{
+			NetSocket.instance.send("try_to_pay",{"pid":pids},new Handler(null,function(np:NetPackage):void{
+				if(np.receiveData){
+					toPay(pids);
+				}else{
+					ViewManager.instance.showTipsTxt("pay error");
+				}
+			}));
+		}
 	}
 
 }

@@ -61,8 +61,8 @@ package sg.model
             return [
                 {'type': TYPE_MUSIC, 'name': Tools.getMsgById('_settings003'), 'value': this.musicActive},
                 {'type': TYPE_SOUND, 'name': Tools.getMsgById('_settings004'), 'value': this.soundActive},
-                {'type': TYPE_MODEL, 'name': Tools.getMsgById('_settings005'), 'value': this.modelActive},
-                {'type': TYPE_NOTIFY,'name': Tools.getMsgById('_settings006'), 'value': this.notifyActive},
+                //{'type': TYPE_MODEL, 'name': Tools.getMsgById('_settings005'), 'value': this.modelActive},
+                //{'type': TYPE_NOTIFY,'name': Tools.getMsgById('_settings006'), 'value': this.notifyActive},
             ];
         }
 

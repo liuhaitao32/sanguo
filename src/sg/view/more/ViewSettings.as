@@ -17,6 +17,8 @@ package sg.view.more
 
         override public function onAdded():void {
             this.list.array = model.getListData();
+            this.list.repeatY = this.list.array.length;
+            this.mBox.height = (this.list.array.length * 38) + (this.list.spaceY * (this.list.array.length-1)) + 144;
         }
 
 

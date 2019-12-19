@@ -30,7 +30,7 @@
                     "keyframes":{
                         "y":[
                             {
-                                "value":-3,
+                                "value":-27,
                                 "tweenMethod":"linearNone",
                                 "tween":true,
                                 "target":3,
@@ -39,7 +39,7 @@
                             }],
                         "x":[
                             {
-                                "value":16,
+                                "value":0,
                                 "tweenMethod":"linearNone",
                                 "tween":true,
                                 "target":3,
@@ -48,7 +48,7 @@
                             }],
                         "width":[
                             {
-                                "value":512,
+                                "value":284,
                                 "tweenMethod":"linearNone",
                                 "tween":true,
                                 "target":3,
@@ -57,7 +57,7 @@
                             }],
                         "skin":[
                             {
-                                "value":"clip/special276/fe01.jpg",
+                                "value":"clip/special276/ejik01.png",
                                 "tweenMethod":"linearNone",
                                 "tween":false,
                                 "target":3,
@@ -65,7 +65,7 @@
                                 "index":0
                             },
                             {
-                                "value":"clip/special276/fe02.jpg",
+                                "value":"clip/special276/ejik02.png",
                                 "tweenMethod":"linearNone",
                                 "tween":false,
                                 "target":3,
@@ -73,7 +73,7 @@
                                 "index":1
                             },
                             {
-                                "value":"clip/special276/fe03.jpg",
+                                "value":"clip/special276/ejik03.png",
                                 "tweenMethod":"linearNone",
                                 "tween":false,
                                 "target":3,
@@ -81,7 +81,7 @@
                                 "index":2
                             },
                             {
-                                "value":"clip/special276/fe04.jpg",
+                                "value":"clip/special276/ejik04.png",
                                 "tweenMethod":"linearNone",
                                 "tween":false,
                                 "target":3,
@@ -89,7 +89,7 @@
                                 "index":3
                             },
                             {
-                                "value":"clip/special276/fe05.jpg",
+                                "value":"clip/special276/ejik05.png",
                                 "tweenMethod":"linearNone",
                                 "tween":false,
                                 "target":3,
@@ -97,15 +97,7 @@
                                 "index":4
                             },
                             {
-                                "value":"clip/special276/fe06.jpg",
-                                "tweenMethod":"linearNone",
-                                "tween":false,
-                                "target":3,
-                                "key":"skin",
-                                "index":5
-                            },
-                            {
-                                "value":"clip/special276/fe07.jpg",
+                                "value":"clip/special276/ejik07.png",
                                 "tweenMethod":"linearNone",
                                 "tween":false,
                                 "target":3,
@@ -113,15 +105,7 @@
                                 "index":6
                             },
                             {
-                                "value":"clip/special276/fe08.jpg",
-                                "tweenMethod":"linearNone",
-                                "tween":false,
-                                "target":3,
-                                "key":"skin",
-                                "index":7
-                            },
-                            {
-                                "value":"clip/special276/fe09.jpg",
+                                "value":"clip/special276/ejik09.png",
                                 "tweenMethod":"linearNone",
                                 "tween":false,
                                 "target":3,
@@ -129,15 +113,7 @@
                                 "index":8
                             },
                             {
-                                "value":"clip/special276/fe10.jpg",
-                                "tweenMethod":"linearNone",
-                                "tween":false,
-                                "target":3,
-                                "key":"skin",
-                                "index":9
-                            },
-                            {
-                                "value":"clip/special276/fe11.jpg",
+                                "value":"clip/special276/ejik11.png",
                                 "tweenMethod":"linearNone",
                                 "tween":false,
                                 "target":3,
@@ -145,15 +121,7 @@
                                 "index":10
                             },
                             {
-                                "value":"clip/special276/fe12.jpg",
-                                "tweenMethod":"linearNone",
-                                "tween":false,
-                                "target":3,
-                                "key":"skin",
-                                "index":11
-                            },
-                            {
-                                "value":"clip/special276/fe13.jpg",
+                                "value":"clip/special276/ejik13.png",
                                 "tweenMethod":"linearNone",
                                 "tween":false,
                                 "target":3,
@@ -161,24 +129,40 @@
                                 "index":12
                             },
                             {
-                                "value":"clip/special276/fe14.jpg",
-                                "tweenMethod":"linearNone",
-                                "tween":false,
-                                "target":3,
-                                "key":"skin",
-                                "index":13
-                            },
-                            {
-                                "value":"clip/special276/fe15.jpg",
+                                "value":"clip/special276/ejik15.png",
                                 "tweenMethod":"linearNone",
                                 "tween":false,
                                 "target":3,
                                 "key":"skin",
                                 "index":14
+                            },
+                            {
+                                "value":"clip/special276/ejik17.png",
+                                "tweenMethod":"linearNone",
+                                "tween":false,
+                                "target":3,
+                                "key":"skin",
+                                "index":16
+                            },
+                            {
+                                "value":"clip/special276/ejik19.png",
+                                "tweenMethod":"linearNone",
+                                "tween":false,
+                                "target":3,
+                                "key":"skin",
+                                "index":18
+                            },
+                            {
+                                "value":"clip/special276/ejik21.png",
+                                "tweenMethod":"linearNone",
+                                "tween":false,
+                                "target":3,
+                                "key":"skin",
+                                "index":20
                             }],
                         "height":[
                             {
-                                "value":512,
+                                "value":284,
                                 "tweenMethod":"linearNone",
                                 "tween":true,
                                 "target":3,
@@ -211,6 +195,14 @@
                                 "target":3,
                                 "key":"alpha",
                                 "index":0
+                            },
+                            {
+                                "value":0,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":3,
+                                "key":"alpha",
+                                "index":22
                             }]
                     }
                 }],

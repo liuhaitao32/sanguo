@@ -78,11 +78,14 @@ package sg.view.inside
 			{
 				if(s.indexOf("skill")!=-1){
 					var o:Object={};
-					o["id"]=s;
-					o["type"]=allSkins[s].type;
-					o["name"]=allSkins[s].name;
-					o["have"]=0;
+					o["id"] = s;
+					o["type"] = allSkins[s].type;
+					o["name"] = allSkins[s].name;
+					o["have"] = 0;
+					
 					var itemSkill:ModelSkill=ModelManager.instance.modelGame.getModelSkill(s);
+					if(itemSkill.isOpenState==false) continue;
+					o["index"] = - itemSkill.index;
 					for(var h:String in allHeros){
 						var itemHero:ModelHero=ModelManager.instance.modelGame.getModelHero(h);
 						if(itemSkill.isResolve(itemHero)){
@@ -101,12 +104,12 @@ package sg.view.inside
 					}
 				}
 			}
-			
-			skillData1.sort(MathUtil.sortByKey("have",true,true));
-			//skillData2.sort(MathUtil.sortByKey("have",true,true));
-			ArrayUtils.sortOn(["have","type"],skillData2,true);
-			skillData3.sort(MathUtil.sortByKey("have",true,true));
-			skillData4.sort(MathUtil.sortByKey("have",true,true));
+						
+			ArrayUtils.sortOn(["have","index"],skillData1,true);
+			ArrayUtils.sortOn(["have","type","index"],skillData2,true);
+			ArrayUtils.sortOn(["have","index"],skillData3,true);
+			ArrayUtils.sortOn(["have","index"],skillData4,true);
+
 			this.skillList1.array=skillData1;
 			this.skillList2.array=skillData2;
 			this.skillList3.array=skillData3;

@@ -93,6 +93,7 @@ package sg.view.arena
                 if(np.receiveData.gift_dict && Tools.getDictLength(np.receiveData.gift_dict)!=0){
                     np.receiveData["act"] = 0;
                     ViewManager.instance.showView(["ViewArenaReward",ViewArenaReward],np.receiveData);
+                    ModelArena.instance.event(ModelArena.EVENT_GET_ITEM,{"act":-1,"gift_dict":np.receiveData.gift_dict});
                     b2 = false;
                 }
                 closeSelf();

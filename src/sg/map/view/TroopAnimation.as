@@ -45,7 +45,14 @@ package sg.map.view {
 			content.pos(v1.x, v1.y);
 			
 			var animation:MarchMatrixClip = new MarchMatrixClip();
-			animation.init(troop.hero, true, true, true, troop.getModelHero().getTitleStatus(), troop.entityCity.country);
+			var armyScale:Number = false ? ConfigServer.system_simple.scale_matrix.countryArmy : ConfigServer.system_simple.scale_matrix.army;
+			var heroScale:Number = false ? ConfigServer.system_simple.scale_matrix.countryHero : 
+																		true ? 
+																			ConfigServer.system_simple.scale_matrix.hero1 :
+																			ConfigServer.system_simple.scale_matrix.hero2;
+			
+			
+			animation.init(troop.hero, true, true, true, troop.getModelHero().getTitleStatus(), troop.entityCity.country, false, heroScale, armyScale);
 			content.addChild(animation).name = "ani";
 			var dir:Array = content.y > v2.y ? [0, 3] : [1, 2];
 			animation.changeDir(content.x < v2.x ? dir[0] : dir[1]);

@@ -247,10 +247,13 @@ package sg.view.menu
 					this.list.array = listData;
 					return;
 				}
+				ModelGame.tryToPay(mPayId);
+			}else{
+				ModelGame.toPay(mPayId);
 			}
 			
 			mTime = ConfigServer.getServerTimer();
-			ModelGame.toPay(mPayId);
+			
 			//
 			// var payObj:Object;
 			// var payCfg:Object = ConfigServer.pay_config_pf[this.listData[index].id];

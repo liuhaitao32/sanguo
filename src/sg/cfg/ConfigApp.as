@@ -8,6 +8,7 @@ package sg.cfg
 	import laya.renders.Render;
 	import sg.sdks.H5sdk;
 	import sg.sdks.H5JJ37;
+	import sg.sdks.H5SGWende;
 
 	public class ConfigApp{
 		///是否打开调试，允许账号输入
@@ -160,12 +161,13 @@ package sg.cfg
 		// public static const PF_panbao_h5:String = "h5_panbao"; // 盼宝
 		public static const PF_changwan_h5:String = "h5_changwan"; // 畅玩（草花子公司）
 		public static const PF_shouqu_h5:String = "h5_shouqu"; // 手趣
-		public static const PF_jj_h5:String = "h5_jj"; // JJ
+		public static const PF_wende_h5:String = "h5_wende"; // 文德
 		
 		public static const PF_JJ_37_h5:String = "jj_h5_37"; 			// 警戒 h5 37
 		public static const PF_JJ_tanwan_h5:String = "jj_h5_twyx"; 		// 警戒 h5 贪玩
 		public static const PF_JJ_yyjh_h5:String = "jj_h5_yyjh";		// 警戒 h5 益游嘉和
 		public static const PF_JJ_7k_h5:String = "jj_h5_7k";			// 警戒 h5 7k7k 迦游
+		public static const PF_JJ_leyou_h5:String = "jj_h5_leyou";		// 警戒 h5 乐游
 		//
 		public static const PF_JJ_caohua_ad:String = "jj_ad_caohua";	// 警戒 安卓 草花
 		//
@@ -570,6 +572,7 @@ package sg.cfg
 				// pf == PF_panbao_ad ||
 				pf == PF_1377_h5 ||
 				pf == PF_leyou_h5 ||
+				pf == PF_JJ_leyou_h5 ||
 				pf == PF_muzhi_h5 ||
 				pf == PF_muzhi2_h5 ||
 				pf == PF_hutao_h5 ||
@@ -662,6 +665,9 @@ package sg.cfg
 			switch(pf) {
 				case PF_JJ_37_h5:
 					Platform.h5_sdk = new H5JJ37(pf, Tools.getURLexpToObj(ConfigApp.url_params)) as H5sdk;
+					break;
+				case PF_wende_h5:
+					Platform.h5_sdk = new H5SGWende(pf, Tools.getURLexpToObj(ConfigApp.url_params)) as H5sdk;
 					break;
 			}
 		}

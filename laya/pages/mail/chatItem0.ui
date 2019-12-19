@@ -69,7 +69,7 @@
         {
             "x":15,
             "type":"Label",
-            "props":{"y":22,"wordWrap":true,"width":412,"var":"text0","text":"1\\n2","right":79,"leading":6,"height":45,"fontSize":18,"color":"#ffffff","align":"left"},
+            "props":{"y":22,"wordWrap":true,"width":412,"var":"text0","right":78,"leading":6,"height":45,"fontSize":18,"color":"#ffffff","align":"left"},
             "nodeParent":1,
             "label":"Label(text0)",
             "isDirectory":false,
@@ -82,7 +82,7 @@
         {
             "x":15,
             "type":"Label",
-            "props":{"y":0,"x":139,"width":260,"var":"tTime","text":"2019/12/4 12:00:00","height":18,"fontSize":16,"color":"#ffffff","align":"center"},
+            "props":{"y":0,"x":139,"width":260,"var":"tTime","height":18,"fontSize":16,"color":"#ffffff","align":"center"},
             "nodeParent":1,
             "label":"Label(tTime)",
             "isDirectory":false,

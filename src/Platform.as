@@ -1247,7 +1247,7 @@ package
                     NetHttp.instance.send(sign_7k, {userid: Tools.getURLexpToObj(ConfigApp.url_params).userid, order_id: orderId_short},Handler.create(null,function(re:Object):void {
                         Platform.h5_sdk_obj.Pay({ safeCode: re.code });
                     }));
-                } else if (ConfigApp.pf == ConfigApp.PF_leyou_h5) {
+                } else if (ConfigApp.pf == ConfigApp.PF_leyou_h5 || ConfigApp.pf == ConfigApp.PF_JJ_leyou_h5) {
                     var leyouData:Object = Platform.h5_sdk_url_data = Tools.getURLexpToObj(ConfigApp.url_params);
                     Platform.h5_sdk_obj.getinfo(leyouData.userid, user.zone, user.mUID, money, payObj.pid, orderId, '', leyouData.appkey, leyouData.banid, leyouData.token);
                 } else if (ConfigApp.pf == ConfigApp.PF_360_h5) {
@@ -1617,6 +1617,7 @@ package
                     ConfigApp.pf == ConfigApp.PF_7k_h5 ||
                     ConfigApp.pf == ConfigApp.PF_JJ_7k_h5 ||
                     ConfigApp.pf == ConfigApp.PF_leyou_h5 ||
+                    ConfigApp.pf == ConfigApp.PF_JJ_leyou_h5 ||
                     ConfigApp.pf == ConfigApp.PF_360_h5 ||
                     ConfigApp.pf == ConfigApp.PF_360_2_h5 ||
                     ConfigApp.pf == ConfigApp.PF_360_3_h5 ||
@@ -1976,6 +1977,7 @@ package
                     callback && callback.runWith([0, params]);
                 } else if (
                     ConfigApp.pf === ConfigApp.PF_leyou_h5 ||
+                    ConfigApp.pf === ConfigApp.PF_JJ_leyou_h5 ||
                     ConfigApp.pf === ConfigApp.PF_360_h5 ||
                     ConfigApp.pf === ConfigApp.PF_1377_h5 ||
                     ConfigApp.pf === ConfigApp.PF_muzhi_h5 ||
@@ -2206,6 +2208,16 @@ package
                         ToJava.savePlayerInfo(infoData,null);
                     }
                 }
+                else if(ConfigApp.pf == ConfigApp.PF_360_ad) {
+                    infoData = {
+                        "type":type,
+                        "method": "mobile"
+                    };
+                    
+                    if(infoData){
+                        ToJava.savePlayerInfo(infoData,null);
+                    }
+                }
                 // else if(ConfigApp.pf == ConfigApp.PF_panbao_ad) {
                 //     infoData = Platform.toPanbao(type,params);
                 //     if(infoData){
@@ -2395,7 +2407,7 @@ package
                         "appkey": ConfigApp.pf === ConfigApp.PF_7k_h5? "f0cab6ba16c0436702f896fe3c6632dc" : "46fc1a6626a6d2317893b8cb8ebde833",
                         "account": paramData.userid
                     });
-                } else if (ConfigApp.pf === ConfigApp.PF_leyou_h5) { // 创角上报
+                } else if (ConfigApp.pf === ConfigApp.PF_leyou_h5 || ConfigApp.pf == ConfigApp.PF_JJ_leyou_h5) { // 创角上报
                     Platform.h5_sdk_url_data = paramData;
                     var url:String = ConfigApp.get_data_report();
                     if (type == 0) {

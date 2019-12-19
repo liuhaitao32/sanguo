@@ -118,7 +118,7 @@ package sg.activities.model
             if (ConfigServer.getServerTimer() > finalTime) {
                 ViewManager.instance.showTipsTxt(Tools.getMsgById('happy_tips07'));
             } else if (pid) {
-                ModelGame.toPay(pid);
+                ModelGame.tryToPay(pid);
             } else {
                 ViewManager.instance.showTipsTxt(Tools.getMsgById('surprise_12'));
             }

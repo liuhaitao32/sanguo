@@ -186,8 +186,8 @@
     },
     "dev_kr":{
         "v_1_1_0":{
-            "http_url":"http://res-kol.r2game.com/gateway/",
-            "22http_url":"http://krsh.ptkill.com/gateway/",
+            "11http_url":"http://res-kol.r2game.com/gateway/",
+            "http_url":"http://krsh.ptkill.com/gateway/",
             "assets_base_url":"http://r2cdn-kol.r2game.com/static/h5/kr/",
             "assets_version_url":"http://r2cdn-kol.r2game.com/static/h5/kr/"
         }
@@ -299,6 +299,13 @@
         }                     
     },
     "wende_ios":{
+        "v_1_1_0":{
+            "http_url":"http://sg3.ptkill.com/gateway/",
+            "assets_base_url":"http://cdn2.ptkill.com/static/h5/meng52/",
+            "assets_version_url":"http://sg.ptkill.com/static/h5/meng52/"
+        }                     
+    },
+    "h5_wende":{
         "v_1_1_0":{
             "http_url":"http://sg3.ptkill.com/gateway/",
             "assets_base_url":"http://cdn2.ptkill.com/static/h5/meng52/",
@@ -686,6 +693,7 @@
     "h5_game_mzyw":"http://cdn1.ptkill.com/static/h5/meng52/indexmzywgame.html?mppf=h5_muzhi&v=online000324&mssl=yes&ussl=no",
     "h5_game_mzyw2":"http://cdn1.ptkill.com/static/h5/meng52/indexmzyw2game.html?mppf=h5_muzhi2&v=online000324&mssl=yes&ussl=no",
     "h5_game_changwan":"http://cdn2.ptkill.com/static/h5/meng52/indexchwgame.html?mppf=h5_changwan&v=online000324&mssl=yes&ussl=no",
+    "h5_game_wende":"http://cdn2.ptkill.com/static/h5/meng52/indexwendegame.html?mppf=h5_wende&v=online000324&mssl=yes&ussl=yes",
     "##########################360qh服务器":"##############360qh服务器",
     "h5_game_360":"https://cdn1.ptkill.com/static/h5/pc/index360game.html?mppf=h5_360&v=online000324&mssl=yes&ussl=yes",
     "h5_game_360_2":"https://cdn1.ptkill.com/static/h5/pc/index360game2.html?mppf=h5_360_2&v=online000324&mssl=yes&ussl=yes",
