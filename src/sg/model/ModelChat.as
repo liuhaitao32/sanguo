@@ -105,8 +105,9 @@ package sg.model
 			if(obj[1]==0){//除了系统消息外  做一下屏蔽字处理
 				var s:String = obj[3][0];
 				Platform.shieldFont(s,new Handler(this,function():void{
-					var cloneObj:Object = ObjectUtil.clone(obj,true);
 					s = FilterManager.instance.wordBan(s);
+					obj[3][0] = s;
+					var cloneObj:Object = ObjectUtil.clone(obj,true);
 					obj[3][0] = faceHandler(s);
 					acceptMsgHandler(obj,cloneObj);
 				}),false);
