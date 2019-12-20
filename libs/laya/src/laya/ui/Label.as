@@ -4,6 +4,8 @@ package laya.ui {
 	import laya.events.Event;
 	import laya.ui.Component;
 	import laya.ui.UIUtils;
+	import sg.cfg.ConfigApp;
+	import sg.view.qqdt.LanZuanIcon;
 	
 	/**
 	 * 文本内容发生改变后调度。
@@ -152,10 +154,17 @@ package laya.ui {
 			return _tf.text;
 		}
 		
+		/**
+		 * 李闯改。蓝钻接入的。
+		 */
+		public var lanzuan:LanZuanIcon;
+		
 		public function set text(value:String):void {
 			if (_tf.text != value) {
-				if(value)
-				value=UIUtils.adptString(value+"");
+				if (value){					
+					value = LanZuanIcon.getLanZuan(this.lanzuan, this, value);
+					value=UIUtils.adptString(value+"");
+				}				
 				_tf.text = value;
 				event(Event.CHANGE);
 				if (!_width || !_height) onCompResize();

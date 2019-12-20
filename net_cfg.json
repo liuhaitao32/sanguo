@@ -312,6 +312,13 @@
             "assets_version_url":"http://sg.ptkill.com/static/h5/meng52/"
         }                     
     },
+    "h5_7477":{
+        "v_1_1_0":{
+            "http_url":"http://qh.ptkill.com/gateway/",
+            "assets_base_url":"http://cdn2.ptkill.com/static/h5/pc/",
+            "assets_version_url":"http://sg.ptkill.com/static/h5/pc/"
+        }                    
+    },
     "uc":{
         "v_1_1_0":{
             "http_url":"http://sg3.ptkill.com/gateway/",
@@ -694,6 +701,7 @@
     "h5_game_mzyw2":"http://cdn1.ptkill.com/static/h5/meng52/indexmzyw2game.html?mppf=h5_muzhi2&v=online000324&mssl=yes&ussl=no",
     "h5_game_changwan":"http://cdn2.ptkill.com/static/h5/meng52/indexchwgame.html?mppf=h5_changwan&v=online000324&mssl=yes&ussl=no",
     "h5_game_wende":"http://cdn2.ptkill.com/static/h5/meng52/indexwendegame.html?mppf=h5_wende&v=online000324&mssl=yes&ussl=yes",
+    "h5_game_7477":"http://cdn2.ptkill.com/static/h5/meng52/index7477game.html?mppf=h5_7477&v=online000324&mssl=yes&ussl=yes",
     "##########################360qh服务器":"##############360qh服务器",
     "h5_game_360":"https://cdn1.ptkill.com/static/h5/pc/index360game.html?mppf=h5_360&v=online000324&mssl=yes&ussl=yes",
     "h5_game_360_2":"https://cdn1.ptkill.com/static/h5/pc/index360game2.html?mppf=h5_360_2&v=online000324&mssl=yes&ussl=yes",
@@ -743,7 +751,7 @@
             "channel":"ios_37",
             "serverAndLocal":"",
             "serverdir":"/static/h5/meng52/",
-            "url":"http://cdn2.ptkill.com/static/h5/meng52/index.html?mppf=ios_37&v=online000324&mssl=yes&ussl=no"
+            "url":"http://cdn2.ptkill.com/static/h5/meng52/index37cn.html?mppf=ios_37&v=online000324&mssl=yes&ussl=no"
         },
         "com.djcy.game.ios.sg_cn_review":{
             "channel":"ios_37",
@@ -751,7 +759,7 @@
             "serverdir":"/static/h5/sg2/",
             "url1":"http://localhost:8080/game/index.html?mppf=ios&v=4&disloading=yes&ilimg=sgqx1",
             "url2":"http://cdn2.ptkill.com/static/h5/meng52/ios.html?mppf=ios_37&v=online000324&mssl=no&ussl=no",
-            "url":"http://cdn2.ptkill.com/static/h5/meng52/index.html?mppf=ios_37&v=online000324&mssl=yes&ussl=yes"
+            "url":"http://cdn2.ptkill.com/static/h5/meng52/index37cn.html?mppf=ios_37&v=online000324&mssl=yes&ussl=yes"
         },
         "com.djcy.game.ios.sg_tw":{
             "channel":"ios_tw",
