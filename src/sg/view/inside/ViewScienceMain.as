@@ -14,6 +14,7 @@ package sg.view.inside
     import laya.maths.Point;
     import laya.ui.Image;
     import sg.utils.Tools;
+    import laya.utils.Tween;
 
     public class ViewScienceMain extends science_mainUI
     {
@@ -30,6 +31,8 @@ package sg.view.inside
             this.list.itemRender = ItemScience;
             this.list.renderHandler = new Handler(this,this.list_render);
             this.list.scrollBar.hide = true;
+            btn_up.on(Event.CLICK, this, this._onClickUp);
+            btn_down.on(Event.CLICK, this, this._onClickDown);
             //
             this.mDic = {};
             this.mArrTable = {};
@@ -62,6 +65,23 @@ package sg.view.inside
             }      
             ItemScience.mDic = this.mDic;
         }
+        
+        private function _onClickUp():void {
+            const barValue:Number = list.scrollBar.value;
+            this._scrollTo(barValue <= mScrollBarMax * 0.5 + 1 ? 0 : mScrollBarMax * 0.5);
+        }
+        
+        private function _onClickDown():void {
+            const barValue:Number = list.scrollBar.value;
+            this._scrollTo(barValue < mScrollBarMax * 0.5 ? mScrollBarMax * 0.5 : mScrollBarMax);
+        }
+        
+        private function _scrollTo(v:int):void {
+            const barValue:Number = list.scrollBar.value;
+            if (v === barValue) return;
+            Tween.to(list.scrollBar, {value: v}, 200);
+        }
+
         private function checkXY(smd:ModelScience):void
         {
             var pmd:ModelScience;
@@ -255,6 +275,8 @@ package sg.view.inside
             else{
                 this.box_unlock.visible = false;
             }
+            btn_up.gray = list.scrollBar.value <= 0;
+            btn_down.gray = list.scrollBar.value >= this.mScrollBarMax;
             
             if(this.box_unlock.visible){
                 var len:int = this.list.content.numChildren;
@@ -267,6 +289,7 @@ package sg.view.inside
                         if(item.mModel.hasOwnProperty("mScrollBarIndex")){
                             var po:Point = new Point(item.x,item.y);
                             po = this.globalToLocal(this.list.content.localToGlobal(po));
+                            console.log(po.y);
                             this.box_unlock.y = po.y;
                         }
                     }

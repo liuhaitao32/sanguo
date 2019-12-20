@@ -19,6 +19,8 @@ package sg.view.inside
     import sg.model.ModelInside;
     import sg.manager.ViewManager;
     import sg.cfg.ConfigClass;
+    import sg.manager.EffectManager;
+    import laya.display.Animation;
 
     public class ViewScienceUpgrade extends science_upgradeUI
     {
@@ -206,8 +208,12 @@ package sg.view.inside
             else{
                 ModelManager.instance.modelGame.event(ModelInside.SCIENCE_CHANGE_STATUS);
             }
-            //
-            this.closeSelf();            
+            var ani:Animation = EffectManager.loadAnimation("glow007","",1);
+            ani.scaleX = 2.4;
+            ani.scaleY = 2.4;
+			ani.pos(tInfo.x + tInfo.width * 0.5, tInfo.y + tInfo.height * 0.5);
+			mBox.addChild(ani);
+            // this.closeSelf();            
         }
     }
 }
