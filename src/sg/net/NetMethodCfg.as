@@ -27,6 +27,7 @@ package sg.net
         // public static const HTTP_USER_PANBAO_PAY_SIGN:String = "user_zone.get_h5_panbao_pay_sign";
         public static const HTTP_USER_JJ_37_SIGN:String = "user_zone.get_jj_h5_37_sign";
         public static const HTTP_USER_SG_WENDE_PAY:String = "user_zone.get_h5_wende_sign";
+        public static const HTTP_USER_SG_7477_SIGN:String = "user_zone.get_h5_7477_sign";
         public static const HTTP_USER_H5_ZFB_PAY:String = "user_zone.zfb_h5_pay";
         public static const HTTP_FB_GOOGLE_BING:String = "user_zone.fb_google_bing";
         public static const HTTP_USER_VALIDATE_USER_CODE:String = "user_zone.validate_user_code";

@@ -9,6 +9,7 @@ package sg.cfg
 	import sg.sdks.H5sdk;
 	import sg.sdks.H5JJ37;
 	import sg.sdks.H5SGWende;
+	import sg.sdks.H5SG7477;
 
 	public class ConfigApp{
 		///是否打开调试，允许账号输入
@@ -128,6 +129,7 @@ package sg.cfg
 		public static const PF_wende_ios:String = "wende_ios";//文德ios
 		public static const PF_yx7477:String = "yx7477";//7477
 		public static const PF_yx7477_1:String = "yx7477_1";//7477_1
+		public static const PF_7477_h5:String = "h5_7477";//7477 三国 h5
 		//
 		// public static const PF_xh_h5:String = "xh_h5";//星辉h5
 		// public static const PF_wx_h5:String = "wx_h5";//微信h5
@@ -668,6 +670,9 @@ package sg.cfg
 					break;
 				case PF_wende_h5:
 					Platform.h5_sdk = new H5SGWende(pf, Tools.getURLexpToObj(ConfigApp.url_params)) as H5sdk;
+					break;
+				case PF_7477_h5:
+					Platform.h5_sdk = new H5SG7477(pf, Tools.getURLexpToObj(ConfigApp.url_params)) as H5sdk;
 					break;
 			}
 		}

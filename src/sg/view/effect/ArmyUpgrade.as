@@ -6,6 +6,10 @@ package sg.view.effect
     import sg.manager.AssetsManager;
     import sg.manager.LoadeManager;
     import sg.utils.Tools;
+    import sg.cfg.HelpConfig;
+    import laya.ui.Box;
+    import sg.manager.EffectManager;
+    import laya.display.Sprite;
 
     public class ArmyUpgrade extends effect_army_upgradeUI{
         public function ArmyUpgrade(bmd:ModelBuiding,armyCurrObj:Object,armyNextObj:Object,grade:int){
@@ -33,7 +37,19 @@ package sg.view.effect
             //
             this.tLv.text = Tools.getMsgById("100001",[grade])+ModelHero.army_type_name[ModelBuiding.army_type[bmd.id]];
             //
-            this.img.skin = AssetsManager.getAssetsArmy("army"+bmd.getArmyType()+""+grade);
+            this.aBox.destroyChildren();
+            this.img.visible = false;
+            var armyAID:String = "army"+bmd.getArmyType()+""+grade;
+            if(HelpConfig.type_app == HelpConfig.TYPE_SG){
+                var sp:Sprite = EffectManager.loadArmysIcon(armyAID);
+                sp.scaleX = 1.4; 
+                sp.scaleY = 1.4;
+                aBox.addChild(sp);
+            }else{
+                this.img.visible = true;
+                this.img.skin = AssetsManager.getAssetsArmy(armyAID);
+            }
+            
             //
             this.test_clip_effict_panel(this.tTitle.x,this.tTitle.y);
         }

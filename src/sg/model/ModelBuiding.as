@@ -444,6 +444,25 @@ package sg.model
 			return getArmyBuildingLvCfg(bmd.id,bmd.lv)[3];
 		}
 		/**
+		 * 建筑等级,对应的 兵种下一个等级  最高级则返回当前等级
+		 */
+		public static function getArmyNextGradeByType(armyType:int):int{
+			var bmd:ModelBuiding = getArmyBuildingByType(armyType);
+			var cur:int = getArmyBuildingLvCfg(bmd.id,bmd.lv)[3];
+			var arr:Array = ConfigServer.system_simple.barracks[bmd.id];
+			//该等级解锁新的兵种等级时  显示当前兵种等级
+			if((arr[bmd.lv-2] && arr[bmd.lv-2][3] != cur)){
+				return getArmyCurrGradeByType(armyType);
+			}
+			var len:int = arr.length;
+			for(var i:int = bmd.lv; i < len; i++){
+				if(cur!=arr[i][3]){
+					return arr[i][3];
+				}
+			}
+			return getArmyCurrGradeByType(armyType);
+		}
+		/**
 		 * 兵营建筑的科技,
 		 * armyType == 步骑弓方
 		 * byPower == 只用来计算hero power
@@ -872,16 +891,15 @@ package sg.model
 			var index:int = -1;
 			var fn:int = lv-1;
 			fn = (fn<0)?0:fn;
-			for(var i:int = fn; i < len; i++)
-			{
+			for(var i:int = fn; i < len; i++){
 				if(ruler[3]!=arr[i][3]){
 					index = i;
 					break;
 				}
 			}
-			if(index<0){
-				index = len-1;
-			}
+			// if(index<0){
+			// 	index = len-1;
+			// }
 			return index;
 		}
 		/**

@@ -1013,25 +1013,28 @@ package sg.view.com
 					var unlockStr:String = "";
 					var unlockStr2:String = "";
 					var newLv:int = ModelBuiding.getArmyBuildingNewLvIndex(bmd.id, clv);
-					if (newLv >= 0)
-					{
-						unlockStr = "";//"["+(newLv+1)+"]级解锁["+ModelBuiding.getArmyBuildingLvCfg(bmd.id,(newLv+1))[3]+"]级"+ModelHero.army_type_name[ModelBuiding.army_type[bmd.id]];
+					if (newLv >= 0){
+						unlockStr = "";
 						unlockStr2 = Tools.getMsgById("_building47", [newLv + 1, ModelBuiding.getArmyBuildingLvCfg(bmd.id, (newLv + 1))[3], ModelHero.army_type_name[ModelBuiding.army_type[bmd.id]]]);
-							// ""+(newLv+1)+"级解锁"+ModelBuiding.getArmyBuildingLvCfg(bmd.id,(newLv+1))[3]+"级"+ModelHero.army_type_name[ModelBuiding.army_type[bmd.id]];
 					}
 					if (isArmy)
 					{
 						this["iBg"].visible = false;
 						this["aBox"].visible = true;
 						this["tInfo"].visible = false;
-						var armyAID:String = "army" + ModelBuiding.army_type[bmd.id] + "" + ModelBuiding.getArmyCurrGradeByType(ModelBuiding.army_type[bmd.id]);
+						var n1:Number = ModelBuiding.army_type[bmd.id];
+						var n2:Number = ModelBuiding.getArmyNextGradeByType(ModelBuiding.army_type[bmd.id]);
+						var armyAID:String = "army" + n1 + "" + n2;
 						(this["aIcon"] as Box).destroyChildren();
 						if(HelpConfig.type_app == HelpConfig.TYPE_WW){
 							if(this["aImg"]) (this["aImg"] as Image).skin = AssetsManager.getAssetsArmy(armyAID);
 							if(this["aImg"]) (this["aImg"] as Image).visible = true;
 						}else{
 							if(this["aImg"]) (this["aImg"] as Image).visible = false;
-							(this["aIcon"] as Box).addChild(EffectManager.loadArmysIcon(armyAID));
+							var sp:Sprite = EffectManager.loadArmysIcon(armyAID);
+							sp.scaleX = 1.4; 
+                			sp.scaleY = 1.4;
+							(this["aIcon"] as Box).addChild(sp);
 						}
 						
 						(this["aIcon"] as Box).x = this.width * 0.5;
