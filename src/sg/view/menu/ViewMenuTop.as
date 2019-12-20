@@ -1,5 +1,8 @@
 package sg.view.menu
 {
+	import laya.ui.Button;
+	import sg.cfg.ConfigApp;
+	import sg.map.utils.TestUtils;
 	import ui.menu.topUI;
 	import sg.view.ViewPanel;
 	import sg.manager.AssetsManager;
@@ -47,7 +50,22 @@ package sg.view.menu
 			this.coin_red.visible = false;
 			this.redTween();
 			this.refresh();
-
+			
+			if (ConfigApp.pf == ConfigApp.PF_qqdt_h5) {
+				var btn:Button = new Button();				
+				btn.skin = "lanzuan/lanzuan_btn.png";
+				btn.stateNum = 1;
+				btn.x = this.iron.x + 150;
+				btn.y = this.iron.y + 50;
+				btn.size(56, 51);
+				this.addChild(btn);
+				this.mouseThrough = true;
+				btn.clickHandler = new Handler(this, function():void {
+					ViewManager.instance.showView(ConfigClass.View_QQDT);
+				});
+				//TestUtils.drawTest(btn);
+			}
+			
 		}
 
 		/**

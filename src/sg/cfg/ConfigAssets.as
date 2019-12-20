@@ -54,6 +54,12 @@ package sg.cfg
 			}else{
 				result = [ConfigAssets.AssetsInitWord[0]].concat(result);
 			}
+			if (ConfigApp.pf == ConfigApp.PF_qqdt_h5) {
+				result.push("res/atlas/lanzuan.atlas");
+			}
+			
+			result.push("ui/bg_006.png");
+			
 			return result;
 		}
 

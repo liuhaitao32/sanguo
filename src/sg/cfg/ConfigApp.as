@@ -676,5 +676,11 @@ package sg.cfg
 					break;
 			}
 		}
+		public static function checkPfIs37BySG():Boolean{
+			if(ConfigApp.pf == ConfigApp.PF_ios_37){
+				return true;
+			}
+			return false;
+		}
 	}
 }

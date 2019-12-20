@@ -2,6 +2,8 @@ package sg.boundFor
 {
 	import laya.maths.Point;
 	import laya.utils.Handler;
+	import sg.outline.view.ui.MiniMapTop;
+	import sg.utils.ObjectSingle;
 
 	import sg.activities.model.ModelOnlineReward;
 	import sg.activities.view.ViewActivitiesShare;
@@ -555,6 +557,10 @@ package sg.boundFor
 			}
 			ViewManager.instance.closeView(true);
 			ModelManager.instance.modelGame.event(ModelGame.EVENT_TASK_WORK_CONQUEST_OPEN_MAP);
+			//临时打一个补丁 在大地图
+			if (ObjectSingle.sDic[ConfigClass.MINI_MAPTOP[0]]) {
+				MiniMapTop(ObjectSingle.sDic[ConfigClass.MINI_MAPTOP[0]]).click_closeScenes();
+			}
 			cityID = parseInt(cityID);
 			if (cityID is int){
 				MapCamera.lookAtCity(cityID, duration, Handler.create(this, function():void {

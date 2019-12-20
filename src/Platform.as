@@ -9,6 +9,7 @@ package
     import sg.net.NetMethodCfg;
     import laya.net.URL;
     import sg.cfg.ConfigServer;
+	import sg.net.NetPackage;
     import sg.utils.Tools;
     import sg.manager.AssetsManager;
     import sg.utils.MusicManager;
@@ -23,6 +24,7 @@ package
     import sg.model.ModelPlayer;
     import sg.model.ModelSalePay;
     import sg.net.NetSocket;
+	import sg.view.qqdt.ViewQQDT;
     import sg.zmPlatform.ConstantZM;
     import laya.qq.mini.QQMiniAdapter;
     import sg.model.ModelPf;
@@ -550,7 +552,21 @@ package
                     });
                 }));
                 
-            } else if(ConfigApp.onAndroid()){
+            } else if (ConfigApp.pf == ConfigApp.PF_qqdt_h5) {
+					var param:Object = Tools.getURLexpToObj(ConfigApp.url_params);
+					param.uid = ModelManager.instance.modelUser.mUID;
+					param.pid = payObj.pid;
+					param.zone = payObj.zone;
+					param.uid = payObj.uid;
+					NetHttp.instance.send("user_zone.h5_qqdt_buy_goods", param, new Handler(Platform, function(pkg:NetPackage):void {
+						var appId:String = ConfigServer.system_simple.qq_blue.appId;
+						var token:String = pkg.receiveData.token;
+						var isTest:int = ViewQQDT.isTest ? 1 : 0;
+						var title:String = "测试一下";						
+						Platform.h5_sdk_obj.BuyBox.show(appId, token, isTest, title, function():void {trace("关闭")}, function():void {trace("购买成功！")});						
+					})); 
+					
+			} else if(ConfigApp.onAndroid()){
 
                 if(ConfigApp.pf == ConfigApp.PF_huawei || ConfigApp.pf == ConfigApp.PF_huawei_tw){
                     var isTW:Boolean = (ConfigApp.pf == ConfigApp.PF_huawei_tw);
@@ -1409,9 +1425,7 @@ package
                 //         callbackUrl: 'http://qh.ptkill.com/h5_panbao_callback/'
                 //     }, function(ret:*):void {});
                 // } 
-                else if (ConfigApp.pf == ConfigApp.PF_qqdt_h5) {
-                    Platform.h5_sdk_obj.BuyBox.show();
-                } else if (ConfigApp.pf == ConfigApp.PF_shouqu_h5) {
+                else if (ConfigApp.pf == ConfigApp.PF_shouqu_h5) {
                     Platform.h5_sdk_obj.pay({
                         cp_order_id: orderId,
                         money: money * 100, 
@@ -2029,8 +2043,8 @@ package
                         callback && callback.runWith([0, login_result]);
                     });
                 } else if (ConfigApp.pf == ConfigApp.PF_qqdt_h5){
-                    console.log('QQ大厅登录');
-                    // callback && callback.runWith([0, Tools.getURLexpToObj(ConfigApp.url_params)]);
+                    //console.log('QQ大厅登录');
+                    callback && callback.runWith([0, Tools.getURLexpToObj(ConfigApp.url_params)]);
                 } else if (ConfigApp.pf == ConfigApp.PF_6kw_h5){
                     callback && callback.runWith([0, Tools.getURLexpToObj(ConfigApp.url_params)]);
                 } else if (ConfigApp.pf == ConfigApp.PF_shouqu_h5){

@@ -180,11 +180,13 @@ package sg.view.menu
                     this.mFighting = null;
                 }
                 return;
-            }    
-
-            this.mFighting = EffectManager.loadAnimation("headfight","",0);
-            this.mFighting.pos(this.width*0.5,this.height*0.5);
-            this.addChild(this.mFighting);             
+            }
+			if (!this.mFighting) {
+				this.mFighting = EffectManager.loadAnimation("headfight","",0);
+				this.mFighting.pos(this.width*0.5,this.height*0.5);
+				this.addChild(this.mFighting); 
+			}
+            
         }
         private function setHeroHpUI(status:int):void{
             // trace("英雄 血量",status);

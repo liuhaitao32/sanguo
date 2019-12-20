@@ -1,5 +1,6 @@
 ﻿package sg.map.model {
 	import laya.net.LocalStorage;
+	import sg.cfg.ConfigApp;
 	import sg.cfg.ConfigServer;
 	import sg.manager.ModelManager;
 	import sg.manager.ViewManager;
@@ -16,9 +17,11 @@
 	import sg.model.ModelCountryPvp;
 	import sg.model.ModelFTask;
 	import sg.model.ModelGame;
+	import sg.model.ModelQQDT;
 	import sg.model.ModelTask;
 	import sg.model.ModelTroopManager;
 	import sg.model.ModelVisit;
+	import sg.net.NetHttp;
 	import sg.net.NetVo;
 	import sg.scene.constant.EventConstant;
 	import sg.map.model.astar.AStarFind;

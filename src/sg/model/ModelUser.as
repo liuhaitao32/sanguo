@@ -310,6 +310,9 @@ package sg.model
 			if(!Tools.isNullString(this.mUID_base) && !Tools.isNullString(this.mSessionid)){
 				this.zone = ModelPlayer.recommendServer;
 				var user:Object = {uid:this.mUID_base,sessionid:this.mSessionid,zone:this.zone,user_code:this.mUserCode,pf_data:Platform.pf_login_data,pf:ConfigApp.pf, pf_key: (ModelPlayer.instance.mPlayer["name"] || "")};
+				if(ConfigApp.checkPfIs37BySG()){
+					delete user["pf_data"];
+				}
 				//
 				NetSocket.instance.send(NetMethodCfg.WS_SR_LOGIN,user,Handler.create(this,this.ws_sr_login));
 			}

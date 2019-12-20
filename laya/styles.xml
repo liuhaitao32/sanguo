@@ -273,4 +273,6 @@
    <item name="later/bg_copy_bg8.png" type="Image" compress="0" pack="0" quality="80" props="sizeGrid=15,10,10,12" picType="0" scale="0"/>
    <item name="later/bg_copy_bg6.png" type="Image" compress="0" pack="0" quality="80" props="sizeGrid=0,28,-1,27" picType="0" scale="0"/>
    <item name="ui/tab_15.png" type="Tab" compress="0" pack="0" quality="80" props="" picType="0" scale="0"/>
+   <item name="ui/bg_006.png" type="Image" compress="0" pack="2" quality="80" props="" picType="0" scale="0"/>
+   <item name="lanzuan" type="" compress="0" pack="1" quality="80" props="" picType="0" scale="0"/>
 </res>

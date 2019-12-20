@@ -4,6 +4,7 @@ package sg.cfg
 	import sg.map.view.GoldCityPanel;
 	import sg.outline.view.ui.MiniMapTop2;
 	import sg.test.testpakcage.TestPackage;
+	import sg.view.qqdt.ViewQQDT;
 	import ui.mapScene.GoldCityPanelUI;
 
 	import sg.achievement.view.ViewAchievement;
@@ -500,6 +501,7 @@ package sg.cfg
 		public static const VIEW_NEW_TASK_MAIN:Array = ["ViewNewTaskMain",ViewNewTaskMain];
 
 		public static const VIEW_SALE_PAY_ALERT:Array = ["ViewSalePayAlert",ViewSalePayAlert];
+		public static const View_QQDT:Array = ["ViewQQDT",ViewQQDT];//qqdating
 	}
 
 }

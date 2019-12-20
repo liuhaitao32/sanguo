@@ -409,6 +409,7 @@ package sg.map.view.entity {
 			this._entity.off(EventConstant.TROOP_MARCH_RECALL, this, this.onRecallHandler);
 			this._entity.off(EventConstant.DEAD, this, this.clear);
 			this._entity.off(EventConstant.REPEAT, this, this.repeatHandler);
+			ModelSettings.instance.off(ModelSettings.CHANGE_MODEL, this, this.checkShow);
 			this.entityMarch.view = null;
 		}
 	}
