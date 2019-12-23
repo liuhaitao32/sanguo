@@ -54,7 +54,7 @@ package sg.sdks
                     time: data.time,
                     out_orderid: data.out_orderid,
                     sign: re.sign,
-                    goods_name: encodeURI("黄金"),
+                    goods_name: encodeURI(Tools.getMsgById("coin_name")),
                     param: orderId
                 };
 

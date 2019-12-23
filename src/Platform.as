@@ -425,7 +425,7 @@ package
             var orderId_short:String = payObj.pid+"|"+payObj.zone+"|"+payObj.uid+"|"+Math.round(ConfigServer.getServerTimer() / 1000);
             var payArr:Array;
             var orderData:Object;
-            var opName:String = "黄金";
+            var opName:String = Tools.getMsgById("coin_name");// "黄金";
             // 
             var ldt:Number = ConfigServer.getServerTimer();
             var zms:Number = new Date(ldt).getTimezoneOffset()*Tools.oneMinuteMilli;
@@ -1222,8 +1222,8 @@ package
                         game_gold   : ModelSalePay.getCoinNumByPID(payObj.pid),        // 充值游戏币
                         role_id     : user.mUID,            // 游戏角色ID
                         product_id  : orderId,              // 产品ID
-                        product_name: '黄金',               // 产品名
-                        product_desc: '黄金',               // 产品描述
+                        product_name: opName,               // 产品名
+                        product_desc: opName,               // 产品描述
                         ext         : orderId               // 游戏方透传参数，支付回调接口原样返回（例如：游戏方订单ID）
                     });
                 } else if (ConfigApp.pf == ConfigApp.PF_tanwan4_h5) {
@@ -1242,8 +1242,8 @@ package
                         gameGold    : ModelSalePay.getCoinNumByPID(payObj.pid),        // 充值游戏币
                         roleId      : user.mUID,            // 游戏角色ID
                         productId   : orderId,              // 产品ID
-                        productName : '黄金',               // 产品名
-                        productDesc : '黄金',               // 产品描述
+                        productName : opName,               // 产品名
+                        productDesc : opName,               // 产品描述
                         ext         : orderId               // 游戏方透传参数，支付回调接口原样返回（例如：游戏方订单ID）
                     });
                 } 
@@ -1275,7 +1275,7 @@ package
                         // console.log(re.exts);
                         var params:Object = {
                             goods: {
-                                goods_name: '黄金',
+                                goods_name: opName,
                                 rate: 0.1
                             },
                             game: {
@@ -1315,7 +1315,7 @@ package
                             check: check,
                             feeid: payObj.pid,
                             fee: money * 100,
-                            feename: '黄金',
+                            feename: opName,
                             extradata: orderId,
                             serverid: user.zone,
                             servername: String(user.zone),
@@ -1341,9 +1341,9 @@ package
                         game_gold: ModelSalePay.getCoinNumByPID(payObj.pid),// 充值游戏币
                         game_id: data_1377.appid,   // 赞钛平台游戏ID
                         money: money,               // 充值金额 (整数，单位元)
-                        product_desc: '黄金',       // 商品描述
+                        product_desc: opName,       // 商品描述
                         product_id: payObj.pid,     // 商品ID
-                        product_name: '黄金',       // 商品描述
+                        product_name: opName,       // 商品描述
                         server_id   : user.zone,        // 游戏服ID
                         server_name : String(user.zone),// 游戏服名称
                         role_id     : user.mUID,        // 游戏角色ID
@@ -1369,7 +1369,7 @@ package
                             amount: money * 100,
                             userId: data_muzhi.userId,
                             pay_type: data_muzhi.h5Type === 'h5_ios_on_line' ? 'iospay' : '',
-                            coin_name: '黄金',
+                            coin_name: opName,
                             server_id: user.zone,
                             role_id: user.mUID,
                             transData: orderId,
@@ -1395,7 +1395,7 @@ package
                     });
                 } else if (ConfigApp.pf == ConfigApp.PF_changxiang_h5) {
                     Platform.h5_sdk_obj.purchase({
-                        productName: '黄金',
+                        productName: opName,
                         productId: payObj.pid,
                         productPrice: money * 100,
                         cpOrderId: orderId,
@@ -1429,7 +1429,7 @@ package
                     Platform.h5_sdk_obj.pay({
                         cp_order_id: orderId,
                         money: money * 100, 
-                        coin_unit: '黄金',
+                        coin_unit: opName,
                         ratio: 10, 
                         server_id: String(user.zone),
                         server_name: serverName,
@@ -1448,7 +1448,7 @@ package
                         roleID: user.mUID,      	    // 角色ID
                         roleName: user.uname,   	    // 角色名
                         roleLevel: user.getLv(),        // 角色等级
-                        goodsName: '黄金',
+                        goodsName: opName,
                         goodsID: payObj.pid,
                         cost: money,    // 充值金额 元
                         desc: '', // 拓展字段
@@ -2906,7 +2906,7 @@ package
             var cfg:Array = payData.cfg;
             var oid:String = payData.uid+"A"+ConfigServer.getServerTimer()+"";
             //
-            obj["productName"] = toSign["productName"]= "黄金";
+            obj["productName"] = toSign["productName"]= Tools.getMsgById("coin_name");
             obj["productDesc"] = toSign["productDesc"]= "游戏内使用";
             obj["applicationID"] = toSign["applicationID"]= "100483749";
             obj["requestId"]= toSign["requestId"] = oid;
@@ -2929,7 +2929,7 @@ package
             var cfg:Array = payData.cfg;
             var oid:String = payData.uid+"A"+ConfigServer.getServerTimer()+"";
             //
-            obj["productName"] = toSign["productName"]= "黄金";
+            obj["productName"] = toSign["productName"]= Tools.getMsgById("coin_name");;
             obj["productDesc"] = toSign["productDesc"]= "游戏内使用";
             obj["applicationID"] = toSign["applicationID"]= "100719911";
             obj["requestId"]= toSign["requestId"] = oid;
@@ -2983,8 +2983,8 @@ package
                 arr.push(result.channel_openid);
             }
             //
-            obj["GoodsName"] = "黄金";
-            arr.push("黄金");
+            obj["GoodsName"] = Tools.getMsgById("coin_name");
+            arr.push(Tools.getMsgById("coin_name"));
             //
             var pid:String = payData.pid+"|"+payData.zone+"|"+payData.uid+"|"+payData.pf;
             obj["pay_goods_id"] = pid;

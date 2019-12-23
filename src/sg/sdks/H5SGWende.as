@@ -44,7 +44,7 @@ package sg.sdks
                 "sdk_edition":'6',
                 "sdk_version":2,
                 "title":ConfigServer.system_simple.pay[ConfigApp.pf][payObj.pid] + "_" + params["game_name"],
-                "body":'黄金',
+                "body":Tools.getMsgById("coin_name"),
                 "server_name":serverName,
                 "game_player_id":user.mUID,
                 "game_player_name":user.uname,

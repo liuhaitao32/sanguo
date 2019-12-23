@@ -10,13 +10,14 @@ package sg.cfg
 	import sg.sdks.H5JJ37;
 	import sg.sdks.H5SGWende;
 	import sg.sdks.H5SG7477;
+	import sg.sdks.H5SG5599;
 
 	public class ConfigApp{
 		///是否打开调试，允许账号输入
 		private static var _isTest:int;
 		///是否开启调试，只要设置过负值则不可再改变
 		public static function get isTest():*{
-			// return false;
+			return false;
 			return ConfigApp._isTest > 0;
 		}
 		///是否开启调试，只要设置过负值则不可再改变
@@ -164,6 +165,7 @@ package sg.cfg
 		public static const PF_changwan_h5:String = "h5_changwan"; // 畅玩（草花子公司）
 		public static const PF_shouqu_h5:String = "h5_shouqu"; // 手趣
 		public static const PF_wende_h5:String = "h5_wende"; // 文德
+		public static const PF_5599_h5:String = "h5_5599"; // JJ比赛
 		
 		public static const PF_JJ_37_h5:String = "jj_h5_37"; 			// 警戒 h5 37
 		public static const PF_JJ_tanwan_h5:String = "jj_h5_twyx"; 		// 警戒 h5 贪玩
@@ -673,6 +675,9 @@ package sg.cfg
 					break;
 				case PF_7477_h5:
 					Platform.h5_sdk = new H5SG7477(pf, Tools.getURLexpToObj(ConfigApp.url_params)) as H5sdk;
+					break;
+				case PF_5599_h5:
+					Platform.h5_sdk = new H5SG5599(pf, Tools.getURLexpToObj(ConfigApp.url_params)) as H5sdk;
 					break;
 			}
 		}
