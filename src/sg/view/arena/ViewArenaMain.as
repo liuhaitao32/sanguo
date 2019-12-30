@@ -76,7 +76,7 @@ package sg.view.arena
 				var gift:Object = {};
 				gift[model.mItemId] = model.mTotalGet;
 				var o:Object = {"gift_dict":gift,"act":3};
-				//getItemCallBack(o);
+				model.mTotalGet = 0;
 				ViewManager.instance.showView(["ViewArenaReward",ViewArenaReward],o);
 			}
 			

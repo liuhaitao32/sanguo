@@ -165,11 +165,20 @@ package sg.fight
 		
 		
 		/**
-		 * 是否在引导中限制按钮
+		 * 是否在引导中限制加倍速按钮
 		 */
-		public function get isLimitButton():Boolean
+		public function get isLimitSpeedButton():Boolean
 		{
-			if (ModelGuide.forceGuide() && this._data && this._data.mode >= 200)
+			if (ModelGuide.forceGuide() && !ConfigServer.world.guideSpeedMode && this._data && this._data.mode >= 200)
+				return true;
+			return false;
+		}
+		/**
+		 * 是否在引导中限制退出按钮
+		 */
+		public function get isLimitExitButton():Boolean
+		{
+			if (ModelGuide.forceGuide() && ConfigServer.world.guideSpeedMode!=3 && this._data && this._data.mode >= 200)
 				return true;
 			return false;
 		}

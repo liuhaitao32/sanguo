@@ -10,6 +10,7 @@ package ui.map {
 
 	public class estateItemUI extends ItemBase {
 		public var img:Image;
+		public var btn:Button;
 		public var aniPan:Panel;
 		public var text1:Label;
 		public var text4:Label;
@@ -31,6 +32,8 @@ package ui.map {
 		public var text3Img:Image;
 		public var text3:Label;
 		public var com0:payTypeSUI;
+		public var btnDo:Button;
+		public var btnDel:Image;
 
 		override protected function createChildren():void {
 			View.regComponent("ui.bag.bagItemUI",bagItemUI);

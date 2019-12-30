@@ -29,6 +29,7 @@ package sg.view.map
 	import sg.net.NetSocket;
 	import sg.net.NetMethodCfg;
 	import sg.net.NetPackage;
+	import sg.view.com.ComPayType;
 	
 	/**
 	 * ...
@@ -129,7 +130,18 @@ package sg.view.map
 				state = 1;
 			}
 			this.btn_left.visible = this.btn_right.visible = true;
-			this.kingImg.setHeroIcon(ConfigServer.country_king_icon[this.country]);
+
+			var king_id:String = ConfigServer.country_task_icon[this.country];
+            if(king_id.indexOf("hero")!=-1){
+                this.kingImg.visible = true;
+                if(this["buildImg"]) this["buildImg"].visible = false;
+                this.kingImg.setHeroIcon(king_id);
+            }else{
+                this.kingImg.visible = false;
+                if(this["buildImg"]) this["buildImg"].visible = true;
+                this["buildImg"].skin = "country/" + ConfigServer.country_task_icon[this.country] + ".png";
+            }
+
 
 			if (this.taskIndex === 1) {
 				this.btn_left.visible = false;

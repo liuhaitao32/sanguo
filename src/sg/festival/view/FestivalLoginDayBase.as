@@ -17,7 +17,7 @@ package sg.festival.view
             Tools.textFitFontSize(txt_1);
         }
         
-        private function set dataSource(source:Object):void {
+        override public function set dataSource(source:*):void {
             if (!source) {
                 return;
             }

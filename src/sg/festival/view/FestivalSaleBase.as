@@ -35,8 +35,7 @@ package sg.festival.view
             this.visible = false;
         }
 
-        private function set dataSource(source:Object):void
-        {
+        override public function set dataSource(source:*):void {
             if (!source) return;
 			this._dataSource = source;
             var reward:Object = source.reward;

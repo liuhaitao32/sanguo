@@ -52,6 +52,7 @@ package sg.view.map
                 Math.floor(buff[2] / 60)
             ];
             txt_buff.text = Tools.getMsgById('fight_task07', args);
+            Tools.textFitFontSize2(txt_buff);
             txt_tips.color = txt_buff.color = ['#fffa87', '#a3f173', '#cecece'][data.state];
             
 			var isMyCity:Boolean = ModelOfficial.checkCityIsMyCountry(data.cid);

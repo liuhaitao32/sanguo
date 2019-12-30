@@ -41,6 +41,7 @@ package sg.guide.view
 	import sg.view.effect.EffectUIBase;
 	import sg.view.menu.ViewMenuMain;
 	import ui.home.HomeMenuItemUI;
+	import sg.guide.model.GuideChecker;
 	
 	/**
 	 * 引导视图
@@ -185,13 +186,18 @@ package sg.guide.view
 			this._lockScreen(false);
 		}
 
-		private function recruitHero(id:String):void
-		{
+		private function recruitHero(cfg:Object):void {
+			var id:String = cfg[ModelGuide.TYPE_RECRUIT];
 			this.arrow.reset();
 			NetSocket.instance.send(NetMethodCfg.WS_SR_RECRUIT_HERO,{hid:id},Handler.create(this, function (re:NetPackage):void{
 				var md:ModelHero = ModelManager.instance.modelGame.getModelHero(re.sendData.hid);
 				ModelManager.instance.modelUser.updateData(re.receiveData);
-				ViewManager.instance.showView(ConfigClass.VIEW_HERO_GET_NEW,md.id);
+				if (cfg.notPlay) {
+					GuideChecker.instance._guideID = 'g001';
+					GuideChecker.instance._guideIndex = 5;
+				} else {
+					ViewManager.instance.showView(ConfigClass.VIEW_HERO_GET_NEW,md.id);
+				}
 				this.nextStep();
 			}));
 		}
@@ -444,14 +450,16 @@ package sg.guide.view
 			GuideFocus.focusOut();
 		}
 
-		private function _onClickButton():void
-		{
+		private function _onClickButton():void {
 			this._lockScreen(true);
+			if (this.guideConfig && this.guideConfig.close) {
+				var panel:ViewPanel = ViewManager.instance.getCurrentPanel()
+				panel && panel.closeSelf();
+			}
 			if (this._currentButton) {
 				this._currentButton = null;
 				this.nextStep();
-			}
-			else { //部分面板有200毫秒的淡出动画
+			} else { //部分面板有200毫秒的淡出动画
 				Laya.timer.once(250, this, this.nextStep);
 			}
 		}
@@ -502,26 +510,24 @@ package sg.guide.view
 		{
 			var flag:Boolean = false;
 
-			var panel:Sprite = ViewManager.instance.getCurrentPanel();
-			if (panel) {
-				var className:String = ObjectUtil.className(panel);
-				switch(className)
-				{
-					case 'ViewHeroTalk':
-					case 'ViewHeroGetNew':
-					case 'ViewGuideImage':
-					case 'ViewGetReward':
-					case 'ViewFTaskOpen':
-						flag = true;
-						break;
-					default:
-						break;
-				}
-			}
-			else {
-				panel = ViewManager.instance.getCurrentEffect();
-				if (panel is EffectUIBase && panel.name === '') {
-					flag = true;
+			var panel:Sprite = ViewManager.instance.getCurrentEffect();
+			if (panel is EffectUIBase && panel.name === '') {
+				flag = true;
+			} else {
+				panel = ViewManager.instance.getCurrentPanel();
+				if (panel) {
+					var className:String = ObjectUtil.className(panel);
+					switch(className) {
+						case 'ViewHeroTalk':
+						case 'ViewHeroGetNew':
+						case 'ViewGuideImage':
+						case 'ViewGetReward':
+						case 'ViewFTaskOpen':
+							flag = true;
+							break;
+						default:
+							break;
+					}
 				}
 			}
 

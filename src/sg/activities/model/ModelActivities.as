@@ -20,6 +20,8 @@ package sg.activities.model
     import sg.utils.ObjectUtil;
     import sg.zmPlatform.ModelFocus;
     import sg.zmPlatform.ModelVerify;
+    import sg.festival.model.ModelFestivalPayAgain;
+    import sg.view.hero.ViewAwakenHero;
 
     public class ModelActivities extends EventDispatcher
     {
@@ -35,6 +37,7 @@ package sg.activities.model
         public static const TYPE_BASE_UP:String = 'act_base_up';        // 官邸升级
         public static const TYPE_SHARE_REWARD:String = 'share_reward';  // 分享有礼
         public static const TYPE_HAPPY_BUY:String = 'happy_buy';        // 七日嘉年华
+        public static const TYPE_PAY_AGAIN:String = 'pay_again';        // 充值福利
         public static const TYPE_LIMIT_FREE:String = 'limit_free';      // 限时免单
         public static const TYPE_EXCHANGE_SHOP:String = 'exchange_shop';// 限时兑换
         public static const TYPE_PHONE:String = 'phone';                // 手机绑定
@@ -123,6 +126,9 @@ package sg.activities.model
                         showTime = true;
                         element.model = modelWXShare;
                         active = modelWXShare ? modelWXShare.checkActive() : false;
+                        break;
+                    case TYPE_PAY_AGAIN:
+                        active = ModelFestivalPayAgain.instance.active;
                         break;
                     case TYPE_LIMIT_FREE:
                         active = modelFreeBill ? modelFreeBill.active : false;
@@ -294,11 +300,12 @@ package sg.activities.model
             records.pay_reward      && modelPayment.refreshData(records.pay_reward);
             records.lvup_reward     && modelBaseLevelUp.refreshData(records.lvup_reward);
             records.limit_free      && modelFreeBill.refreshData(records.limit_free);
-			records.festival	    && modelFestival.refreshData(records.festival);
+			records.festival	    && modelFestival.refreshData(records);
 			records.auction	        && modelAuction.refreshData(records.auction);
 			records.pay_rank_gift	&& modelPayRank.refreshData(records.pay_rank_gift);
             records.equip_box	    && modelEquipBox.refreshData(records);
             records.surprise_gift   && modelSurpriseGift.refreshData(records.surprise_gift);
+            records.pay_again       && ModelFestivalPayAgain.instance.checkData(records.pay_again);
             this.event(REFRESH_TAB);
             this.event(REFRESH_LIST);
         }
@@ -342,8 +349,13 @@ package sg.activities.model
 		private function butGoodsCB(re:NetPackage):void {
 			var gift_dict:* = re.receiveData['gift_dict'];
             var pos:Point = re.otherData;
+            ViewAwakenHero.checkGiftDict(gift_dict);
 			ModelManager.instance.modelUser.updateData(re.receiveData);
-            ViewManager.instance.showIcon(gift_dict, pos.x, pos.y);
+            if (gift_dict.awaken) {
+                ViewManager.instance.showRewardPanel(gift_dict);
+            } else {
+                ViewManager.instance.showIcon(gift_dict, pos.x, pos.y);
+            }
 		}
 
         public function checkWonderActRed(type:String):Boolean {

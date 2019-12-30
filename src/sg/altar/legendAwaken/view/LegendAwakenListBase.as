@@ -12,7 +12,7 @@ package sg.altar.legendAwaken.view
             txt_hint.text = Tools.getMsgById('500307');
         }
 
-        private function set dataSource(source:Object):void {
+        override public function set dataSource(source:*):void {
             if (!source) return;
             _dataSource = source;
             icon.setHeroIcon(source.hid + '_1');

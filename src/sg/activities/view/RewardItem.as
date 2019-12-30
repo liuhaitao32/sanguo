@@ -16,7 +16,7 @@ package sg.activities.view
             extraIcon.visible = false;
         }
 
-        private function set dataSource(source:Array):void {
+        override public function set dataSource(source:*):void {
             if (source is Array) {
                 _dataSource = source;
                 this.setReward(source);

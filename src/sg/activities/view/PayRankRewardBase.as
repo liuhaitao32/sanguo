@@ -11,7 +11,7 @@ package sg.activities.view
             txt_hint.text = Tools.getMsgById('pay_rank3');
         }
 
-        private function set dataSource(source:Object):void {
+        override public function set dataSource(source:*):void {
             if (!source) return;
 			this._dataSource = source;
             txt_name.text = source.name;

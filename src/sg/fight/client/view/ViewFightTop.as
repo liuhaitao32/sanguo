@@ -26,14 +26,14 @@ package sg.fight.client.view
 			if (ConfigApp.testFightType == 1){
 				this.btnExit.right = -15;
 			}
-			if (FightMain.instance.isLimitButton){
+			if (FightMain.instance.isLimitExitButton){
 				this.btnExit.gray = true;
 			}
 		}
 		
 		private function onExit():void
 		{
-			if (FightMain.instance.isLimitButton){
+			if (FightMain.instance.isLimitExitButton){
 				//强制引导中禁止跳过
 				ViewManager.instance.showTipsTxt(Tools.getMsgById('fightGuideSkip'));
 				return;

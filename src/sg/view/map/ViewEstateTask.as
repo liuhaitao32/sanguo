@@ -316,6 +316,7 @@ package sg.view.map
 			this.dimLabel.text="";
 			this.dimBox.visible=false;
 			var hmd:ModelHero=ModelManager.instance.modelGame.getModelHero(curHid);
+			this.com3.timeLabel.text = '';
 			this.com3.nameLabel.text=hmd.getName();
 			this.com3.comHero.setHeroIcon(hmd.getHeadId(),true,hmd.getStarGradeColor());
 			this.com3.imgRatity.skin=hmd.getRaritySkin(true);
@@ -508,7 +509,7 @@ package sg.view.map
 				}
 			}
 			
-
+			var _this:* = this;
 			var sendData:Object={};
 			if(work_type==0){
 				sendData["estate_index"]=estate_index;
@@ -518,7 +519,7 @@ package sg.view.map
 					ModelManager.instance.modelUser.updateData(np.receiveData);
 					var obj:Object=ModelManager.instance.modelUser.estate[estate_index];
 					ModelManager.instance.modelGame.getModelEstate(obj.city_id,obj.estate_index).event(ModelEstate.EVENT_ESTATE_UPDATE);
-					ViewManager.instance.closePanel(this);
+					ViewManager.instance.closePanel(_this);
 				}));
 			}else if(work_type==1){
 				sendData["city_id"]=this.visit_obj.cid;
@@ -526,8 +527,8 @@ package sg.view.map
 				sendData["cost"]=type;
 				NetSocket.instance.send("hero_city_visit",sendData,new Handler(this,function(np:NetPackage):void{
 					ModelManager.instance.modelUser.updateData(np.receiveData);
-					ModelVisit.updateData(this.visit_obj.cid);
-					ViewManager.instance.closePanel(this);
+					ModelVisit.updateData(_this.visit_obj.cid);
+					ViewManager.instance.closePanel(_this);
 				}));
 			}else if(work_type==2){
 				sendData["cid"]=cb_obj.cid;
@@ -536,7 +537,6 @@ package sg.view.map
 				sendData["cost"]=type;
 				sendData["gear"]=this.list.selectedIndex;
 				SaveLocal.save(SaveLocal.KEY_CITY_BUILD_GEAR,{"key":sendData["gear"]});
-				var _this:*=this;
 								
 				NetSocket.instance.send("build_city_build",sendData,new Handler(_this,function(np:NetPackage):void{
 					ModelManager.instance.modelUser.updateData(np.receiveData);

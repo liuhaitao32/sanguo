@@ -363,9 +363,10 @@ package sg.model
 			}else if(this.status==1){
 				if(this.estate_event==""){
 					if(is_can_get){
+						var _this:* = this;
 						NetSocket.instance.send("estate_active_harvest",{estate_index:this.user_index},new Handler(this,function(np:NetPackage):void{
 							ModelManager.instance.modelUser.updateData(np.receiveData);
-							this.event(ModelEstate.EVENT_ESTATE_UPDATE);
+							_this.event(ModelEstate.EVENT_ESTATE_UPDATE);
 							clearEstateHero();
 							ViewManager.instance.showRewardPanel(np.receiveData.gift_dict);
 						}));
@@ -492,6 +493,19 @@ package sg.model
 				if(arr[i][0]==cid && arr[i][1]==index){
 					return true;
 				}
+			}
+			return false;
+
+		}
+
+		/**
+		 * 是否可以快捷操作
+		 */
+		public static function isQuick():Boolean{
+			if(ConfigServer.estate){
+				var n1:Number = ConfigServer.estate["quick_switch"] != null ?  ConfigServer.estate["quick_switch"] : -1;
+				var n2:Number = ModelManager.instance.modelUser.mergeNum;
+				return n1>=0 && n1 <= n2;
 			}
 			return false;
 

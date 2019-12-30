@@ -1020,7 +1020,7 @@ package sg.model
 			//
 			ModelManager.instance.modelGame.event(ModelInside.SCIENCE_CHANGE_STATUS);
 			//
-			ViewManager.instance.showTipsTxt(Tools.getMsgById("_building63",[sname]));//"科技研发提取成功"
+			// ViewManager.instance.showTipsTxt(Tools.getMsgById("_building63",[sname]));//"科技研发提取成功"
 			if(re.otherData && re.otherData === Handler){
 				(re.otherData as Handler).run();
 			}

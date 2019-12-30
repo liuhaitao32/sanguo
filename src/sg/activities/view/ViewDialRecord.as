@@ -2,10 +2,7 @@ package sg.activities.view
 {
 	import laya.html.dom.HTMLDivElement;
 	import laya.ui.Box;
-
-	import sg.activities.model.ModelDial;
 	import sg.utils.Tools;
-
 	import ui.activities.dial.dialRecordUI;
 
 	/**
@@ -27,7 +24,7 @@ package sg.activities.view
 				mBox=new Box();
 				this.panel.addChild(mBox);
 			}
-			this.mListData=ModelDial.instance.getRecrodsList();
+			this.mListData = currArg;
 			setLabel();
 		}
 

@@ -11,13 +11,16 @@ package sg.cfg
 	import sg.sdks.H5SGWende;
 	import sg.sdks.H5SG7477;
 	import sg.sdks.H5SG5599;
+	import sg.sdks.H5SGMengyou;
+	import sg.sdks.H5SGY5;
+	import sg.sdks.H5SGWakool;
 
 	public class ConfigApp{
 		///是否打开调试，允许账号输入
 		private static var _isTest:int;
 		///是否开启调试，只要设置过负值则不可再改变
 		public static function get isTest():*{
-			return false;
+			// return false;
 			return ConfigApp._isTest > 0;
 		}
 		///是否开启调试，只要设置过负值则不可再改变
@@ -61,7 +64,7 @@ package sg.cfg
 		public static var url_params:Array = ["ptype","ussl","ncpurl","czpf","mlogo"
 								,"ilimg","lbimg","msurl","mppf","v","disloading","auser"
 								,"lclip1","lclip2","chmj","loadtxt","idfa","opudid","device"
-								,"cfgvers","mlan","mpc","plocal","bagname","oldcfg","vsdebug","mssl","pcbg"];
+								,"cfgvers","mlan","mpc","plocal","bagname","oldcfg","vsdebug","mssl","pcbg",'pclogo'];
 		public static var thisPackageType:String = null;//ptype=包区分
 		public static var httpSSL:String = null;//ussl=强制屏蔽https
 		public static var wsSSL:String = null;//mssl=强制屏蔽 wss
@@ -70,6 +73,7 @@ package sg.cfg
 		public static var otherLogoPngImg:String = null;//mlogo=切换logo图片
 		public static var indexLoadingImg:String = null;//ilimg=初始index加载过程的图片
 		public static var pcbgImg:String = null;//pcbg=初始index加载过程的图片
+		public static var pcLogoImg:String = null;//pclogo=初始index加载过程的图片
 		public static var loginBgImg:String = null;//lbimg=登录背景页面
 		public static var myServerUrl:String = null;//msurl=目前只允许开发模式用,切换服务器地址
 		public static var myPackagePf:String = null;//mppf=我的包的pf唯一的
@@ -161,11 +165,16 @@ package sg.cfg
 		public static const PF_changxiang_h5:String = "changxiang"; // 畅想
 		public static const PF_qqdt_h5:String = "h5_qqdt"; // QQ游戏大厅
 		public static const PF_6kw_h5:String = "h5_6kw"; // 6k玩
+		public static const PF_6kw2_h5:String = "h5_6kw2"; // 6k玩
+		public static const PF_6kw3_h5:String = "h5_6kw3"; // 6k玩
 		// public static const PF_panbao_h5:String = "h5_panbao"; // 盼宝
 		public static const PF_changwan_h5:String = "h5_changwan"; // 畅玩（草花子公司）
 		public static const PF_shouqu_h5:String = "h5_shouqu"; // 手趣
 		public static const PF_wende_h5:String = "h5_wende"; // 文德
 		public static const PF_5599_h5:String = "h5_5599"; // JJ比赛
+		public static const PF_Mengyou_h5:String = "h5_mengyou"; // 萌友
+		public static const PF_Y5_h5:String = "h5_y5"; // 大象互娱Y5
+		public static const PF_wakool_h5:String = "h5_wakool"; // 大象互娱wakool
 		
 		public static const PF_JJ_37_h5:String = "jj_h5_37"; 			// 警戒 h5 37
 		public static const PF_JJ_tanwan_h5:String = "jj_h5_twyx"; 		// 警戒 h5 贪玩
@@ -583,6 +592,8 @@ package sg.cfg
 				pf == PF_hutao2_h5 ||
 				pf == PF_changxiang_h5 ||
 				pf == PF_6kw_h5 ||
+				pf == PF_6kw2_h5 ||
+				pf == PF_6kw3_h5 ||
 				pf == PF_changwan_h5 ||
 				// pf == PF_panbao_h5 ||
 				pf == PF_shouqu_h5 ||
@@ -678,6 +689,15 @@ package sg.cfg
 					break;
 				case PF_5599_h5:
 					Platform.h5_sdk = new H5SG5599(pf, Tools.getURLexpToObj(ConfigApp.url_params)) as H5sdk;
+					break;
+				case PF_Mengyou_h5:
+					Platform.h5_sdk = new H5SGMengyou(pf, Tools.getURLexpToObj(ConfigApp.url_params)) as H5sdk;
+					break;
+				case PF_Y5_h5:
+					Platform.h5_sdk = new H5SGY5(pf, Tools.getURLexpToObj(ConfigApp.url_params)) as H5sdk;
+					break;
+				case PF_wakool_h5:
+					Platform.h5_sdk = new H5SGWakool(pf, Tools.getURLexpToObj(ConfigApp.url_params)) as H5sdk;
 					break;
 			}
 		}

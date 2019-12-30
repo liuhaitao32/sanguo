@@ -104,6 +104,7 @@ package sg.view.init
 		private var new_version:Number = 0; // 游戏版本
 		private var update_duration:Number = 0; // 更新需要的时间
 		private var update_tips:String = ''; // 更新提示
+		private var mPcLogo:Image;
 		public function ViewLoad(){
 			//
 			// SaveLocal.clearAll();
@@ -193,6 +194,7 @@ package sg.view.init
 			NetHttp.instance.off(NetHttp.EVENT_NET_ERROR,this,this.event_net_error);
 			NetHttp.instance.on(NetHttp.EVENT_NET_ERROR,this,this.event_net_error);
 			//
+			
 			if(ConfigApp.isPC){
 				var bgImg:Image = new Image();
 				if(ConfigApp.pcbgImg){
@@ -207,6 +209,17 @@ package sg.view.init
 				bgImg.centerX=0;
 				this.addChild(bgImg);
 				bgImg.zOrder = -1;
+				// 
+				if(ConfigApp.pcLogoImg){
+					mPcLogo = new Image();
+					// logo.y = (1280 - Laya.stage.height) * 0.2;
+					mPcLogo.pivotX = 0.5;
+					mPcLogo.pivotY = 0.5;
+					mPcLogo.centerX = 0;
+					mPcLogo.centerY = -180;
+					this.addChild(mPcLogo);
+					LoadeManager.loadTemp(mPcLogo,AssetsManager.getAssetsAD(ConfigApp.pcLogoImg+".png"));
+				}
 			}
 			else{
 				if(ConfigApp.indexLoadingImg){
@@ -232,7 +245,7 @@ package sg.view.init
 				this.bgBox.addChild(logo);
 			}
 			//
-			if(ConfigApp.loginBgImg && ConfigApp.loginBgImg!="" && ConfigApp.loginBgImg.length>0){
+			if(ConfigApp.loginBgImg){
 				this.mBgImg = new Image();
 				this.mBgImg.top=0;
 				this.mBgImg.bottom=0;
@@ -672,6 +685,9 @@ package sg.view.init
 		 * 登陆 界面
 		 */
 		private function initLoginView():void {
+			if(this.mPcLogo){
+				this.mPcLogo.visible=false;
+			}
 			//
 			FilterManager.instance.decode2();
 			//

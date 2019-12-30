@@ -51,7 +51,7 @@ package sg.view.com
 		/**
 		 * Added by Thor.
 		 */
-		private function set dataSource(data:Array):void {
+        override public function set dataSource(data:*):void {
 			super.dataSource = data;
 			(data is Array) && (data[0] is String) && (data[1] is Number) &&  (data[2] is Number) && this.setData(data[0], data[1], data[2]);
 		}

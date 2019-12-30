@@ -790,8 +790,24 @@ package sg.model
          * 强化最高等级
          */
         public function getEnhanceLvMax():Number{
-            var _cfg:Array=ConfigServer.system_simple.equip_enhance_cost;
-            return _cfg.length;
+            var equip_enhance_level:Array = ConfigServer.system_simple.equip_enhance_level;
+			var n:Number = ConfigServer.system_simple.equip_enhance_cost.length;
+            if(equip_enhance_level){
+                n = 0;
+                for(var i:int=0;i<equip_enhance_level.length;i++){
+                    var a:Array = equip_enhance_level[i];
+                    if(a[0] == 'merge'){
+                        if(ModelManager.instance.modelUser.mergeNum >= a[1]){
+                            n += a[2];
+                        }
+                    }else if(a[0] == 'science'){
+                        n +=  (ModelManager.instance.modelGame.getModelScience(a[1]).getLv()*a[2]);
+                    }
+                }
+            }		
+			return n;
+            // var _cfg:Array=ConfigServer.system_simple.equip_enhance_cost;
+            // return _cfg.length;
         }
 
 

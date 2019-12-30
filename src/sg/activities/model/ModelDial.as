@@ -1,17 +1,17 @@
 package sg.activities.model
 {
-	import laya.maths.MathUtil;
-	import sg.model.ViewModelBase;
 	import sg.cfg.ConfigServer;
 	import sg.manager.ModelManager;
 	import sg.model.ModelItem;
 	import sg.utils.Tools;
+	import laya.utils.Handler;
+	import sg.net.NetPackage;
 
 	/**
 	 * ...
 	 * @author
 	 */
-	public class ModelDial extends ViewModelBase{
+	public class ModelDial extends ModelDialBse{
 
 		private static var sModel:ModelDial = null;
 		
@@ -25,7 +25,6 @@ package sg.activities.model
 		public var mPayMoney:Number=0;
 		public var mGetTimes:Number=0;
 		public var mAwradList:Array;
-		public var mRecrodList:Array;
 		public var mCanGetTimes:Number=0;
 		public function ModelDial(){
 			cfg=ConfigServer.ploy.dial;
@@ -46,11 +45,10 @@ package sg.activities.model
 			this.event(ModelActivities.UPDATE_DATA);
 		}
 
-
 		/**
-		 * 活动倒计时
+		 * 活动倒计时（剩余时间）
 		 */
-		public function get time():String{
+		override public function get remainTime():String{
 			//return Tools.getTimeStyle(Tools.gameDay0hourMs(ConfigServer.getServerTimer())+cfg.time*Tools.oneHourMilli);
 			return Tools.getTimeStyle(Tools.getDayDisTime());
 		}
@@ -84,49 +82,26 @@ package sg.activities.model
 		}
 
 		/**
-		 * 选择的奖励
+		 * 抽奖
 		 */
-		public function get giftArr():Array{
-			var arr:Array=[];
-			for(var i:int=0;i<this.mAwradList.length;i++){
-				var a:Array=this.jackpot.award[i][2];
-				var aa:Array=this.mAwradList[i];
-				for(var j:int=0;j<aa.length;j++){
-					arr.push([a[aa[j]],i==2]);
+        override public function drawReward(handler:Handler):void {
+            this.sendMethod('get_random_dial', {}, Handler.create(this, function(np:NetPackage):void {
+				var receiveData:* = np.receiveData;
+				ModelManager.instance.modelUser.updateData(np.receiveData);
+				var gift_dict:* = receiveData && receiveData.gift_dict_list;
+				var mIndex:int = 0;
+				var n:Number=np.receiveData.random_num[0];
+				var m:Number=np.receiveData.random_num[1];
+				if(n==0){
+					mIndex = awardList[0].indexOf(m);
+				}else if(n==1){
+					mIndex = awardList[0].length + awardList[1].indexOf(m);
+				}else if(n==2){
+					mIndex = awardList[0].length + awardList[1].length + awardList[2].indexOf(m);
 				}
-			}
-			return arr;
-		}
-
-		/**
-		 * 额外奖励列表
-		 */
-		public function getAddList():Array{
-			var obj:Object=this.jackpot.add;
-			var arr:Array=[];
-			for(var s:String in obj){
-				arr.push([Number(s),obj[s]]);
-			}
-			arr.sort(MathUtil.sortByKey("0",false,false));
-			return arr;
-		}
-
-		/**
-		 * 抽奖记录
-		 */
-		public function getRecrodsList():Array{
-			var arr:Array=[];
-			for(var i:int=0;i<this.mRecrodList.length;i++){
-				var a:Array=this.mRecrodList[i];
-				var item:String="";
-				for(var s:String in a[1]){
-					item=ModelItem.getItemName(s)+"x"+a[1][s]+"  ";
-				}
-				var str:String=Tools.getMsgById("dial_text13",[Tools.dateFormat(a[0]),item]);
-				arr.push(str);
-			}
-			return arr;
-		}
+				handler.runWith({mIndex: mIndex, gift_dict: gift_dict});
+			}));
+        }
 
 		override public function get redPoint():Boolean{
 			if(mGetTimes==0){
@@ -134,6 +109,38 @@ package sg.activities.model
 			}
 			return false;
 		}
+
+        override public function get awardList():Array {
+            return mAwradList;
+		}
+
+        override public function get addCfg():Object{
+            return this.jackpot.add;
+        }
+
+        override public function get awardCfg():Array {
+            return jackpot.award;
+		}
+
+        override public function get canGetTimes():int {
+            return mCanGetTimes;
+		}
+
+        override public function get getTimes():int {
+            return mGetTimes;
+		}
+
+        override public function get buyNum():int {
+            return Number(cfg.buy_num) * 10;
+		}
+
+        override public function get payMoney():int {
+            return mPayMoney;
+		}
+
+        override public function get tips():String {
+            return cfg.tips;
+        }
 	}
 
 }

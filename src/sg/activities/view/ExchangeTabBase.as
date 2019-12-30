@@ -17,7 +17,7 @@ package sg.activities.view
             this.on(Event.CLICK, this, this._onClick);
         }
 
-        private function set dataSource(source:Object):void {
+        override public function set dataSource(source:*):void {
             if (!source) return;
 			this._dataSource = source;
             icon.setData(source.itemId, -1, -1);

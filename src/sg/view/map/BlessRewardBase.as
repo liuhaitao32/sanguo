@@ -8,7 +8,7 @@ package sg.view.map
         {
         }
         
-        private function set dataSource(source:Array):void {
+        override public function set dataSource(source:*):void {
             item.setData(source[0], source[1], -1);
             box_finish.visible = source[2];
         }

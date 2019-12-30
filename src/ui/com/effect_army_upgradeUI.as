@@ -15,6 +15,7 @@ package ui.com {
 		public var def:t_img_t_tUI;
 		public var spd:t_img_t_tUI;
 		public var hpm:t_img_t_tUI;
+		public var aBox:Box;
 
 		override protected function createChildren():void {
 			View.regComponent("ui.com.t_img_t_tUI",t_img_t_tUI);

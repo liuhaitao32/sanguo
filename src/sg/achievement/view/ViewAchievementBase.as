@@ -26,8 +26,7 @@ package sg.achievement.view
             this.addChild(this.aniExp);
         }
 
-        private function set dataSource(source:Object):void
-        {
+        override public function set dataSource(source:*):void {
             if (!source) return;
 			this._dataSource = source;
             this._type = source.type;

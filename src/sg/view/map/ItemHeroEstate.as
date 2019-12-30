@@ -24,7 +24,6 @@ import sg.utils.Tools
 		public function setData(obj:Object,estate_index:*,work_type:int):void{
 			//trace("-------------",obj);
 			this.gray=false;
-			
 			var hmd:ModelHero=ModelManager.instance.modelGame.getModelHero(obj.hid);
 			type=(hmd.getHeroEstate().status==0)?0:1;
 			this.fateLabel.visible=this.bg0.visible=this.imgSelect.visible=this.imgFinish.visible=this.btnChange.visible=this.btnTH.visible=false;

@@ -15,7 +15,7 @@ package sg.festival.view
             btn_get.on(Event.CLICK, this, this._onClickGet);
         }
 
-        private function set dataSource(value:Object):void {
+        override public function set dataSource(value:*):void {
             if (!value) return;
 			this._dataSource = value;
             list.array = value.reward;

@@ -558,9 +558,9 @@ package
 					param.pid = payObj.pid;
 					param.zone = payObj.zone;
 					param.uid = payObj.uid;
-					NetHttp.instance.send("user_zone.h5_qqdt_buy_goods", param, new Handler(Platform, function(pkg:NetPackage):void {
+					NetHttp.instance.send("user_zone.h5_qqdt_buy_goods", param, new Handler(Platform, function(pkg:Object):void {
 						var appId:String = ConfigServer.system_simple.qq_blue.appId;
-						var token:String = pkg.receiveData.token;
+						var token:String = pkg.re_params.access_token;
 						var isTest:int = ViewQQDT.isTest ? 1 : 0;
 						var title:String = "测试一下";						
 						Platform.h5_sdk_obj.BuyBox.show(appId, token, isTest, title, function():void {trace("关闭")}, function():void {trace("购买成功！")});						
@@ -1440,7 +1440,7 @@ package
                             console.log(result);
                         }
                     });
-                } else if (ConfigApp.pf == ConfigApp.PF_6kw_h5) {
+                } else if (ConfigApp.pf == ConfigApp.PF_6kw_h5 || ConfigApp.pf == ConfigApp.PF_6kw2_h5 || ConfigApp.pf == ConfigApp.PF_6kw3_h5) {
                     Platform.h5_sdk_obj.CallParentMethods('pay', {
                         cpOrder: orderId,
                         serverId: user.zone,    	    // 区服ID
@@ -1645,6 +1645,8 @@ package
                     // ConfigApp.pf === ConfigApp.PF_panbao_h5 ||
                     ConfigApp.pf === ConfigApp.PF_shouqu_h5 ||
                     ConfigApp.pf === ConfigApp.PF_qqdt_h5 ||
+                    ConfigApp.pf === ConfigApp.PF_6kw2_h5 ||
+                    ConfigApp.pf === ConfigApp.PF_6kw3_h5 ||
                     ConfigApp.pf === ConfigApp.PF_6kw_h5
                 ){
                     Platform.h5_sdk_obj = Browser.window.initSDK();
@@ -2045,7 +2047,7 @@ package
                 } else if (ConfigApp.pf == ConfigApp.PF_qqdt_h5){
                     //console.log('QQ大厅登录');
                     callback && callback.runWith([0, Tools.getURLexpToObj(ConfigApp.url_params)]);
-                } else if (ConfigApp.pf == ConfigApp.PF_6kw_h5){
+                } else if (ConfigApp.pf == ConfigApp.PF_6kw_h5 || ConfigApp.pf == ConfigApp.PF_6kw2_h5 || ConfigApp.pf == ConfigApp.PF_6kw3_h5){
                     callback && callback.runWith([0, Tools.getURLexpToObj(ConfigApp.url_params)]);
                 } else if (ConfigApp.pf == ConfigApp.PF_shouqu_h5){
                     Platform.h5_sdk_obj.getUser(function(login_result:Object):void{
@@ -2569,7 +2571,7 @@ package
                         server_name: String(user.zone),
                         timestamp: Math.round(ConfigServer.getServerTimer() / 1000)                        
                     });
-                } else if (ConfigApp.pf === ConfigApp.PF_6kw_h5) {
+                } else if (ConfigApp.pf === ConfigApp.PF_6kw_h5 || ConfigApp.pf == ConfigApp.PF_6kw2_h5 || ConfigApp.pf == ConfigApp.PF_6kw3_h5) {
                     var map_6kw:Object = {
                         '0': '1', // 创建角色
                         '1': '1', // 进入游戏

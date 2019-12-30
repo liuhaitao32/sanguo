@@ -20,6 +20,7 @@ package sg.activities.view
 	import ui.activities.dial.dialMainUI;
 	import ui.activities.dial.item_dialUI;
 	import ui.activities.treasure.item_treasureUI;
+	import sg.activities.model.ModelDialBse;
 
 
 
@@ -32,15 +33,14 @@ package sg.activities.view
 		private var tween:Tween;
 		private var mIndex:int;
 		private var mAngle:Number=0;
-		private var mModel:ModelDial;
-		private var mReData:*;
+		protected var mModel:ModelDialBse;
+		private var drawGift:*;
 		private var listData:Array=[];
 		private var mIsScroll:Boolean=false;
 		public function DialMain(){
 			mIsScroll=false;
 			Laya.stage.mouseEnabled=true;
 			LoadeManager.loadTemp(this.tempImg,"ui/bg_19.png");
-			mModel=ModelDial.instance;
 			this.text0.text=Tools.getMsgById("dial_text01");//"活动倒计时";
 			this.text1.text=Tools.getMsgById("dial_text06");//"已充值";
 			this.text2.text=Tools.getMsgById("dial_text02");//"可抽奖次数";
@@ -56,17 +56,9 @@ package sg.activities.view
 			this.btnChoose.on(Event.CLICK,this,chooseClick);
 			this.btnChange.on(Event.CLICK,this,chooseClick);
 			this.btnChange.label = Tools.getMsgById("dial_text15");
-			this.btnRecord.on(Event.CLICK,this,function():void{
-				ViewManager.instance.showView(["ViewDialRecord",ViewDialRecord]);
-			});
-			this.btnAsk.on(Event.CLICK,this,function():void{
-				ViewManager.instance.showTipsPanel(Tools.getMsgById(mModel.cfg.tips));
-			});
+			this.btnRecord.on(Event.CLICK, this, this._showRecord);
+			this.btnAsk.on(Event.CLICK, this, this._onClickHelp);
 			this.list.renderHandler=new Handler(this,listRender);
-			this.mModel.on(ModelActivities.UPDATE_DATA, this, this.updateUI);
-			setTimerLabel();
-			updateUI();
-			this.buyNum.text=Number(mModel.cfg.buy_num)*10 + "";
 
 			Tools.textLayout(text0,timerLabel,timeImg,timeBox);
 			Tools.textLayout(text1,comNum,comImg,boxCom);
@@ -75,6 +67,19 @@ package sg.activities.view
 
 			this.btnPay.visible = ModelManager.instance.modelUser.canPay;
 			this.boxTips.visible = this.btnPay.visible;
+            this.on(Event.DISPLAY, this, this.onDisplay);
+		}
+
+		public function onDisplay():void {
+			setModel(ModelDial.instance);
+		}
+
+		public function setModel(m:ModelDialBse):void {
+			mModel = m;
+			this.mModel.on(ModelActivities.UPDATE_DATA, this, this.updateUI);
+			this.buyNum.text = String(mModel.buyNum);
+			setTimerLabel();
+			updateUI();
 		}
 
 		public function setCom():void{
@@ -102,19 +107,19 @@ package sg.activities.view
 		public function updateUI():void{
 			listData=mModel.giftArr;
 			setCom();
-			this.box1.visible=mModel.mGetTimes==0;
+			this.box1.visible=mModel.getTimes==0;
 			this.box2.visible=listData.length==0;
 			this.btnChoose.visible=listData.length==0;
 			this.btnGet.visible=!this.btnChoose.visible;
 			this.imgArrow.visible=this.btnGet.visible;
-			this.btnChange.visible=mModel.mGetTimes==0 && !this.box2.visible;
+			this.btnChange.visible=mModel.getTimes==0 && !this.box2.visible;
 			this.bgBox.gray=listData.length==0;
-			this.numLabel1.text=(mModel.mCanGetTimes-mModel.mGetTimes)+"";
-			this.numLabel2.text=mModel.mGetTimes+"";
-			this.comNum.setData(AssetsManager.getAssetItemOrPayByID("coin"),mModel.mPayMoney*10);
-			this.list.array=mModel.getAddList();
-			this.btnGet.gray=(mModel.mCanGetTimes<=mModel.mGetTimes);
-			this.imgArrow.gray=(mModel.mCanGetTimes<=mModel.mGetTimes);
+			this.numLabel1.text=(mModel.canGetTimes-mModel.getTimes)+"";
+			this.numLabel2.text=mModel.getTimes+"";
+			this.comNum.setData(AssetsManager.getAssetItemOrPayByID("coin"), mModel.payMoney * 10);
+			this.list.array=mModel.addList;
+			this.btnGet.gray=(mModel.canGetTimes<=mModel.getTimes);
+			this.imgArrow.gray=(mModel.canGetTimes<=mModel.getTimes);
 		}
 
 		public function setTween():void{
@@ -131,15 +136,15 @@ package sg.activities.view
 				mAngle = mAngle>360 ? mAngle%360 : mAngle;
 				imgArrow.rotation=mAngle;
 				mIsScroll=false;
-				ViewManager.instance.showRewardPanel(mReData.gift_dict_list);
+				ViewManager.instance.showRewardPanel(drawGift);
 			}));
 		}
 
 		private function listRender(cell:item_dialUI,index:int):void{
 			var arr:Array=this.list.array[index];
 			cell.com.setMoreData(arr[1]);
-			cell.nameLabel.text=mModel.mGetTimes>=arr[0]? arr[0]+"/"+arr[0] : mModel.mGetTimes+"/"+arr[0];
-			cell.imgGet.visible=mModel.mGetTimes>=arr[0];
+			cell.nameLabel.text=mModel.getTimes>=arr[0]? arr[0]+"/"+arr[0] : mModel.getTimes+"/"+arr[0];
+			cell.imgGet.visible=mModel.getTimes>=arr[0];
 			//cell.off(Event.CLICK,this,itemClick);
 			//var b:Boolean=false;
 			//if(b){
@@ -147,7 +152,7 @@ package sg.activities.view
 			//}
 		}
 		private function setTimerLabel():void{
-			this.timerLabel.text=mModel.time;
+			this.timerLabel.text=mModel.remainTime;
 			timer.once(1000,this,setTimerLabel);
 		}
 
@@ -158,51 +163,32 @@ package sg.activities.view
 				}
 				return;
 			}
-			if(mModel.mCanGetTimes<=mModel.mGetTimes){
+			if(mModel.canGetTimes<=mModel.getTimes){
 				ViewManager.instance.showTipsTxt(Tools.getMsgById("dial_tips02"));
 				return;
-			}
-			NetSocket.instance.send("get_random_dial",{},new Handler(this,function(np:NetPackage):void{
-				ModelManager.instance.modelUser.updateData(np.receiveData);
-				mReData=np.receiveData;
-				//ViewManager.instance.showRewardPanel(np.receiveData.gift_dict_list);
-				//random_num[第几行,行是多少]
-				mIndex=0;
-				var n:Number=np.receiveData.random_num[0];
-				var m:Number=np.receiveData.random_num[1];
-				if(n==0){
-					mIndex = mModel.mAwradList[0].indexOf(m);
-				}else if(n==1){
-					mIndex = mModel.mAwradList[0].length + mModel.mAwradList[1].indexOf(m);
-				}else if(n==2){
-					mIndex = mModel.mAwradList[0].length + mModel.mAwradList[1].length + mModel.mAwradList[2].indexOf(m);
-				}
+			}			
+			mModel.drawReward(Handler.create(this, function(data:*):void {
+				drawGift = data.gift_dict;
+				mIndex = data.mIndex;
 				setTween();
-				//if(mFirstGet){
-					
-				//}else{
-				//	imgArrow.rotation=36*mIndex;
-				//	ViewManager.instance.showRewardPanel(mReData.gift_dict_list);
-				//}
-				//mFirstGet=false;
-			}));
-			
-			
-			
+			}));	
 		}
 
-
-		private function chooseClick():void{
-			ViewManager.instance.showView(["ViewDialChoose",ViewDialChoose]);
+		protected function chooseClick():void{
+			ViewManager.instance.showView(["ViewDialChoose",ViewDialChoose], mModel.awardCfg);
 		}
 
-		public function removeCostumeEvent():void 
-		{
+		public function _showRecord():void {
+			ViewManager.instance.showView(["ViewDialRecord",ViewDialRecord], mModel.getRecrodsList());
+		}
+
+		public function _onClickHelp():void {
+			ViewManager.instance.showTipsPanel(Tools.getMsgById(mModel.tips));
+		}
+
+		public function removeCostumeEvent():void {
 			this.mModel.off(ModelActivities.UPDATE_DATA, this, this.updateUI);
-		}
-
-		
-		
+		}	
 	}
 
 }

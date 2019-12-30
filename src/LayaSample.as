@@ -61,6 +61,7 @@
 			ConfigApp.otherLogoPngImg = Tools.getURLexp("mlogo");//
 			ConfigApp.indexLoadingImg = Tools.getURLexp("ilimg");//
 			ConfigApp.pcbgImg = Tools.getURLexp("pcbg");//
+			ConfigApp.pcLogoImg = Tools.getURLexp("pclogo");//
 			ConfigApp.loginBgImg = Tools.getURLexp("lbimg");//
 			ConfigApp.myServerUrl = Tools.getURLexp("msurl");//
 			ConfigApp.myPackagePf = Tools.getURLexp("mppf");//
@@ -116,6 +117,9 @@
 			}
 			if(ConfigApp.isPC){
 				Font.defaultFamily = "Microsoft-Yahei";
+				if(ConfigApp.pf == ConfigApp.PF_Y5_h5 || ConfigApp.pf == ConfigApp.PF_wakool_h5){
+					Font.defaultFamily = "Noto Sans";
+				}
 			}
 			
 			//			

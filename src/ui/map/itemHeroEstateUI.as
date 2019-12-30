@@ -24,6 +24,7 @@ package ui.map {
 		public var bg0:Image;
 		public var atkLabel:Label;
 		public var imgRatity:Image;
+		public var timeLabel:Label;
 
 		override protected function createChildren():void {
 			View.regComponent("ui.com.hero_icon1UI",hero_icon1UI);

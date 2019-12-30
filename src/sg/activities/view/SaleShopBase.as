@@ -14,6 +14,9 @@ package sg.activities.view
     import laya.maths.Point;
     import sg.activities.model.ModelEquipBox;
     import sg.model.ModelEquip;
+    import sg.activities.model.ModelTreasureBase;
+    import sg.festival.model.ModelFestivalTreasure;
+    import sg.manager.ViewManager;
 
     public class SaleShopBase extends saleBaseUI
     {
@@ -23,15 +26,16 @@ package sg.activities.view
         {
             this.hintTxt1.text = Tools.getMsgById('_public104');
             this.hintTxt2.text = Tools.getMsgById('_jia0053');
-            //this.btn_price.on(Event.CLICK, this, this._onClickBuy);
+            heroIcon.on(Event.CLICK, this, this._onClickHero);
         }
 
-        private function set dataSource(source:Object):void
-        {
+        override public function set dataSource(source:*):void {
             if (!source) return;
 			this._dataSource = source;
             var reward:Object = source.reward;
-            this.rewardItem.setData(reward[0], reward[1], -1);
+            this.rewardItem.visible = !Boolean(source.awaken);
+            this.heroIcon.visible = Boolean(source.awaken);
+            source.awaken || this.rewardItem.setData(reward[0], reward[1], -1);
             this.rebateTxt.visible = this.btn_price.visible = source.state !== 2;
             this.sellOut.visible = source.state === 2;
             this.hintBox.visible = source.state === 0;
@@ -39,20 +43,22 @@ package sg.activities.view
             var iid:String = reward[0];
             this.nameTxt.text = ModelItem.getItemName(iid);
             var type:int = ModelItem.getItemType(iid);
-            if (type === 7) { // 英雄碎片
-                this.img_type.visible = true;
+            this.img_type.visible = type === 7;
+            if (source.awaken) {
+                heroIcon.setHeroIcon(source.awaken + '_1');
+                nameTxt.text = ModelHero.getHeroName(source.awaken, true);
+                nameTxt.x = nameTxtPanel.x + (nameTxtPanel.width - nameTxt.width) * 0.5;
+            }else if (type === 7) { // 英雄碎片
                 var heroId:String = iid.replace('item', 'hero');
                 var heroModel:ModelHero=ModelManager.instance.modelGame.getModelHero(heroId);
                 this.img_type.skin = heroModel.getRaritySkin(true);
                 nameTxt.x = img_type.x + img_type.width + 5;
-            }
-            else {
+            } else {
                 nameTxt.x = nameTxtPanel.x + (nameTxtPanel.width - nameTxt.width) * 0.5;
-                this.img_type.visible = false;
             }
             if(source.price == source.originalPrice){
                 this.rebateTxt.text="";
-            }else{
+            } else {
                 var rate:Number = Math.floor(source.price / source.originalPrice * 100) / 10;
                 this.rebateTxt.text = Tools.getMsgById('_jia0054', [rate]);
             }
@@ -83,14 +89,21 @@ package sg.activities.view
                 case "sale":
                     ModelSaleShop.instance.buyGoods(this._goods_id, pos);
                     break;
-                case "treasure":
+                case ModelTreasureBase.KEY_TREASURE:
                     ModelTreasure.instance.buyGoods(Number(this._goods_id)-1,pos);
+                    break;
+                case ModelTreasureBase.KEY_FES_TREASURE:
+                    ModelFestivalTreasure.instance.buyGoods(Number(this._goods_id)-1,pos);
                     break;
                 case "equip_box":
                     ModelEquipBox.instance.buyGoods(Number(this._goods_id)-1,pos);
                     break;
             }
             
+        }
+        
+        private function _onClickHero():void {
+            ViewManager.instance.showItemTips(dataSource.awaken);
         }
     }
 }

@@ -11,6 +11,7 @@ package sg.model
 	import sg.festival.model.ModelFestival;
 	import sg.manager.ViewManager;
 	import sg.map.utils.ArrayUtils;
+	import sg.model.ModelCounter;
 
 	/**
 	 * ...
@@ -253,6 +254,17 @@ package sg.model
 		public var mModelPrepare:ModelPrepare;
 		public var fast_hero_star:Array;
 		public var skillSelectIndexDic:int = 0;
+
+		/**
+		 * 宿敌
+		 */
+		public function get counter():Object{
+			ModelCounter.isOpen();
+			if(ModelManager.instance.modelUser.hero[this.id].counter){
+				return ModelManager.instance.modelUser.hero[this.id].counter;
+			}
+			return null;
+		}
 		//
 		public static var heroModels:* = {};
 		//
@@ -1648,7 +1660,8 @@ package sg.model
                     sum += value;
                 }
             }
-			return Math.min(ConfigServer.system_simple.skill_cost_max_lv['7'],sum);
+			//return Math.min(ConfigServer.system_simple.skill_cost_max_lv['7'],sum);
+			return Math.min(ModelSkill.getMaxLvByType(7),sum);
 		}
 
 		/**
@@ -1667,7 +1680,9 @@ package sg.model
                     sum += value;
                 }
             }
-			return Math.min(ConfigServer.system_simple.skill_cost_max_lv['8'],sum);
+			//return Math.min(ConfigServer.system_simple.skill_cost_max_lv['8'],sum);
+			return Math.min(ModelSkill.getMaxLvByType(8),sum);
+			
 		}
 
 		/**
@@ -2438,6 +2453,30 @@ package sg.model
 			if(ad) s = AssetsManager.getAssetsAD(ModelManager.instance.modelGame.getModelHero(hid).rarity == 4 ? img_awaken_super : img_awaken_normal);
 			else s = AssetsManager.getAssetsUI(ModelManager.instance.modelGame.getModelHero(hid).rarity == 4 ? img_awaken_super_s : img_awaken_normal_s);
 			return s;
+		}
+
+		/**
+		 * 赛季等级
+		 */
+		public function get honourLv():int{
+			if(ModelManager.instance.modelUser.honour_hero){
+				if(ModelManager.instance.modelUser.honour_hero[this.id]){
+					return ModelManager.instance.modelUser.honour_hero[this.id].lv;
+				}
+			}
+			return 0;
+		}
+
+		/**
+		 * 赛季等级当前的经验值
+		 */
+		public function get honourExp():int{
+			if(ModelManager.instance.modelUser.honour_hero){
+				if(ModelManager.instance.modelUser.honour_hero[this.id]){
+					return ModelManager.instance.modelUser.honour_hero[this.id].exp;
+				}
+			}
+			return 0;
 		}
 	}
 

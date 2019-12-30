@@ -17,8 +17,7 @@ package sg.activities.view
             this.btn_get.on(Event.CLICK, this, this.getReward);
         }
 
-        private function set dataSource(source:Object):void
-        {
+        override public function set dataSource(source:*):void {
             if (!source) return;
 			this._dataSource = source;
             this._model = source.model;

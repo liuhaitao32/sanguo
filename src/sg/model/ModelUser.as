@@ -1599,6 +1599,7 @@ package sg.model
 					//var config_active_time:Number=ConfigServer.estate.estate[eid].active_time*Tools.oneMinuteMilli;
 					obj["estateFinish"]=now>=e_time;
 					obj["sortTime"]=(now-e_time);
+					obj["endTime"] = e_time;
 					obj["sortEvent"]=o.event?1:0;
 					obj["estate_index"]=i;
 					obj["event_id"]=o.event?o.event:"";//ModelHero.getEventById(hmd.id)==""?0:Number(ModelHero.getEventById(hmd.id));
@@ -1614,6 +1615,7 @@ package sg.model
 					obj1["hid"]=a[0];
 					obj1["estateFinish"]=now>=v_time;
 					obj1["sortTime"]=(now-v_time);
+					obj1["endTime"] = v_time;
 					obj1["sortEvent"]=a[3]?1:0;
 					obj1["visit_obj"]={"cid":key,"hid":a[0],"o_hid":a[1]};
 					obj1["event_id"]=a[3]?a[3]:"";// ModelHero.getEventById(hmd.id)==""?0:Number(ModelHero.getEventById(hmd.id));
@@ -1634,6 +1636,7 @@ package sg.model
 					obj2["hid"]=b_arr[0];
 					obj2["estateFinish"]=now>=b_time;
 					obj2["sortTime"]=(now-b_time);
+					obj2["endTime"] = b_time;
 					obj2["sortEvent"]=b_arr[2]?1:0;
 					obj2["cb_obj"]={"cid":ckey,"bid":bkey};
 					obj2["event_id"]=b_arr[2]?b_arr[2]:"";//ModelHero.getEventById(hmd.id)==""?0:Number(ModelHero.getEventById(hmd.id));				

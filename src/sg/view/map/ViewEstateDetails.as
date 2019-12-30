@@ -184,6 +184,7 @@ package sg.view.map
 
 
 		public function btnClick(obj:*):void{
+			var _this:* = this;
 			switch(obj){
 				case btn0:
 				if(isMine){
@@ -195,7 +196,7 @@ package sg.view.map
 						//放弃
 						var n:Number=emd.config_index;
 						ModelManager.instance.modelUser.updateData(np.receiveData);
-						ModelManager.instance.modelGame.removeEstate(this.emd.city_id,n);
+						ModelManager.instance.modelGame.removeEstate(emd.city_id,n);
 						
 						setData();
 						mData[4]=mData[3]=0;						
@@ -227,21 +228,11 @@ package sg.view.map
 						ViewManager.instance.showTipsTxt(Tools.getMsgById("_estate_tips01"));//"超出占领总数上限");
 						return;
 					}
-					/////////////////////////////////////
-					var sendData:Object={"city_id":mData[0],"estate_index":mData[5],"fight":0,"v":v};
 
-					//NetSocket.instance.send("occupy_estate",sendData,new Handler(this,function(np:NetPackage):void{
-					//占领
-						//np.receiveData["estate_index"]=mData[5];
-						var b:Number=!ModelOffice.func_flyestate()?0:-2;
-						ModelManager.instance.modelGame.checkTroopToAction(mData[0],["ViewEstateHeroSend",ViewEstateHeroSend],sendData,true,b,-this.emd.getPower());
-					
-						//ModelManager.instance.modelUser.updateData(np.receiveData);
-						//setData();
-						//mData[3]=0;
-						//mData[4]=ConfigServer.estate.frequency;//每日挂机次数
-						//ViewManager.instance.closePanel(this);
-					//}));
+					var sendData:Object={"city_id":mData[0],"estate_index":mData[5],"fight":0,"v":v};					
+					var b:Number=!ModelOffice.func_flyestate()?0:-2;
+					ModelManager.instance.modelGame.checkTroopToAction(mData[0],["ViewEstateHeroSend",ViewEstateHeroSend],sendData,true,b,-this.emd.getPower());
+					ViewManager.instance.closePanel(_this);
 				}
 				break;
 				default:

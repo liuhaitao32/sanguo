@@ -257,9 +257,9 @@
         {
             "x":15,
             "type":"Label",
-            "props":{"y":70,"x":454,"width":119,"text":"剩余:59分88秒","fontSize":18,"color":"#ffffff","align":"center"},
+            "props":{"y":70,"x":442,"width":129,"var":"timeLabel","height":18,"fontSize":18,"color":"#ffffff","align":"left"},
             "nodeParent":1,
-            "label":"Label",
+            "label":"Label(timeLabel)",
             "isDirectory":false,
             "isAniNode":true,
             "hasChild":false,

@@ -207,13 +207,13 @@ package sg.view.inside
             }
             else{
                 ModelManager.instance.modelGame.event(ModelInside.SCIENCE_CHANGE_STATUS);
+                this.closeSelf();  
             }
             var ani:Animation = EffectManager.loadAnimation("glow007","",1);
             ani.scaleX = 2.4;
             ani.scaleY = 2.4;
 			ani.pos(tInfo.x + tInfo.width * 0.5, tInfo.y + tInfo.height * 0.5);
-			mBox.addChild(ani);
-            // this.closeSelf();            
+			mBox.addChild(ani);          
         }
     }
 }

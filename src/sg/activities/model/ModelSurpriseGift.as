@@ -156,7 +156,10 @@ package sg.activities.model
             var currentTime:int = ConfigServer.getServerTimer();
             var data:Object = SaveLocal.getValue(RED_KEY, true)
             var value:int = data ? data.day : 0;
-            return currentTime > startTime && currentTime < endTime && ModelManager.instance.modelUser.getGameDate() !== value;
+            var canBuy:Boolean = goodsData.some(function(item:Object):Boolean {
+                return item.buy_times < item.num;
+            });
+            return currentTime > startTime && currentTime < endTime && ModelManager.instance.modelUser.getGameDate() !== value && canBuy;
         }
     }
 }

@@ -56,7 +56,7 @@ package sg.activities.view
             return model.getTimeByIndex(_dataSource.index);
         }
 
-        private function set dataSource(source:Object):void {
+        override public function set dataSource(source:*):void {
             if (!source) return;
             _dataSource = source;
             var hid:String = source.hid;

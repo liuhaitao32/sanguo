@@ -154,6 +154,9 @@ import sg.utils.Tools
 			return str;
 		}
 		public static function replaceMsg(str:String,arg:Array = null):String{
+			if (/\{country\}/.test(str)) {
+				str = str.replace('{country}', ModelUser.country_name2[ModelUser.getCountryID()])
+			}
 			if(arg){
 				for (var i:int = 0;i< arg.length;i++) {
 					str = FunMsgByValue.msg_replace_func(str,i,arg[i]);
@@ -1146,7 +1149,8 @@ import sg.utils.Tools
 				scaleX = Math.abs(_label.scaleX);
 				
 				if (_info){
-					_label.textField.text = _info;
+					_label.text = _info;
+					//_label.textField.text = _info;
 				}
 				if (_maxWidth <= 0){
 					_maxWidth = (_label._width?_label._width:100) * scaleX;
@@ -1274,7 +1278,7 @@ import sg.utils.Tools
 				originalFontSize = _label['originalFontSize'];
 				scaleX = Math.abs(_label.scaleX);
 				if (_info){
-					_label.textField.text = _info;
+					_label.text = _info;
 				}
 				_label.fontSize = originalFontSize;
 				if (_maxWidth <= 0){

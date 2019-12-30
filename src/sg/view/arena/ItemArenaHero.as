@@ -32,7 +32,7 @@ package sg.view.arena
 			mIsMe = isMe;
 		}
 
-		private function set dataSource(source:Object):void {
+        override public function set dataSource(source:*):void {
             if (!source)    return;
             source.mine && this.setDataMe(source.index, source.data);
             source.mine || this.setDataOther(source.index, source.data);

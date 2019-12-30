@@ -18,6 +18,7 @@ package sg.view.map
 	import sg.model.ModelVisit;
 	import sg.model.ModelEstate;
 	import sg.utils.ObjectUtil;
+	import laya.utils.Timer;
 
 	/**
 	 * ...
@@ -38,6 +39,7 @@ package sg.view.map
 
 		private var mAllRewardObj:Object;
 		private var reData:Object;
+
 
 		public function VIewEstateHero(){
 			this.list.scrollBar.visible=false;
@@ -136,7 +138,19 @@ package sg.view.map
 			//trace(arr);
 			this.list.array=listData;
 			
+			if(mType == 1){
+				timeTick();
+			}
 		}	
+
+		private function timeTick():void{
+			timer.once(1000,this,timeFun);
+		}
+
+		private function timeFun():void{
+			list.refresh();
+			timeTick();
+		}
 
 
 		public function listSelect(index:int):void{
@@ -166,10 +180,17 @@ package sg.view.map
 					var b:Boolean=hmd.id==visit_obj.hid;
 					cell.setMine(b);
 				}
+				cell.timeLabel.text = "";
 			}else if(mType==1){
 				cell.bg1.visible=false;
 				cell.setFinish(list.array[index].estateFinish);
+
+				var n:Number = ConfigServer.getServerTimer();
+				var m:Number = this.list.array[index].endTime;
+				cell.timeLabel.text = m - n > 0 ? Tools.getMsgById('sale_pay_20',[Tools.getTimeStyle(m-n)]) : "";
 			}
+
+			
 		}
 
 		public function itemClick(index:int,cell:ItemHeroEstate=null):void{
@@ -270,6 +291,7 @@ package sg.view.map
 						sendData["cid"]=this.list.array[curIndex].cb_obj.cid;
 						sendData["bid"]=this.list.array[curIndex].cb_obj.bid;
 					}
+					var _this:* = this;
 					NetSocket.instance.send(socketStr,sendData,new Handler(this,function(np:NetPackage):void{
 						if(socketStr=="hero_city_visit_reward"){
 							var model:ModelVisit=ModelManager.instance.modelGame.getModelVisit(sendData["city_id"]);
@@ -295,7 +317,7 @@ package sg.view.map
 						setData();
 						
 						if(list.array.length==0){
-							ViewManager.instance.closePanel(this);
+							ViewManager.instance.closePanel(_this);
 						}
 					}));
 				}else{
@@ -428,6 +450,7 @@ package sg.view.map
 
 
 		override public function onRemoved():void{
+			timer.clear(this,timeFun);
 			curIndex=this.list.selectedIndex=-1;
 			this.list.scrollBar.value=0;
 			ModelManager.instance.modelUser.off(ModelUser.EVENT_USER_UPDATE,this,eventCallBack);

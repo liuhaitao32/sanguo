@@ -36,10 +36,11 @@ package ui.init {
 		public var progressBarbg:Image;
 		public var img0:Image;
 		public var img1:Image;
-		public var progressBar:Panel;
-		public var imgProgressBar:Image;
 		public var progressTxt:Label;
 		public var txtShow:Label;
+		public var proWidth:Box;
+		public var progressBar:Panel;
+		public var imgProgressBar:Image;
 		public var tVersion:Label;
 		public var yybOut:Button;
 		public var txt_out:Text;

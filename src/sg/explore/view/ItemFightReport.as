@@ -36,7 +36,7 @@ package sg.explore.view
             this.txt_win.text = Tools.getMsgById('_explore028');
         }
 
-        private function set dataSource(source:Object):void {
+        override public function set dataSource(source:*):void {
             if (!source) return;
             _dataSource = source;
             var date:Date = new Date(source.id);

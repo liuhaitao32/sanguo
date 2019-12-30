@@ -58,7 +58,7 @@ package sg.sdks
                     param: orderId
                 };
 
-                var baseURL:String = 'http://m.7477.com/wap/pay?';
+                var baseURL:String = 'https://m.7477.com/wap/pay?';
                 var URL:String = baseURL + Platform.sortObjkeyToString(payData);
                 Browser.window.tc_iframe(URL);
             }));
@@ -92,7 +92,7 @@ package sg.sdks
                         time: data.time,
                         sign: re.sign
                     };
-                    var baseURL:String = 'http://m.7477.com/wap/openapi/update_role?';
+                    var baseURL:String = 'https://m.7477.com/wap/openapi/update_role?';
                     console.log(baseURL + Platform.sortObjkeyToString(logData));
                     baseURL && NetHttp.instance.getRequest(baseURL + Platform.sortObjkeyToString(logData), Handler.create(null, function(re:*):void {
                         console.log(re);

@@ -28,6 +28,7 @@ package sg.view.inside
 			this.list.renderHandler=new Handler(this,listRender);
 			this.list.selectHandler=new Handler(this,selectHandler);
 			this.downBtn.on(Event.CLICK,this,this.btnClick);
+			this.downBtn.label=Tools.getMsgById("_public51");
 		}
 
 		override public function onAdded():void{
@@ -78,11 +79,11 @@ package sg.view.inside
 			//this.setSelection(false);
 			this.list.selectedIndex=index;
 			curHeroIndex=index;
-			if(this.list.array[index] && this.list.array[index].id==mData[2]){
+			//if(this.list.array[index] && this.list.array[index].id==mData[2]){
 				//this.downBtn.label="卸下";
-			}else{
-				this.downBtn.label=Tools.getMsgById("_public51");//"上阵";
-			}
+			//}else{
+				//this.downBtn.label=Tools.getMsgById("_public51");//"上阵";
+			//}
 		}
 
 		public function setSelection(b:Boolean):void{

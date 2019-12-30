@@ -62,7 +62,7 @@ package sg.guide.view
 				
 		private function _onClickSprite(event:Event):void
 		{
-			// trace(event.target);
+			trace(event.target);
 			// trace(event.target.name);
 		}
 				

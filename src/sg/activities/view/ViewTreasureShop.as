@@ -17,20 +17,18 @@ package sg.activities.view
 	public class ViewTreasureShop extends treasureShopUI{
 
 		private var mModel:*;
-		private var mType:Number=0;
 		public function ViewTreasureShop(){
 						
 		}
 
 		public override function onAdded():void{
-			mType=this.currArg?this.currArg:0;
-			this.box0.visible=mType==0;
-			this.box1.visible=mType==1;
+			mModel = currArg[0];
+			box1.visible = mModel is ModelEquipBox;
+			box0.visible = !box1.visible;
 			
-			this.comTitle.setViewTitle(mType==0 ? Tools.getMsgById("treasure_text05") : Tools.getMsgById("equip_box3"),true);
+			this.comTitle.setViewTitle(Tools.getMsgById(currArg[1]), true);
 			this.list.scrollBar.hide = true;
 			this.list.itemRender = SaleShopBase;
-			mModel=mType==0 ? ModelTreasure.instance : ModelEquipBox.instance;
 			mModel.on(ModelActivities.UPDATE_DATA,this,refreshPanel);
 			refreshPanel();
 		}
@@ -41,12 +39,12 @@ package sg.activities.view
 				this.closeSelf();
 				return;
 			}
-			if(mType==0){
-				this.numLabel.text=mModel.mScore+"";
-			}else{
+			if(mModel is ModelEquipBox){
 				var item_id:String=mModel.cfg.item_id;
 				this.tItemName.text=ModelItem.getItemName(item_id);
 				this.cCom.setData(AssetsManager.getAssetItemOrPayByID(item_id),ModelItem.getMyItemNum(item_id));
+			}else{
+				this.numLabel.text=mModel.mScore+"";
 			}
             this.list.array = mModel.getShopData();
         }

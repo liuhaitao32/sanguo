@@ -21,8 +21,7 @@ package sg.view.hero
         public function CommissionBase() {
         }
 
-        private function set dataSource(source:Object):void
-        {
+        override public function set dataSource(source:*):void {
             if (!source) return;
 			this._dataSource = source;
             hid = source.id;

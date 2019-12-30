@@ -16,7 +16,7 @@ package sg.view.fight
 
         }
 
-        private function set dataSource(source:Object):void {
+        override public function set dataSource(source:*):void {
             if (!source) return;
 			this._dataSource = source;
             this.setData(source.selected, source.md);

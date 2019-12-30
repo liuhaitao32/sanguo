@@ -86,6 +86,7 @@ package sg.fight.client.view
 								EffectManager.changeSprColorTrans(beastUI.img, transArr[0], transArr[1], transArr[2]);
 								//点击可弹出说明
 								beastUI.on(Event.CLICK, this, this.onClickBeast, [i, resonanceArr]);
+								beastUI.on(Event.RIGHT_CLICK, this, this.onClickBeast, [i, resonanceArr]);
 
 								beastUI.label.text = '0';
 								beastUI.label.visible = false;
@@ -136,8 +137,9 @@ package sg.fight.client.view
 			{
 				uname = ModelHero.getHeroName(this.clientTroop.hid,this.clientTroop.data.awaken);
 			}
-			
-			Tools.textFitFontSize(label, Tools.getMsgById('fight_troop_info', [hero.lv, uname]),0,8);
+			Tools.textFitFontSize(label, uname, 0, 8);
+			label = this.bg.getChildByName('tLv') as Label;
+			Tools.textFitFontSize(label, Tools.getMsgById('fight_lv', [hero.lv]), 0, 8);
 			
 			this.heroIcon.setHeroIcon(hero.id);
 			//傲气
@@ -200,6 +202,7 @@ package sg.fight.client.view
 				this.hitArea = hitArea;
 				
 				this.bg.on(Event.CLICK, this, this.onClick);
+				this.bg.on(Event.RIGHT_CLICK, this, this.onClick);
 			}
 		}
 		/**

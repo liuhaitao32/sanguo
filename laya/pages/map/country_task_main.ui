@@ -1,8 +1,8 @@
 {
     "x":0,
     "type":"ViewPanel",
-    "selectedBox":1,
-    "selecteID":111,
+    "selectedBox":19,
+    "selecteID":114,
     "referenceLines":[
         ],
     "props":{"width":640,"sceneColor":"#000000","height":792},
@@ -32,13 +32,14 @@
                     "props":{"y":45,"x":0,"width":640,"height":390,"bottom":357},
                     "nodeParent":111,
                     "label":"Box",
-                    "isOpen":false,
+                    "isOpen":true,
                     "isDirectory":true,
                     "isAniNode":true,
                     "hasChild":true,
                     "compId":19,
                     "child":[
                         {
+                            "x":45,
                             "type":"Image",
                             "props":{"top":0,"skin":"ui/bg_16.png","right":0,"left":0,"bottom":0},
                             "nodeParent":19,
@@ -52,6 +53,7 @@
                             "$HIDDEN":false
                         },
                         {
+                            "x":45,
                             "type":"UIView",
                             "source":"com/hero_icon2.ui",
                             "props":{"y":5,"x":41,"var":"kingImg","scaleY":1.5,"scaleX":1.5},
@@ -66,6 +68,21 @@
                             "$HIDDEN":false
                         },
                         {
+                            "x":45,
+                            "type":"Image",
+                            "props":{"y":91,"x":27,"width":350,"visible":false,"var":"buildImg","skin":"army/army00.png","height":287},
+                            "nodeParent":19,
+                            "label":"Image(buildImg)",
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":114,
+                            "child":[
+                                ],
+                            "$HIDDEN":true
+                        },
+                        {
+                            "x":45,
                             "type":"Image",
                             "props":{"width":300,"skin":"ui/bar_9.png","right":44,"height":204,"bottom":90},
                             "nodeParent":19,
@@ -79,6 +96,7 @@
                             "$HIDDEN":false
                         },
                         {
+                            "x":45,
                             "type":"Image",
                             "props":{"skin":"ui/bg_25.png","right":118,"bottom":120},
                             "nodeParent":19,
@@ -92,6 +110,7 @@
                             "$HIDDEN":false
                         },
                         {
+                            "x":45,
                             "type":"Image",
                             "props":{"y":125,"x":318,"width":256,"var":"words_bg2","skin":"ui/bg_26.png","sizeGrid":"5,5,5,5","height":144,"alpha":0.7},
                             "nodeParent":19,
@@ -105,6 +124,7 @@
                             "$HIDDEN":false
                         },
                         {
+                            "x":45,
                             "type":"Label",
                             "props":{"wordWrap":true,"width":244,"var":"wordsTxt","text":"f(ModelCityBuild.EVENT_REMOVE_CITY_BUILD,this,this.removeH","right":72,"leading":6,"height":134,"fontSize":18,"color":"#fff690","bottom":125},
                             "nodeParent":19,
@@ -118,6 +138,7 @@
                             "$HIDDEN":false
                         },
                         {
+                            "x":45,
                             "type":"Box",
                             "props":{"y":0,"var":"shouyu","right":0},
                             "nodeParent":19,
@@ -155,6 +176,7 @@
                             "$HIDDEN":false
                         },
                         {
+                            "x":45,
                             "type":"List",
                             "props":{"y":123,"x":315,"width":260,"var":"nameList","vScrollBarSkin":"comp/vscroll.png","spaceY":8,"repeatX":1,"height":150},
                             "nodeParent":19,
@@ -166,6 +188,7 @@
                             "compId":70,
                             "child":[
                                 {
+                                    "x":60,
                                     "type":"UIView",
                                     "source":"com/country_task_build.ui",
                                     "props":{"y":-2,"renderType":"render"},
@@ -181,6 +204,7 @@
                             "$HIDDEN":false
                         },
                         {
+                            "x":45,
                             "type":"Box",
                             "props":{"y":279,"x":275,"var":"progressContainer"},
                             "nodeParent":19,

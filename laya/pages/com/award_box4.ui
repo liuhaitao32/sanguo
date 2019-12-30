@@ -1,8 +1,8 @@
 {
     "x":0,
     "type":"ComPayType",
-    "selectedBox":9,
-    "selecteID":10,
+    "selectedBox":1,
+    "selecteID":6,
     "props":{"y":0,"x":0,"width":200,"sceneColor":"#000000","name":"type10000","height":200},
     "nodeParent":-1,
     "label":"ComPayType(type10000)",
@@ -42,7 +42,7 @@
                 {
                     "x":30,
                     "type":"Image",
-                    "props":{"y":100,"x":100,"skin":"later/icon_countrybox_01.png","name":"boxImg","anchorY":0.5,"anchorX":0.5},
+                    "props":{"y":100,"x":100,"skin":"ui/honour_baoxiang1.png","name":"boxImg","anchorY":0.5,"anchorX":0.5},
                     "nodeParent":9,
                     "label":"Image(boxImg)",
                     "isOpen":true,
@@ -57,6 +57,19 @@
                 {
                     "x":30,
                     "type":"Image",
+                    "props":{"y":100,"x":100,"skin":"ui/honour_baoxiang2.png","anchorY":0.5,"anchorX":0.5},
+                    "nodeParent":9,
+                    "label":"Image",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":11,
+                    "child":[
+                        ]
+                },
+                {
+                    "x":30,
+                    "type":"Image",
                     "props":{"y":17,"x":5,"visible":false,"skin":"later/icon_countrybox_08.png","name":"bgImg"},
                     "nodeParent":9,
                     "label":"Image(bgImg)",
@@ -66,7 +79,7 @@
                     "compId":10,
                     "child":[
                         ],
-                    "$HIDDEN":false
+                    "$HIDDEN":true
                 }]
         }],
     "animations":[

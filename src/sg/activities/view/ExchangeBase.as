@@ -21,8 +21,7 @@ package sg.activities.view
             this.btn_price.on(Event.CLICK, this, this._onClickBuy);
         }
 
-        private function set dataSource(source:Object):void
-        {
+        override public function set dataSource(source:*):void {
             if (!source) return;
 			this._dataSource = source;
             this.text0.text = Tools.getMsgById("_public244");

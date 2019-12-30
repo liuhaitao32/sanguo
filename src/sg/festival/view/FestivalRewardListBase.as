@@ -32,8 +32,7 @@ package sg.festival.view
             _rewardData && this.rewardList.setArray(_rewardData);
         }
 
-        private function set dataSource(value:Object):void
-        {
+        override public function set dataSource(value:*):void {
             if (!value) return;
 			this._dataSource = value;
             _id = value.id;

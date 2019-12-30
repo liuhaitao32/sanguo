@@ -22,10 +22,10 @@ package sg.activities.view
 	public class ViewDialChoose extends dialChooseUI{
 
 		private var mSelectIndex:Number=0;
-		private var mModel:ModelDial;
-		private var mData:Array;
+		private var awardLib:Array;
+		protected var mData:Array;
 		private var mCurSelectNum:Number=0;
-		private var mSelectArr:Array;
+		protected var mSelectArr:Array;
 		public function ViewDialChoose(){
 			this.btn0.label=Tools.getMsgById("dial_text07");//"普通密藏";
 			this.btn1.label=Tools.getMsgById("dial_text08");//"传说密藏";
@@ -43,16 +43,15 @@ package sg.activities.view
 			this.btn1.on(Event.CLICK,this,btnClick,[1]);
 			this.btn2.on(Event.CLICK,this,btnClick,[2]);
 			this.btn.on(Event.CLICK,this,okClick);
-
 			Tools.textLayout(text0,getLabel,getImg,getBox);
 		}
 
 
 		public override function onAdded():void{
+			awardLib = currArg;
 			mSelectArr=[[],[],[]];
-			mModel=ModelDial.instance;
 			mSelectIndex=0;
-			mData=mModel.jackpot.award[mSelectIndex];
+			mData=awardLib[mSelectIndex];
 			setData();
 			getAlreadGift();
 			btnClick(mSelectIndex);
@@ -74,7 +73,7 @@ package sg.activities.view
 		public function btnClick(index:int):void{
 			mSelectIndex=index;
 			tabChange();
-			mData=mModel.jackpot.award[mSelectIndex];
+			mData=awardLib[mSelectIndex];
 			mCurSelectNum=mSelectArr[mSelectIndex].length;
 			this.numLabel.text=mCurSelectNum+"/"+mData[1];
 			this.infoLabel.text=Tools.getMsgById("dial_text12",[(mData[0]*100)+"%"]);//"概率"+(mData[0]*100)+"%";
@@ -113,11 +112,10 @@ package sg.activities.view
 		private function getAlreadGift():void{
 			var arr:Array=[];
 			var n:Number=0;
-			var cfg:Array=mModel.jackpot.award;
 			for(var i:int=0;i<mSelectArr.length;i++){
 				var a:Array=mSelectArr[i];
 				for(var j:int=0;j<a.length;j++){
-					var aa:Array=cfg[i][2][a[j]];
+					var aa:Array=awardLib[i][2][a[j]];
 					arr.push(aa);
 					n+=1;
 				}

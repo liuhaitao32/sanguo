@@ -55,7 +55,7 @@ package sg.view.hero
             //
         }
         private function setUI():void{
-            this.mLvMax = ModelRune.getLvMax(this.mSelectRuneModel.exp_type);
+            this.mLvMax =mSelectRuneModel.getMaxLv();
             //this.runeIcon.runeIcon.setIcon(this.mSelectRuneModel.getImgName());
             this.runeIcon.runeIcon.setData(this.mSelectRuneModel.id,-1,-1);
             this.runeIcon.boxLv.visible = false;

@@ -37,7 +37,7 @@ package sg.fight.client.view
 				Laya.timer.loop(500, this, this.checkCanSkip);
 			}
 			this.btnTimeScale.on(Event.CLICK, this, this.onTimeScale);
-			if (FightMain.instance.isLimitButton){
+			if (FightMain.instance.isLimitSpeedButton){
 				this.btnTimeScale.gray = true;
 			}
 			
@@ -65,7 +65,7 @@ package sg.fight.client.view
 		 */
 		private function onTimeScale():void
 		{
-			if (FightMain.instance.isLimitButton){
+			if (FightMain.instance.isLimitSpeedButton){
 				//强制引导中禁止修改战斗速度
 				ViewManager.instance.showTipsTxt(Tools.getMsgById('fightGuideSpeed'));
 				return;

@@ -9,7 +9,7 @@ package sg.view.map
         {
         }
         
-        private function set dataSource(source:Array):void {
+        override public function set dataSource(source:*):void {
             if (!source)    return;
             var uid:String = source[0];
             var hurt:int = source[1][0];

@@ -13,6 +13,7 @@ package sg.guide.view
     import sg.utils.Tools;
 
     import ui.guide.guideImageUI;
+    import sg.manager.ModelManager;
 
     public class ViewGuideImage extends guideImageUI
     {
@@ -21,10 +22,13 @@ package sg.guide.view
         {
         }
 
-		override public function set currArg(v:*):void
-		{
+		override public function set currArg(v:*):void {
             autoNext = Boolean(v.next);
-            this.showImage(v.url, v.txt);
+            var url:* = v.url;
+            if (url is Array) {
+                url = url[ModelManager.instance.modelUser.country];
+            }
+            this.showImage(url, v.txt);
             autoNext && (ModelGuide.instance.lockScreen = true);
 		}
 

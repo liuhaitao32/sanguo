@@ -12,8 +12,7 @@ package sg.view.more
             
         }
 
-        private function set dataSource(source:Object):void
-        {
+        override public function set dataSource(source:*):void {
             if (!source) return;
 			this._dataSource = source;
             switchName.text = source.name;

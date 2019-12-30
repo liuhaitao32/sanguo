@@ -53,23 +53,37 @@ package sg.view.qqdt {
 			this.kaitong_btn.clickHandler = new Handler(this, function():void {
 				Platform.h5_sdk_obj.NewOpenGameVIPService.show(this.appId,
 																function():void {trace("11111111")},  
-																null,  //统计ID
-																3,  //开通那种蓝钻
-																5   //开通时长
+																"VIP.APP" + this.appId + ".PLATqqgamemini",  //统计ID	
+																3
 																);
+				this.closeSelf();
 			});
 			
 			this.nianfei_btn.clickHandler = new Handler(this, function():void {
 				Platform.h5_sdk_obj.NewOpenGameVIPService.show(this.appId,
 																function():void {trace("11111111")},  
-																null,  //统计ID
-																1  //开通那种蓝钻
+																"VIP.APP" + this.appId + ".PLATqqgamemini",  //统计ID
+																3,  //开通那种蓝钻
+																12
 																);
+				this.closeSelf();
 			});
 			this.tabs.on(Event.CHANGE, this, function():void {
 				this.showIndex(this.tabs.selectedIndex);
 			});
 			this.tabs.selectedIndex = 0;
+			
+			if (!ModelQQDT.instance.data.is_blue_vip) {
+				this.kaitong_btn.label = Tools.getMsgById("qqdt100001");
+			} else {
+				this.kaitong_btn.label = Tools.getMsgById("qqdt100003");
+			}
+			
+			if (!ModelQQDT.instance.data.is_blue_year_vip) {
+				this.nianfei_btn.label = Tools.getMsgById("qqdt100002");
+			} else {
+				this.nianfei_btn.label = Tools.getMsgById("qqdt100004");
+			}
 		}
 		
 		public function showIndex(index:int):void {

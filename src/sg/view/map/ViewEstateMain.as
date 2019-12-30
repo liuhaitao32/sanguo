@@ -28,26 +28,27 @@ package sg.view.map
 	 */
 	public class ViewEstateMain extends estateMainUI{
 
-		private var config_estate:Object={};
-		private var config_cities:Object={};
-		private var server_cities:Object={};
-		private var user_estate:Array=[];
+		private var config_estate:Object = {};
+		private var config_cities:Object = {};
+		private var server_cities:Object = {};
+		private var user_estate:Array = [];
 
-		private var all_estate_arr:Array=[];
-		private var my_estate_arr:Array=[];
-		private var my_estate_obj:Object={};
+		private var all_estate_arr:Array = [];
+		private var my_estate_arr:Array = [];
+		private var my_estate_obj:Object = {};
 		//private var total_num:Number=0;
-		private var my_estate_arr_clone:Array=[];
-		private var all_estate_arr_clone:Array=[];
-		private var check_arr:Array=[];//
-		private var is_can_harverst:Boolean=false;
-										
+		private var my_estate_arr_clone:Array = [];
+		private var all_estate_arr_clone:Array = [];
+		private var check_arr:Array = [];//
+		private var is_can_harverst:Boolean = false;
+
+		private var isQuick:Boolean = false;//是否可以快捷操作
+
 		public function ViewEstateMain(){
-			
 			this.tab.on(Event.CLICK,this,this.tabChange);
-			this.list.scrollBar.visible=false;
-			this.list.itemRender=Item;
-			this.list.renderHandler=new Handler(this,listRender);
+			this.list.scrollBar.visible = false;
+			this.list.itemRender = Item;
+			this.list.renderHandler = new Handler(this,listRender);
 			this.testBtn.on(Event.CLICK,this,testClick);
 			this.btnCheck.on(Event.CLICK,this,function():void{
 				ViewManager.instance.showView(["ViewEstateCheck",ViewEstateCheck],check_arr);
@@ -65,12 +66,12 @@ package sg.view.map
 			});
 			this.btnCheck.label = Tools.getMsgById("_star_text20");
 
-			this.titlelabel.text=Tools.getMsgById("_estate_text27");
+			this.titlelabel.text = Tools.getMsgById("_estate_text27");
 			Tools.textLayout(titlelabel,numLabel,titleImg,titleBox);
 			titleBox.centerX = 0;
 			titleBg.width = titleBox.width + 100;
 
-			this.text0.text=Tools.getMsgById("_estate_text02");
+			this.text0.text = Tools.getMsgById("_estate_text02");
 			Tools.textLayout2(text0,text0Img);
 		}
 
@@ -98,8 +99,6 @@ package sg.view.map
 							a.push(aa);
 						}
 					}
-
-					
 				}
 				my_estate_arr=a;
 
@@ -165,6 +164,8 @@ package sg.view.map
 
 
 		override public function onAdded():void{
+			isQuick = ModelEstate.isQuick();
+			
 			this.tab.labels=Tools.getMsgById("_estate_text25")+","+Tools.getMsgById("_estate_text26");
 			this.testBtn.visible=this.testLabel.visible=false;
 			config_estate=ConfigServer.estate;
@@ -182,9 +183,7 @@ package sg.view.map
 		public function eventCallBack(re:Object):void{
 			if(re && re.user && re.user.estate){
 				setData();
-				//tabChange();
-				this.list.refresh();
-				setMidText();
+				checkEvnetCallBack(check_arr);
 			}
 		}
 
@@ -292,9 +291,9 @@ package sg.view.map
 		public function getMyestateArr():void{
 			my_estate_arr=[];			
 			for(var i:int=0;i<user_estate.length;i++){
-				var o:Object=user_estate[i];
-				var n:Number=Tools.isNewDay(o.active_time)?0:o.active_times;	
-				var tn:Number=ModelManager.instance.modelGame.getModelEstate(o.city_id,o.estate_index).total_time;	
+				var o:Object = user_estate[i];
+				var n:Number = Tools.isNewDay(o.active_time)?0:o.active_times;	
+				var tn:Number = ModelManager.instance.modelGame.getModelEstate(o.city_id,o.estate_index).total_time;	
 				var _id:String = ConfigServer.city[o.city_id].estate[o.estate_index][0];
 				var _lv:Number = ConfigServer.city[o.city_id].estate[o.estate_index][1];
 				var a:Array=[o.city_id,_id,_lv,n,tn,i,o.estate_index,tn-n>0?1:0,0,ModelEstate.isGold(o.city_id,o.estate_index)?1:0];
@@ -323,13 +322,106 @@ package sg.view.map
 		}
 
 		public function listRender(cell:Item,index:int):void{
-			cell.setData(this.list.array[index],index,tab.selectedIndex);
-			cell.off(Event.CLICK,this,this.itemClick);
-			cell.on(Event.CLICK,this,this.itemClick,[index,this.tab.selectedIndex]);
+			var a:Array = this.list.array[index];//["cid","eid","lv","act_times","total_times","user_index","config_index"]
+			cell.setData(a,index,tab.selectedIndex);
+			cell.btn.off(Event.CLICK,this,this.itemClick);
+			cell.btn.on(Event.CLICK,this,this.itemClick,[index,this.tab.selectedIndex]);
+
+			cell.btnDel.visible = this.tab.selectedIndex == 0 && isQuick;
+			cell.btnDo.visible = isQuick ? (this.tab.selectedIndex == 0 ? (a[1] != "2" && a[4] != 0) : true) : false;
+
+			cell.btnDel.mouseThrough = cell.btnDo.mouseThrough = false;
+
+			var cfg_index:int = this.tab.selectedIndex == 0 ? ModelManager.instance.modelUser.estate[a[5]].estate_index : a[5];
+			var emd:ModelEstate = ModelManager.instance.modelGame.getModelEstate(a[0], cfg_index);
+
+			var doName:String = ModelEstate.getEstateName(emd.id)
+			cell.btnDo.label = this.tab.selectedIndex==0 ? doName : Tools.getMsgById('_estate_text30');
+
+			if(a[4] == 0){
+				cell.statusLabel.text = '';
+			}else{
+				var t:Number = emd.active_harvest_time;
+				var now:Number=ConfigServer.getServerTimer();
+				if(t==0){
+					cell.statusLabel.text = '';//Tools.getMsgById("_estate_text14");//"空闲中";
+				}else{
+					if(t-now<=0){
+						cell.statusLabel.text = Tools.getMsgById("_estate_text15",[doName]);// doName+"完成";
+						cell.btnDo.visible = false;
+					}else{
+						cell.statusLabel.text = Tools.getMsgById("_estate_text16",[doName]);//doName+"中";
+						cell.btnDo.visible = false;
+					}
+				}
+			}
+			
+
+			cell.btnDel.off(Event.CLICK,this,this.delClick);
+			cell.btnDel.on(Event.CLICK,this,this.delClick,[index]);
+			cell.btnDo.off(Event.CLICK,this,this.doClick);
+			cell.btnDo.on(Event.CLICK,this,this.doClick,[index]);
+
+		}
+
+		private function delClick(index:int):void{
+			var o:* = this.list.array[index];
+			var emd:ModelEstate = ModelManager.instance.modelGame.getModelEstate(o[0], o[6]);
+			if(!emd.isCanDrop()){
+				ViewManager.instance.showTipsTxt(Tools.getMsgById("_estate_tips04",[ConfigServer.system_simple.material_gift_cd[0]]));// "1小时之内不能放弃");
+				return;
+			}
+			if(emd.status == 1){
+				ViewManager.instance.showTipsTxt(Tools.getMsgById("_estate_tips10"));
+				return;
+			}
+			ViewManager.instance.showAlert(Tools.getMsgById('_estate_tips08'),function(yesOrNo:int):void{
+				if(yesOrNo == 0){
+					NetSocket.instance.send("drop_estate",{"estate_index":o[5]},new Handler(null,function(np:NetPackage):void{
+						//放弃
+						var n:Number=emd.config_index;
+						ModelManager.instance.modelUser.updateData(np.receiveData);
+						ModelManager.instance.modelGame.removeEstate(emd.city_id,n);					
+						ViewManager.instance.showTipsTxt(Tools.getMsgById("_estate_tips03"));// "放弃产业成功");
+					}));
+				}
+			});
+			
+		}
+
+		private function doClick(index:int):void{
+			var o:* = this.list.array[index];
+			var emd:ModelEstate = ModelManager.instance.modelGame.getModelEstate(o[0], o[5]);
+			if(this.tab.selectedIndex == 0){//产业挂机
+			    var cost_item_arr:Array = ConfigServer.estate.estate[o[1]].active_prop;
+				if(!Tools.isCanBuy(cost_item_arr[0],cost_item_arr[1])){
+						return;
+					}
+					if(o[4]-o[3]<=0){
+						ViewManager.instance.showTipsTxt(Tools.getMsgById("_estate_tips02"));// "次数不足");
+						return;
+					}
+					ViewManager.instance.showView(ConfigClass.VIEW_ESTATE_HERO,[0,o[5],0]);
+			}else{//占领
+				if(!ModelManager.instance.modelUser.isFinishFtask(o[0])){
+					ViewManager.instance.showTipsTxt(Tools.getMsgById("_ftask_tips01"));
+					return;
+				}
+				var cur_num:Number = ModelManager.instance.modelUser.estate.length;
+				var total_times:Number = ConfigServer.estate.vacancy + ModelOffice.func_indcount();
+				if(cur_num>=total_times){
+					ViewManager.instance.showTipsTxt(Tools.getMsgById("_estate_tips01"));//"超出占领总数上限");
+					return;
+				}
+				var sendData:Object = {"city_id":o[0],"estate_index":o[5],"fight":0,"v":null};
+				var b:Number = !ModelOffice.func_flyestate() ? 0 : -2;
+				ModelManager.instance.modelGame.checkTroopToAction(o[0],["ViewEstateHeroSend",ViewEstateHeroSend],sendData,true,b,-emd.getPower());
+					
+			}
 		}
 
 
-		public function itemClick(index:int,type:int):void{
+		public function itemClick(index:int,type:int):void{			
 			var arr:Array=[];
 			arr=this.list.array[index];		
 			//MapCamera.lookAtEstate(arr[0],Number(arr[1]));
@@ -417,7 +509,7 @@ class Item extends estateItemUI{
 		var m:Number=config_estate.passive[arr[2]-1]*o.ratio;//基础收益		
 		var n:Number=Math.floor(m*(ModelUser.estate_produce_add(arr[1])));//额外收益
 		this.text3.text = Tools.getMsgById("_estate_text02");//"产量";
-
+		/*
 		if(arr[4]==0){
 			this.statusLabel.text="";
 		}else{
@@ -440,8 +532,7 @@ class Item extends estateItemUI{
 					this.statusLabel.text=Tools.getMsgById("_estate_text16",[doName]);//doName+"中";
 				}
 			}
-			
-		}
+		}*/
 		this.text4.wordWrap = true;
 		this.com0.setData(AssetsManager.getAssetItemOrPayByID(o.produce),Tools.getMsgById("_estate_text05",[m,n]));// m+"(+"+n+")/时"
 		this.text4.text=Tools.getMsgById("_estate_text04",[doName]);// doName+"收益";
@@ -501,7 +592,6 @@ class Item extends estateItemUI{
 		Tools.textLayout(nameLabel,text2,text2Img,box1);
 		Tools.textLayout(text3,com0,text3Img,box2);
 
-		
 	}
 }
 

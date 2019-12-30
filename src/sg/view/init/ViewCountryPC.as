@@ -18,6 +18,7 @@ package sg.view.init
     import sg.manager.AssetsManager;
     import sg.model.ModelGame;
     import ui.init.viewCountryPCUI;
+    import sg.view.com.ComPayType;
 
     public class ViewCountryPC extends viewCountryPCUI{
         private var timerRe:Number = 0;
@@ -114,7 +115,16 @@ package sg.view.init
             //
             this.cTxt.text = Tools.getMsgById("country_get_"+cp);       
             //
-            this.heroIcon.setHeroIcon(ConfigServer.country_king_icon[cp]);
+            var king_id:String = ConfigServer.country_king_icon[cp];
+            if(king_id.indexOf("hero")!=-1){
+                this.heroIcon.visible = true;
+                if(this["buildImg"]) this["buildImg"].visible = false;
+                this.heroIcon.setHeroIcon(king_id);
+            }else{
+                this.heroIcon.visible = false;
+                if(this["buildImg"]) this["buildImg"].visible = true;
+                this["buildImg"].skin = "country/" + ConfigServer.country_king_icon[cp] + ".png";
+            }
         }
         private function click(type:int):void{
             this.checkSelect(type);

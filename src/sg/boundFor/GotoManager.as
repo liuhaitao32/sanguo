@@ -160,6 +160,8 @@ package sg.boundFor
 		public static const VIEW_SURPRISE_GIFT:String        	= 'surprise_gift';
 		/**@public 福将挑战*/
 		public static const VIEW_BLESS_HERO:String        		= 'bless_hero';	
+		/**@public 充值福利*/
+		public static const VIEW_FESTIVAL_PAYAGAIN:String       = 'pay_again';	
 
 		public static const VIEW_NEW_TASK:String        		= 'new_task';	
 			
@@ -494,6 +496,9 @@ package sg.boundFor
 					break;
 				case GotoManager.VIEW_BLESS_HERO:
 					otherData['class_cfg'] = ConfigClass.VIEW_BLESS_HERO;
+					break;
+				case GotoManager.VIEW_FESTIVAL_PAYAGAIN:
+					otherData['class_cfg'] = ConfigClass.VIEW_FESTIVAL_PAYAGAIN;
 					break;
 				case GotoManager.VIEW_NEW_TASK:
 					lockFuncKey = "new_task";	

@@ -2,7 +2,7 @@
     "x":0,
     "type":"ViewPanel",
     "selectedBox":11,
-    "selecteID":20,
+    "selecteID":16,
     "referenceLines":[
         ],
     "props":{"width":640,"sceneColor":"#000000","height":1280},
@@ -69,34 +69,8 @@
                 },
                 {
                     "x":30,
-                    "type":"Label",
-                    "props":{"y":771,"x":165,"width":274,"var":"infoLabel","height":16,"color":"#ffffff","align":"center"},
-                    "nodeParent":11,
-                    "label":"Label(infoLabel)",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":10,
-                    "child":[
-                        ]
-                },
-                {
-                    "x":30,
-                    "type":"Label",
-                    "props":{"y":659,"x":163,"width":274,"var":"timerLabel","height":16,"color":"#ffffff","align":"center"},
-                    "nodeParent":11,
-                    "label":"Label(timerLabel)",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":13,
-                    "child":[
-                        ]
-                },
-                {
-                    "x":30,
                     "type":"Box",
-                    "props":{"y":45,"x":6,"width":588,"height":606},
+                    "props":{"y":45,"x":6,"width":588,"height":635},
                     "nodeParent":11,
                     "label":"Box",
                     "isOpen":true,
@@ -121,7 +95,7 @@
                         {
                             "x":45,
                             "type":"List",
-                            "props":{"y":4,"x":4,"width":584,"var":"list","vScrollBarSkin":"comp/vscroll.png","spaceY":10,"repeatY":6,"repeatX":1,"height":597},
+                            "props":{"y":4,"x":4,"width":584,"var":"list","vScrollBarSkin":"comp/vscroll.png","spaceY":10,"repeatY":6,"repeatX":1,"height":625},
                             "nodeParent":16,
                             "label":"List(list)",
                             "isOpen":true,

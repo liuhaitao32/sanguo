@@ -12,7 +12,7 @@ package sg.festival.view
         public function FestivalTabButton() {
         }
 
-        private function set dataSource(source:Object):void {
+        override public function set dataSource(source:*):void {
             if (!source)    return;
             btn.skin = AssetsManager.getAssetsUI(source.button);
             var actName:String = Tools.getMsgById(source ? source.icon_name : '');

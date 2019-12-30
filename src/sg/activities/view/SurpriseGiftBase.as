@@ -18,7 +18,7 @@ package sg.activities.view
             btn_buy.on(Event.CLICK, this, this._onClickBuy);
         }
 
-        private function set dataSource(source:Object):void {
+        override public function set dataSource(source:*):void {
             if (!source) return;
 			this._dataSource = source;
             txt_name.text = Tools.getMsgById(source.name);

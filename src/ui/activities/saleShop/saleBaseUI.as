@@ -6,6 +6,7 @@ package ui.activities.saleShop {
 	import sg.view.com.*; 
 	import ui.com.btn_icon_double_txtUI;
 	import ui.bag.bagItemUI;
+	import ui.com.hero_icon1UI;
 	import laya.html.dom.HTMLDivElement;
 	import ui.com.payTypeUI;
 
@@ -17,6 +18,7 @@ package ui.activities.saleShop {
 		public var btn_price:btn_icon_double_txtUI;
 		public var nameTxt:Label;
 		public var rewardItem:bagItemUI;
+		public var heroIcon:hero_icon1UI;
 		public var rebateTxt:Label;
 		public var htmlLabel:HTMLDivElement;
 		public var hintBox:Box;
@@ -27,6 +29,7 @@ package ui.activities.saleShop {
 		override protected function createChildren():void {
 			View.regComponent("ui.com.btn_icon_double_txtUI",btn_icon_double_txtUI);
 			View.regComponent("ui.bag.bagItemUI",bagItemUI);
+			View.regComponent("ui.com.hero_icon1UI",hero_icon1UI);
 			View.regComponent("HTMLDivElement",HTMLDivElement);
 			View.regComponent("ui.com.payTypeUI",payTypeUI);
 			super.createChildren();

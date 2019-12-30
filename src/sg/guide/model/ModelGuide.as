@@ -113,7 +113,7 @@ package sg.guide.model
 					this.event(TYPE_BATTLE);
 					break;
 				case TYPE_RECRUIT:
-					this.recruitHero(cfg[key]);
+					this.recruitHero(cfg);
 					break;
 				case TYPE_IMAGE:
 					this.showImage(cfg[key]);
@@ -162,8 +162,8 @@ package sg.guide.model
 		/**
 		 * 招募英雄
 		 */
-		private function recruitHero(id:String):void {
-			this.event(TYPE_RECRUIT, [id]);	
+		private function recruitHero(cfg:Object):void {
+			this.event(TYPE_RECRUIT, [cfg]);	
 		}
 
 		/**

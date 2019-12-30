@@ -682,7 +682,7 @@ package sg.view.com
 			}
 		}
 		
-		private function layoutHeroIcon(iconImg:Image, sm:Boolean):void
+		public function layoutHeroIcon(iconImg:Image, sm:Boolean):void
 		{
 			if (this.name == "hero_icon1")
 			{
@@ -1420,6 +1420,13 @@ package sg.view.com
 			var label:Label = this.getChildByName("text") as Label;
 			label.text = str;
 			Tools.textFitFontSize(label);
+		}
+
+		/**
+		 * 设置赛季等级
+		 */
+		public function setHonourLv(lv:int):void{
+
 		}
 
 

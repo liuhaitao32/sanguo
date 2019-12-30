@@ -254,11 +254,11 @@ package sg.view.equip
 
 
 		public function setBtn():void{
-			var a:Array=config_wash_cost[mEmd.type];
-			var itm:ModelItem=ModelManager.instance.modelProp.getItemProp(a[0]);
-			var nn:Number=ModelScience.func_sum_type("equip_wa_consume");//科技百分比
-			mCostArr=[itm.id,Math.round(a[1][unlock_num]*(1-nn))];
-			var n:Number=itm.num>0?0:1;
+			var a:Array = config_wash_cost[mEmd.type];
+			var itm:ModelItem = ModelManager.instance.modelProp.getItemProp(a[0]);
+			var nn:Number = ModelScience.func_sum_type("equip_wa_consume");//科技百分比
+			mCostArr = [itm.id,Math.round(a[1][unlock_num]*(1-nn))];
+			var n:Number = itm.num >= mCostArr[1] ? 0 : 1;
 			this.comNum.setData(AssetsManager.getAssetItemOrPayByID(itm.id),itm.num+"/"+mCostArr[1],n);
 		}
 

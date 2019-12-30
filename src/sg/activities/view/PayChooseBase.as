@@ -12,8 +12,7 @@ package sg.activities.view
 			checkBox.selected = img_border.visible = false;
         }
 
-        private function set dataSource(source:Object):void
-        {
+        override public function set dataSource(source:*):void {
             if (!source) return;
 			this._dataSource = source;
 			var arr:Array=ModelManager.instance.modelProp.getRewardProp(source.reward);

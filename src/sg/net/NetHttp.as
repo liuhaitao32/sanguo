@@ -176,7 +176,7 @@ package sg.net
 			//
 			Trace.log("====>>>> Http发送数据 ====>>>>",vo.send);
 			var ext:String = (NetHttp.POST_GET>0)?"&data="+vo.send:"";
-			trace("====>>>> Http发送数据 ====>>>>",ConfigApp.get_HTTP_URL())
+			// trace("====>>>> Http发送数据 ====>>>>",ConfigApp.get_HTTP_URL())
 			this.mHttp.send(ConfigApp.get_HTTP_URL() + '?e=' + NetHttp.encrypted+ext, vo.send,HTTP_POST, (NetHttp.encrypted>0) ? HTTP_TEXT: HTTP_TYPE);
 		}
 		// private function next():void{

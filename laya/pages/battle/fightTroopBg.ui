@@ -2,7 +2,7 @@
     "x":0,
     "type":"ComPayType",
     "selectedBox":1,
-    "selecteID":3,
+    "selecteID":4,
     "props":{"width":159,"sceneColor":"#000000","height":34},
     "nodeParent":-1,
     "label":"ComPayType",
@@ -28,13 +28,27 @@
         {
             "x":15,
             "type":"Label",
-            "props":{"y":7,"x":35,"width":235,"valign":"middle","text":"66级  吕布吕不韦","strokeColor":"#222222","stroke":4,"scaleY":0.5,"scaleX":0.5,"name":"label","height":30,"fontSize":28,"color":"#ffffff","align":"left"},
+            "props":{"y":7,"x":65,"width":185,"valign":"middle","text":"吕布吕不韦","strokeColor":"#222222","stroke":4,"scaleY":0.5,"scaleX":0.5,"name":"label","height":30,"fontSize":28,"color":"#ffffff","align":"left"},
             "nodeParent":1,
             "label":"Label(label)",
+            "isOpen":true,
             "isDirectory":false,
             "isAniNode":true,
             "hasChild":false,
             "compId":3,
+            "child":[
+                ]
+        },
+        {
+            "x":15,
+            "type":"Label",
+            "props":{"y":7,"x":35,"width":55,"valign":"middle","text":"66级","strokeColor":"#222222","stroke":4,"scaleY":0.5,"scaleX":0.5,"name":"tLv","height":30,"fontSize":24,"color":"#ffffff","align":"left"},
+            "nodeParent":1,
+            "label":"Label(tLv)",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":4,
             "child":[
                 ]
         }],

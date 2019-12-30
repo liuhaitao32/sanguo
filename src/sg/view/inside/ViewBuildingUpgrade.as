@@ -310,17 +310,17 @@ package sg.view.inside
 			if(proType==-1){
 				proType = 0;
 			}
-			//
-			// if(proType == 1 && buyCoin > 0){
-			// 	var s:String = Tools.getMsgById('other_1',[buyCoin]);
-			// 	ViewManager.instance.showAlert(s,function(index:int):void{
-			// 		if(index == 0){
-			// 			building_lv_up(proType);
-			// 		}
-			// 	},null,'',false,false,'build_upgrade');
-			// }else{
-			 	building_lv_up(proType);
-			// }
+			
+			if(proType == 1 && buyCoin > 0){
+				var s:String = Tools.getMsgById('other_1',[buyCoin]);
+				ViewManager.instance.showAlert(s,function(index:int):void{
+					if(index == 0){
+						building_lv_up(proType);
+					}
+				},null,'',false,false,'build_upgrade');
+			}else{
+				building_lv_up(proType);
+			}
 			
 			
 		}
@@ -334,11 +334,16 @@ package sg.view.inside
 			//
 			ModelManager.instance.modelGame.checkPKnpcCaptain(true);
 			//
-			// if(ModelManager.instance.modelUser.building_cd.hasOwnProperty(this.mModel.id)){
+			if(ModelManager.instance.modelUser.building_cd.hasOwnProperty(this.mModel.id)){
 			 	this.closeSelf();
-			// }else{
-			// 	updateSelf();				
-			// }
+			}else{
+				if(this.mModel.canUpgrade(this.mModel.lv+1,false)){
+					updateSelf();
+				}else{
+					this.closeSelf();
+				}
+				
+			}
 			
 		}
 

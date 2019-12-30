@@ -10,7 +10,7 @@ package sg.festival.view
             
         }
 
-        private function set dataSource(source:Array):void {
+        override public function set dataSource(source:*):void {
             if (source is Array) {
                 _dataSource = source;
                 var itemId:String = source[0];

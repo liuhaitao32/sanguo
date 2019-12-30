@@ -442,7 +442,18 @@ package sg.view.map
 			o["bid"]=this.itemList.array[this.itemList.selectedIndex].id;
 			o["lv"]=this.itemList.array[this.itemList.selectedIndex].lv;
 			o["exp"]=this.itemList.array[this.itemList.selectedIndex].exp;
-			ViewManager.instance.showView(ConfigClass.VIEW_ESTATE_HERO,[0,o,2]);
+			//ViewManager.instance.showView(ConfigClass.VIEW_ESTATE_HERO,[0,o,2]);
+
+			var arr:Array = ModelManager.instance.modelUser.getMyEstateHeroArr(2);
+			if(arr.length > 0){
+				if(ModelManager.instance.modelGame.getModelHero(arr[0].hid).getHeroEstate().status == 0){
+					ViewManager.instance.showView(ConfigClass.VIEW_ESTATE_TASK,[arr[0].hid,o,2]);
+				}else{
+					ViewManager.instance.showTipsTxt(Tools.getMsgById('_estate_tips09'));
+				}
+				
+			}
+			
 
 		}
 

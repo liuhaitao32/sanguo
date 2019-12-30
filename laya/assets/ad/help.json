@@ -84,7 +84,20 @@
 			"bug_fix_02": "If you can't get into the game, clicking on【Repair】 will try to solve the problem n This process takes up a small amount of bandwidth.",
 			"_lht59":"Network exception, please try again later",
 			"_public203":"Tips",
-			"_public183":"Sure"
+			"_public183":"Sure",
+			"loadingTxtArr":[
+			]
+		},
+		"ja": {
+			"load_button_05": "修理する",
+			"bug_fix_01": "問題修正",
+			"bug_fix_02": "ゲームに参加できない場合は、[修正]をクリックして問題の解決を試みてください。\nこのプロセスは少量の帯域幅を消費します",
+			"_lht59":"ネットワークの例外です。後でもう一度お試しください",
+			"_public203":"ヒント",
+			"_public183":"OK",
+			"loadingTxtArr":[
+				"ヒーローの才能がヒーローの価値を決定します"
+			]
 		}
     }
 }

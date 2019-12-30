@@ -6,7 +6,6 @@ package sg.activities.view
 	import laya.utils.Tween;
 
 	import sg.activities.model.ModelActivities;
-	import sg.activities.model.ModelTreasure;
 	import sg.manager.AssetsManager;
 	import sg.manager.LoadeManager;
 	import sg.manager.ModelManager;
@@ -19,6 +18,9 @@ package sg.activities.view
 	import ui.activities.dial.item_dialUI;
 	import ui.activities.treasure.item_treasureUI;
 	import ui.activities.treasure.treasureMainUI;
+	import sg.activities.model.ModelTreasureBase;
+	import sg.activities.model.ModelTreasure;
+	import sg.utils.ObjectUtil;
 
 	/**
 	 * ...
@@ -29,32 +31,35 @@ package sg.activities.view
 		private var mLapsNum:Number=0;
 		private var mIndex:int=0;
 		private var mTween:Tween;
-		private var mModel:ModelTreasure;
+		private var mModel:ModelTreasureBase;
 		private var mArr1:Array=[];
 		private var mArr2:Array=[];
 		private var mFreeTimes1:Number=0;//单抽免费次数
 		private var mFreeTimes5:Number=0;//五抽免费次数
 		private var mGetArr:Array=[];
-		private var mReData:*;
+		private var gift_dict:*;
 		//private var mFirstGet:Boolean=false;
 		private var mIsScroll:Boolean=false;
 		private var isDone:Boolean=false;
 		public function TreasureMain(){
 			this.btnShop.label=Tools.getMsgById("treasure_text05");
-			setData();
 			this.text0.text=Tools.getMsgById("dial_text01");
 			this.btnShop.on(Event.CLICK,this,shopClick);
 			this.comCenter0.btn.on(Event.CLICK,this,getClick,[0]);
 			this.comCenter1.btn.on(Event.CLICK,this,getClick,[1]);
 			this.list.renderHandler=new Handler(this,listRender);
 			LoadeManager.loadTemp(this.tempImg,"ui/bg_19.png");
-			this.mModel.on(ModelActivities.UPDATE_DATA, this, this.updateUI);
 			Tools.textLayout(this.text0,this.timerLabel,timeImg);
+            this.on(Event.DISPLAY, this, this.onDisplay);
 		}
 
-		public function setData():void{
-			//mFirstGet=true;
-			mModel=ModelTreasure.instance;
+		public function onDisplay():void {
+			setModel(ModelTreasure.instance);
+		}
+
+		public function setModel(m:ModelTreasureBase):void {
+			mModel = m;
+			this.mModel.on(ModelActivities.UPDATE_DATA, this, this.updateUI);
 			mArr1=mModel.cfg.buy_one;
 			mArr2=mModel.cfg.buy_five;
 			comCenter0.btn.skin="ui/btn_25.png";
@@ -69,7 +74,7 @@ package sg.activities.view
 			comCenter0.text2.text=comCenter1.text2.text=Tools.getMsgById("treasure_text04");//"首次免费";
 			updateUI();
 
-			var arr:Array=mModel.getAwradList();
+			var arr:Array=mModel.awardList;
 			for(var i:int=0;i<8;i++){
 				var com:item_treasureUI=this["com"+i];
 				com.com.setData(arr[i][0],arr[i][1],-1);
@@ -78,19 +83,19 @@ package sg.activities.view
 			}
 			setTimerLabel();
 			this.btnAsk.on(Event.CLICK,this,function():void{
-				ViewManager.instance.showTipsPanel(Tools.getMsgById(mModel.cfg.tips));
+				ViewManager.instance.showTipsPanel(Tools.getMsgById(mModel.tips));
 			});
 		}
 
 		private function setTimerLabel():void{
-			this.timerLabel.text=mModel.time;
+			this.timerLabel.text=mModel.remainTime;
 			timer.once(1000,this,setTimerLabel);
 		}
 
 		public function getClick(type:int):void{
 			if(mIsScroll){
 				tweenComplete(mGetArr);
-				ViewManager.instance.showRewardPanel(mReData.gift_dict_list);
+				ViewManager.instance.showRewardPanel(gift_dict);
 				return;
 			}
 			clearTween();
@@ -109,20 +114,18 @@ package sg.activities.view
 			if(!Tools.isCanBuy("coin",costNum)){
 				return;
 			}
-			NetSocket.instance.send("buy_treasure",o,new Handler(this,function(np:NetPackage):void{
+			NetSocket.instance.send(mModel.buy_method, o, new Handler(this,function(np:NetPackage):void{
 				ModelManager.instance.modelUser.updateData(np.receiveData);
-				mReData=np.receiveData;
-				mGetArr=np.receiveData.award_index_list;
-				//if(mFirstGet){
-					mIsScroll=true;
-					isDone=false;
-					setTween(0,mGetArr);
-				//}else{
-				//	clearTween();
-				//	tweenComplete(mGetArr);
-				//	ViewManager.instance.showRewardPanel(mReData.gift_dict_list);
-				//}
-				//mFirstGet=false;
+				var receiveData:* = np.receiveData;
+				gift_dict = receiveData.gift_dict_list ? receiveData.gift_dict_list[0] : receiveData.gift_dict;
+				var keys:Array = ObjectUtil.keys(gift_dict);
+				mGetArr = [];
+				mModel.awardList.forEach(function(arr:Array, index:int):void {
+					keys.indexOf(arr[0]) !== -1 && mGetArr.push(index);
+				});
+				mIsScroll=true;
+				isDone=false;
+				setTween(0,mGetArr);
 			}));
 		}
 
@@ -130,14 +133,14 @@ package sg.activities.view
 			this.numLabel.text=mModel.mScore+"";
 			mFreeTimes1=mModel.cfg.buy_one[0]-mModel.mBuyTimesOne;
 			mFreeTimes5=mModel.cfg.buy_five[0]-mModel.mBuyTimesFive;
-			this.list.array=mModel.getAddList();
+			this.list.array=mModel.addList;
 			comCenter0.text0.visible=comCenter0.comNum.visible=mFreeTimes1<=0;
 			comCenter0.text2.visible=mFreeTimes1>0;
 
 			comCenter1.text0.visible=comCenter1.comNum.visible=mFreeTimes5<=0;
 			comCenter1.text2.visible=mFreeTimes5>0;
 
-			ModelGame.redCheckOnce(this.btnShop,mModel.red_point_shop());
+			ModelGame.redCheckOnce(this.btnShop, mModel.shopRedPoint);
 		}
 
 		private function listRender(cell:item_dialUI,index:int):void{
@@ -197,7 +200,7 @@ package sg.activities.view
 
 		private function timerCallBack():void{
 			mIsScroll=false;
-			ViewManager.instance.showRewardPanel(mReData.gift_dict_list);
+			ViewManager.instance.showRewardPanel(gift_dict);
 		}
 
 		public function tweenComplete(end_arr:Array):void{
@@ -235,7 +238,7 @@ package sg.activities.view
 		}
 
 		public function shopClick():void{
-			ViewManager.instance.showView(["ViewTreasureShop",ViewTreasureShop]);
+			ViewManager.instance.showView(["ViewTreasureShop",ViewTreasureShop], [mModel, 'treasure_text05']);
 		}
 
 		public function removeCostumeEvent():void 

@@ -34,9 +34,17 @@ package sg.fight.client.utils
 				//Laya.scaleTimer.scale = 0;
 				FightTime.hasInit = true;
 			}
+			if (!ConfigServer.world.guideSpeedMode){
+				
+			}
 			if (ModelGuide.forceGuide()){
-				//强制引导中锁定低速
-				FightTime.timer.scale = ConfigFight.fightLowSpeed;
+				if(!ConfigServer.world.guideSpeedMode || ConfigServer.world.guideSpeedMode==1){
+					//强制引导中锁定低速
+					FightTime.timer.scale = ConfigFight.fightLowSpeed;
+				}
+				else{
+					FightTime.timer.scale = ConfigFight.fightHighSpeed;
+				}
 			}
 			else if (clientBattle){
 				FightTime.timer.scale = clientBattle.getCurrentTimeScale();

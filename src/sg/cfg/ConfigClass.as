@@ -215,6 +215,7 @@ package sg.cfg
 	import sg.view.newtask.ViewNewTaskMain;
 	import sg.view.init.ViewCountryWW;
 	import sg.activities.view.ViewSalePayAlert;
+	import sg.festival.view.ViewFestivalPayAgain;
 	/**
 	 * 显示场景、面板配置
 	 * @author
@@ -501,6 +502,7 @@ package sg.cfg
 		public static const VIEW_NEW_TASK_MAIN:Array = ["ViewNewTaskMain",ViewNewTaskMain];
 
 		public static const VIEW_SALE_PAY_ALERT:Array = ["ViewSalePayAlert",ViewSalePayAlert];
+		public static const VIEW_FESTIVAL_PAYAGAIN:Array = ["ViewFestivalPayAgain",ViewFestivalPayAgain];
 		public static const View_QQDT:Array = ["ViewQQDT",ViewQQDT];//qqdating
 	}
 

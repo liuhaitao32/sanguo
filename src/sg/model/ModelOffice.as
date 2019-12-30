@@ -290,7 +290,8 @@ package sg.model
                 per = okNum/value;
             }else if(type=="office_credit"){//上一个爵位之后累积的战功                
                 info = Tools.getMsgById(officecon+"office_credit",[getCfgOfficeById((lvInt-1)+"") ? Tools.getMsgById(getCfgOfficeById((lvInt-1)+"").name):"",value]);
-                okNum = ModelManager.instance.modelUser.records.office_credit ? ModelManager.instance.modelUser.records.office_credit : 0;
+                okNum = curLv==lvInt-1 ? ModelManager.instance.modelUser.records.office_credit : (curLv>lvInt-1 ? value : 0);
+                //okNum = ModelManager.instance.modelUser.records.office_credit ? ModelManager.instance.modelUser.records.office_credit : 0;
                 if(okNum>=value){
                     b=true;
                 }

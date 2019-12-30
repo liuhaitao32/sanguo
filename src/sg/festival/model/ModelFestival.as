@@ -30,6 +30,9 @@ package sg.festival.model
 		public static const TYPE_PIT_UP:String      = 'pit_up';     // 每日累充
 		public static const TYPE_LUCK_SHOP:String   = 'luckshop';   // 幸运商店
 		public static const TYPE_EXCHANGE:String    = 'exchange';   // 兑换商店
+		public static const TYPE_DIAL:String        = 'dial';       // 节日转盘
+		public static const TYPE_TREASURE:String    = 'treasure';   // 节日珍宝
+		public static const TYPE_PAY_AGAIN:String   = 'pay_again';   // 充值福利
 
 		public static function get instance():ModelFestival {
 			return sModel ||= new ModelFestival();
@@ -42,6 +45,9 @@ package sg.festival.model
         private var modelPitUp:ModelFestivalPitUp;
         private var modelLuckShop:ModelFestivalLuckShop;
         private var modelExchange:ModelFestivalExchange;
+        private var modelDial:ModelFestivalDial;
+        private var modelTreasure:ModelFestivalTreasure;
+        public var modelPayAgaine:ModelFestivalPayAgain;
         public var startTime:Number = 0;
         public var endTime:Number = 0;
         public var startDay:Number = 0;
@@ -58,6 +64,9 @@ package sg.festival.model
             modelPitUp = ModelFestivalPitUp.instance;
             modelLuckShop = ModelFestivalLuckShop.instance;
             modelExchange = ModelFestivalExchange.instance;
+            modelDial = ModelFestivalDial.instance;
+            modelTreasure = ModelFestivalTreasure.instance;
+            modelPayAgaine = ModelFestivalPayAgain.instance;
             pf_visible = Tools.checkVisibleByPF(ConfigServer.system_simple.pf_festival);            
             var modelUser:ModelUser = ModelManager.instance.modelUser;
             var festival:Object = modelUser.records.festival;
@@ -146,7 +155,9 @@ package sg.festival.model
         /**
          * 更新数据
          */
-        override public function refreshData(festival:*):void {
+        override public function refreshData(records:*):void {
+            var festival:Object = records.festival;
+            if (!festival) return;
             var id:String = festival.f_key;
             if (!id || !this._checkId(id)) return;
             
@@ -176,6 +187,16 @@ package sg.festival.model
             if (actOrder.indexOf(TYPE_EXCHANGE) !== -1 && actCfg.act[TYPE_EXCHANGE]) {
                 modelExchange.initCfg();
                 festival.exchange && modelExchange.checkData(festival.exchange);
+            }
+            if (actOrder.indexOf(TYPE_DIAL) !== -1 && actCfg.act[TYPE_DIAL]) {
+                modelDial.initCfg();
+                if (festival.dial) {
+                    modelDial.checkData(ObjectUtil.mergeObjects([festival.dial, {total_pay: festival.total_pay}]));
+                }
+            }
+            if (actOrder.indexOf(TYPE_TREASURE) !== -1 && actCfg.act[TYPE_TREASURE]) {
+                modelTreasure.initCfg();
+                festival.treasure && modelTreasure.checkData(festival.treasure);
             }
 
             this.event(ModelFestival.UPDATE_DATA);
@@ -222,6 +243,10 @@ package sg.festival.model
                     return modelLuckShop.active;
                 case TYPE_EXCHANGE:
                     return modelExchange.active;
+                case TYPE_DIAL:
+                    return modelDial.active;
+                case TYPE_TREASURE:
+                    return modelTreasure.active;
                 default:
                     return false;
             }
@@ -242,6 +267,10 @@ package sg.festival.model
                     return modelLuckShop.redPoint;
                 case TYPE_EXCHANGE:
                     return modelExchange.redPoint;
+                case TYPE_DIAL:
+                    return modelDial.redPoint;
+                case TYPE_TREASURE:
+                    return modelTreasure.redPoint;
                 default:
                     return false;
             }
@@ -252,7 +281,7 @@ package sg.festival.model
          */
         override public function get redPoint():Boolean {
             if (!_id)   return false; // 活动不存在
-            return modelLogin.redPoint || modelOnce.redPoint || modelAddUp.redPoint || modelPitUp.redPoint || modelExchange.redPoint || modelLuckShop.redPoint;
+            return modelLogin.redPoint ||modelOnce.redPoint || modelAddUp.redPoint || modelPitUp.redPoint || modelExchange.redPoint || modelLuckShop.redPoint || modelDial.redPoint || modelTreasure.redPoint;
         }
 
         /**
@@ -298,6 +327,9 @@ package sg.festival.model
                 return [actCfg.poster, {panelID: GotoManager.VIEW_FESTIVAL}];
             }
             return [];
+        }
+        public function get remainTime():String {
+            return TimeHelper.formatTime(endTime - ConfigServer.getServerTimer());
         }
     }
 }

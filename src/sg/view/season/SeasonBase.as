@@ -11,8 +11,7 @@ package sg.view.season
         {
         }
 
-        private function set dataSource(source:Object):void
-        {
+        override public function set dataSource(source:*):void {
             if (!source) return;
 			this._dataSource = source;
             var cfg:Object = ConfigServer.system_simple['season'];

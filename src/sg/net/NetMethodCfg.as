@@ -246,5 +246,15 @@ package sg.net
 		//——————————————————————————————————————————————————————————— 传奇觉醒 —————————————————————————————————————————————————
         public static const WS_SR_DRAW_LEGEND_AWAKEN:String = "draw_legend_awaken";
         public static const WS_SR_LEGEND_AWAKEN_REWARD:String = "legend_awaken_reward";
+		
+		//——————————————————————————————————————————————————————————— 节日转盘 —————————————————————————————————————————————————
+        public static const WS_SR_CHOOSE_FESTIVAL_DIAL:String = "choose_festival_dial"; // 选定转盘抽奖内容
+        public static const WS_SR_RANDOM_FESTIVAL_DIAL:String = "random_festival_dial"; // 转盘抽奖
+
+		//——————————————————————————————————————————————————————————— 节日珍宝 —————————————————————————————————————————————————
+        public static const WS_SR_RANDOM_FESTIVAL_TREASURE:String = "random_festival_treasure"; // 节日珍宝随即奖励
+        public static const WS_SR_FESTIVAL_TREASURE_SHOP:String = "festival_treasure_shop";     // 节日珍宝商店购买
+
+        public static const WS_SR_FESTIVAL_PAY_AGAIN:String = "buy_festival_pay_again";         // 节日
     }
 }

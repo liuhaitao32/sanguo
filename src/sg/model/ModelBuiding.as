@@ -897,9 +897,9 @@ package sg.model
 					break;
 				}
 			}
-			// if(index<0){
-			// 	index = len-1;
-			// }
+			if(index<0){
+				index = len-1;
+			}
 			return index;
 		}
 		/**

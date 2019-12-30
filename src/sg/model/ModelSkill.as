@@ -70,6 +70,7 @@ package sg.model
         public var ability_info:Array;
         public var limit:Object;
         public var fast_learn:int = 0;
+        public var max_level:int;
         //
         public var itemID:String;
         public var shogun_type:int=0;
@@ -375,13 +376,41 @@ package sg.model
 
         public function getMaxLv():int{
 			var arr:Array = getUpgradeCfgArr(this.cost_type);
+            var lv_science:Array;
+            var sid:String;
+            var maxLv:int;
 			if (arr){
-				return arr.length;
+                var n:Number = this.max_level;
+                if(ConfigServer.system_simple.skill_lv_science){
+                    lv_science = ConfigServer.system_simple.skill_lv_science[this.type];
+                    if(lv_science){
+                       sid = lv_science[0];
+                        n += (ModelManager.instance.modelGame.getModelScience(sid).getLv()*lv_science[1]);
+                    }
+                }
+                return n;//arr.length;
+            }else{
+                
+				return getMaxLvByType(this.cost_type);
 			}
-			else{
-				var maxLv:int = ConfigServer.system_simple.skill_cost_max_lv[this.cost_type];
-				return maxLv?maxLv:0;
-			}
+            
+        }
+
+        public static function getMaxLvByType(_type:int):int{
+            var lv_science:Array;
+            var sid:String;
+            var maxLv:int = 0;
+            if(_type == 7 || _type == 8){
+                maxLv = ConfigServer.system_simple.skill_cost_max_lv[_type];
+                if(ConfigServer.system_simple.skill_cost_max_lv_science){
+                    lv_science = ConfigServer.system_simple.skill_cost_max_lv_science[_type];
+                    if(lv_science){
+                        sid = lv_science[0];
+                        maxLv += (ModelManager.instance.modelGame.getModelScience(sid).getLv()*lv_science[1]);
+                    }
+                }
+            }
+            return maxLv;
         }
         /**
          * 技能 需要的 碎片数量

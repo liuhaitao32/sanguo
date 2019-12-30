@@ -174,7 +174,7 @@ package sg.activities.view
 					ViewManager.instance.showView(["ViewEmboitement",ViewEmboitement],[mCfg.equip,mCfg.equip_info,Tools.getMsgById("equip_box7")]);
 					break;
 				case this.btnShop:
-					ViewManager.instance.showView(["ViewTreasureShop",ViewTreasureShop],1);
+					ViewManager.instance.showView(["ViewTreasureShop",ViewTreasureShop], [mModel, 'equip_box3']);
 					break;
 				
 			}

@@ -89,9 +89,25 @@ package sg.cfg
 		public static var beast:Object; // 兽灵
 		public static var legend_awaken:Object; // 传奇觉醒
 		public static var new_task:Object;//朝廷密旨
-		public static var country_king_icon:Array = ["hero762","hero763","hero764"];
+
+		//国王英雄立绘
+		public static function get country_king_icon():Array{
+			if(ConfigServer.system_simple.king_img){
+				return ConfigServer.system_simple.king_img;	
+			}
+			return ["hero762","hero763","hero764"];
+		}
+		//国家任务里用的立绘
+		public static function get country_task_icon():Array{
+			if(ConfigServer.system_simple.country_task_img){
+				return ConfigServer.system_simple.country_task_img;	
+			}
+			return ["hero762","hero763","hero764"];
+		}
 		//
 		public static var skill_type_dic:Object = {};
+
+		public static var honour:Object;//赛季
 
 
 		public static function get ploy():Object{

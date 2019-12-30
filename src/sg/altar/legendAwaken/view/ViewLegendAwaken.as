@@ -119,7 +119,7 @@ package sg.altar.legendAwaken.view
 			aniExp.play(0, false);
 			comBox.destroyChildren();
             channel = MusicManager.playSoundUI('legend_awaken01');
-            var time:Number = Tools.oneMillis * (aniExp.frames.length / 12) * 0.55;
+            var time:Number = Tools.oneMillis * (34 / 12) * 0.55;
             Laya.timer.once(time, this, this.showReward);
         }
  

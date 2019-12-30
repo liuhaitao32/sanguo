@@ -57,8 +57,7 @@ package sg.activities.view
         /**
          * 设置箭头是否显示
          */
-        private function _onTabScroll():void
-        {
+        private function _onTabScroll():void {
             var v:Number = tabList.scrollBar.value;
             var max:Number = tabList.scrollBar.max;
             arrow_l.visible = arrow_r.visible = true;
@@ -78,13 +77,10 @@ package sg.activities.view
             // 左侧未显示的个数
             var num_l:int = Math.floor((v + spaceX) / (w + spaceX));
             var start_r:int = Math.floor((v + tabList.width + spaceX) / (w + spaceX));
-            // var num_l:int = Math.floor((v + spaceX + arrow_l.width) / (w + spaceX));
-            // var start_r:int = Math.floor((v + tabList.width - arrow_l.width + spaceX) / (w + spaceX));
             var flag_l:Boolean = false;
             var flag_r:Boolean = false;
 
-            for(var i:int = 0, len:int = this.data.length; i < len; i++)
-            {
+            for(var i:int = 0, len:int = this.data.length; i < len; i++) {
                 var element:Object = this.data[i];
                 if (i < num_l) {
                     flag_l = flag_l || this.redCheckByType(element.type, element.timeType);

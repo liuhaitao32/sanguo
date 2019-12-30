@@ -12,6 +12,7 @@ package sg.view.map
 	import laya.utils.Handler;
 	import sg.net.NetSocket;
 	import sg.map.view.TroopAnimation;
+	import sg.model.ModelEstate;
 
 	/**
 	 * ...
@@ -46,12 +47,12 @@ package sg.view.map
             //trace("occupy_estate_call_back",re.receiveData);
 			var receiveData:* = re.receiveData;
 			var hids:Array = [re.sendData.hid];
+			var _this:* = this;
 			TroopAnimation.moveTroop(hids,this.mOtherPa["v"],new Handler(this,function():void{
-				FightMain.startBattle(receiveData, this, outFight, [receiveData,hids], true);
+				FightMain.startBattle(receiveData, _this, outFight, [receiveData,hids], true);
 			}));
-
             //
-			ViewManager.instance.closePanel();
+			ViewManager.instance.closePanel(this);
         }
 
 

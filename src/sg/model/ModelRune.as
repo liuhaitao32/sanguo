@@ -16,6 +16,7 @@ package sg.model
         public var icon:String;
         public var fix_type:int;
         public var exp_type:int;
+        public var max_level:int;
         public var cfgID:String;
         public static var runeModels:Object = {};
         public function ModelRune():void{
@@ -127,7 +128,15 @@ package sg.model
             return b;
         }
 		public function getMaxLv():Number{
-			return ModelRune.getLvMax(this.exp_type);
+			var lv_science:Array;
+            var sid:String;
+            var n:Number = this.max_level;
+            lv_science = ConfigServer.system_simple.star_lv_science[this.fix_type];
+            if(lv_science){
+                sid = lv_science[0];
+                n += (ModelManager.instance.modelGame.getModelScience(sid).getLv()*lv_science[1]);
+            }
+            return n;
         }
         public function getLv():Number{
             var lv:Number = 0;
@@ -179,9 +188,6 @@ package sg.model
                 obj = cfg[1];
             }
             return obj;
-        }
-        public static function getLvMax(type:int):Number{
-            return getCfgToUpDel(type)[0].length+1;
         }
         /**
          * 升级、卸载、配置
@@ -300,6 +306,24 @@ package sg.model
                 }
             }
             return n;
+        }
+
+        /**
+         * 测试方法
+         */
+        private static function testtest():void{
+            // var cfg1:Object = ConfigServer.star;
+            // for(var s:String in cfg1){
+            //     if(cfg1[s].max_level==null){
+            //         trace("11111   ",s);
+            //     }
+            // }
+            // var cfg2:Object = ConfigServer.skill;
+            // for(var ss:String in cfg2){
+            //     if(cfg2[ss].max_level==null && ss.indexOf("skill")!=-1){
+            //         trace("222222   ",ss);
+            //     }
+            // }
         }
     }
 }

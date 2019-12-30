@@ -15,7 +15,7 @@ package sg.altar.legend.view
             this.on(Event.CLICK, this, this._onClick);
         }
 
-        private function set dataSource(source:Object):void {
+        override public function set dataSource(source:*):void {
             if (!source) return;
             _dataSource = source;
             this.disabled = img_foreshow.visible = box_road.visible = box_experience.visible = false;

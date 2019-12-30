@@ -2,7 +2,7 @@
     "x":0,
     "type":"ViewPanel",
     "selectedBox":39,
-    "selecteID":53,
+    "selecteID":91,
     "props":{"width":640,"sceneColor":"#000000","height":1280},
     "nodeParent":-1,
     "label":"ViewPanel",
@@ -723,15 +723,16 @@
                     "props":{"y":509,"x":64,"width":220,"var":"boxProp0","height":18},
                     "nodeParent":39,
                     "label":"Box(boxProp0)",
-                    "isOpen":false,
+                    "isOpen":true,
                     "isDirectory":true,
                     "isAniNode":true,
                     "hasChild":true,
                     "compId":82,
                     "child":[
                         {
+                            "x":45,
                             "type":"Label",
-                            "props":{"y":0,"x":1,"var":"text6","text":"弩兵攻击","fontSize":16,"color":"#b7d9ff","align":"left"},
+                            "props":{"y":0,"x":-18,"width":83,"var":"text6","text":"弩兵攻击","height":16,"fontSize":16,"color":"#b7d9ff","align":"right"},
                             "nodeParent":82,
                             "label":"Label(text6)",
                             "isDirectory":false,
@@ -742,6 +743,7 @@
                                 ]
                         },
                         {
+                            "x":45,
                             "type":"Label",
                             "props":{"y":-1,"x":70,"text":"200000","name":"propNum0","height":18,"fontSize":18,"color":"#ffffff","align":"left"},
                             "nodeParent":82,
@@ -754,6 +756,7 @@
                                 ]
                         },
                         {
+                            "x":45,
                             "type":"Label",
                             "props":{"y":-1,"x":156,"text":"200000","name":"propNum1","height":18,"fontSize":18,"color":"#67ff98","align":"left"},
                             "nodeParent":82,
@@ -766,6 +769,7 @@
                                 ]
                         },
                         {
+                            "x":45,
                             "type":"Image",
                             "props":{"y":1,"x":133,"skin":"ui/icon_70.png","name":"propImg0"},
                             "nodeParent":82,
@@ -784,15 +788,16 @@
                     "props":{"y":509,"x":317,"width":220,"var":"boxProp1","height":18},
                     "nodeParent":39,
                     "label":"Box(boxProp1)",
-                    "isOpen":false,
+                    "isOpen":true,
                     "isDirectory":true,
                     "isAniNode":true,
                     "hasChild":true,
                     "compId":86,
                     "child":[
                         {
+                            "x":45,
                             "type":"Label",
-                            "props":{"y":1,"x":0,"var":"text7","text":"弩兵攻击","fontSize":16,"color":"#b7d9ff","align":"left"},
+                            "props":{"y":1,"x":-18,"width":83,"var":"text7","text":"弩兵攻击","height":16,"fontSize":16,"color":"#b7d9ff","align":"right"},
                             "nodeParent":86,
                             "label":"Label(text7)",
                             "isDirectory":false,
@@ -803,6 +808,7 @@
                                 ]
                         },
                         {
+                            "x":45,
                             "type":"Label",
                             "props":{"y":-1,"x":68,"text":"200000","name":"propNum0","height":18,"fontSize":18,"color":"#ffffff","align":"left"},
                             "nodeParent":86,
@@ -815,6 +821,7 @@
                                 ]
                         },
                         {
+                            "x":45,
                             "type":"Label",
                             "props":{"y":-1,"x":159,"text":"200000","name":"propNum1","height":18,"fontSize":18,"color":"#67ff98","align":"left"},
                             "nodeParent":86,
@@ -827,6 +834,7 @@
                                 ]
                         },
                         {
+                            "x":45,
                             "type":"Image",
                             "props":{"y":2,"x":134,"skin":"ui/icon_70.png","name":"propImg0"},
                             "nodeParent":86,
@@ -845,15 +853,16 @@
                     "props":{"y":535,"x":64,"width":220,"var":"boxProp2","height":18},
                     "nodeParent":39,
                     "label":"Box(boxProp2)",
-                    "isOpen":false,
+                    "isOpen":true,
                     "isDirectory":true,
                     "isAniNode":true,
                     "hasChild":true,
                     "compId":91,
                     "child":[
                         {
+                            "x":45,
                             "type":"Label",
-                            "props":{"y":1,"x":0,"var":"text8","text":"弩兵攻击","fontSize":16,"color":"#b7d9ff","align":"left"},
+                            "props":{"y":1,"x":-18,"width":83,"var":"text8","text":"弩兵攻击","height":16,"fontSize":16,"color":"#b7d9ff","align":"right"},
                             "nodeParent":91,
                             "label":"Label(text8)",
                             "isDirectory":false,
@@ -864,6 +873,7 @@
                                 ]
                         },
                         {
+                            "x":45,
                             "type":"Label",
                             "props":{"y":0,"x":71,"text":"200000","name":"propNum0","height":18,"fontSize":18,"color":"#ffffff","align":"left"},
                             "nodeParent":91,
@@ -876,6 +886,7 @@
                                 ]
                         },
                         {
+                            "x":45,
                             "type":"Label",
                             "props":{"y":0,"x":157,"text":"200000","name":"propNum1","height":18,"fontSize":18,"color":"#67ff98","align":"left"},
                             "nodeParent":91,
@@ -888,6 +899,7 @@
                                 ]
                         },
                         {
+                            "x":45,
                             "type":"Image",
                             "props":{"y":2,"x":133,"skin":"ui/icon_70.png","name":"propImg0"},
                             "nodeParent":91,

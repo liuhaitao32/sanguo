@@ -7,6 +7,8 @@ package ui.inside {
 
 	public class science_mainUI extends ViewScenes {
 		public var list:List;
+		public var btn_down:Box;
+		public var btn_up:Box;
 		public var box_unlock:Box;
 		public var tUnlock:Label;
 

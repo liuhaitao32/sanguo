@@ -11,8 +11,6 @@ package ui.map {
 
 	public class estateHeroUI extends ViewPanel {
 		public var okBtn:btn_icon_txtUI;
-		public var infoLabel:Label;
-		public var timerLabel:Label;
 		public var list:List;
 		public var getBtn:Button;
 		public var comTitle:item_titleUI;

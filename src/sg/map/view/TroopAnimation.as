@@ -118,7 +118,11 @@ package sg.map.view {
 				var troopId:String = ModelManager.instance.modelUser.mUID + "&" + heros[i];
 				var troop:ModelTroop = ModelManager.instance.modelTroopManager.troops[troopId];	
 				if (troop) {
-					MapViewMain.instance.troopAnimation.move(troop, v, callBack);
+					if(v){
+						MapViewMain.instance.troopAnimation.move(troop, v, callBack);
+					}else{
+						callBack.run();
+					}
 					callBack = null;
 				}
 			}

@@ -2,7 +2,7 @@
     "x":0,
     "type":"ItemBase",
     "selectedBox":1,
-    "selecteID":88,
+    "selecteID":89,
     "referenceLines":[
         {
             "value":126,
@@ -440,33 +440,6 @@
         },
         {
             "x":15,
-            "type":"Button",
-            "props":{"y":37,"x":408,"width":57,"var":"btnCountry","stateNum":"1","skin":"ui/bg_skill.png","labelSize":20,"labelColors":"#ffffff","height":57},
-            "nodeParent":1,
-            "label":"Button(btnCountry)",
-            "isOpen":false,
-            "isDirectory":true,
-            "isAniNode":true,
-            "hasChild":true,
-            "compId":54,
-            "child":[
-                {
-                    "type":"Image",
-                    "props":{"top":8,"skin":"ui/icon_more03.png","right":8,"left":8,"bottom":8},
-                    "nodeParent":54,
-                    "label":"Image",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":55,
-                    "child":[
-                        ],
-                    "$HIDDEN":false
-                }],
-            "$HIDDEN":false
-        },
-        {
-            "x":15,
             "type":"VBox",
             "props":{"y":162,"x":415,"width":85,"var":"v_box","space":10,"runtime":"sg.view.menu.RightButtonBox","name":"襄阳站按钮啥的别删啊","height":80},
             "nodeParent":1,
@@ -528,6 +501,47 @@
             "compId":88,
             "child":[
                 ]
+        },
+        {
+            "x":15,
+            "type":"UIView",
+            "source":"honour/btnHonour.ui",
+            "props":{"y":34,"x":406,"visible":false,"var":"btnHonour"},
+            "nodeParent":1,
+            "label":"UIView(btnHonour)",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":89,
+            "child":[
+                ]
+        },
+        {
+            "x":15,
+            "type":"Button",
+            "props":{"y":37,"x":408,"width":57,"var":"btnCountry","stateNum":"1","skin":"ui/bg_skill.png","labelSize":20,"labelColors":"#ffffff","height":57},
+            "nodeParent":1,
+            "label":"Button(btnCountry)",
+            "isOpen":false,
+            "isDirectory":true,
+            "isAniNode":true,
+            "hasChild":true,
+            "compId":54,
+            "child":[
+                {
+                    "type":"Image",
+                    "props":{"top":8,"skin":"ui/icon_more03.png","right":8,"left":8,"bottom":8},
+                    "nodeParent":54,
+                    "label":"Image",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":55,
+                    "child":[
+                        ],
+                    "$HIDDEN":false
+                }],
+            "$HIDDEN":false
         }],
     "animations":[
         {

@@ -105,6 +105,7 @@ import sg.cfg.ConfigServer;
 import sg.zmPlatform.ModelFocus;
 import sg.zmPlatform.ModelVerify;
 import sg.activities.model.ModelPhone;
+import sg.festival.model.ModelFestivalPayAgain;
 
 class ActIcon extends ItemActUI
 {
@@ -136,7 +137,7 @@ class ActIcon extends ItemActUI
         this.parent['mouseThrough'] = true;
     }
 
-    private function set dataSource(source:Object):void {
+    override public function set dataSource(source:*):void {
         if (!source) { // 凑位置用的
             this.visible = false;
             return;
@@ -194,6 +195,9 @@ class ActIcon extends ItemActUI
             case ModelActivities.TYPE_SURPRISE_GIFT:
                 ModelGame.redCheckOnce(this, ModelSurpriseGift.instance.redPoint);
                 break;
+            case ModelActivities.TYPE_PAY_AGAIN:
+                ModelGame.redCheckOnce(this, ModelFestivalPayAgain.instance.redPoint);
+                break;
         }
         this.setIconData(source);
     }
@@ -238,6 +242,9 @@ class ActIcon extends ItemActUI
                 break;
             case ModelActivities.TYPE_HAPPY_BUY:
                 GotoManager.boundForPanel(GotoManager.VIEW_HAPPY_BUY);         
+                break;
+            case ModelActivities.TYPE_PAY_AGAIN:
+                GotoManager.showView(ConfigClass.VIEW_FESTIVAL_PAYAGAIN);
                 break;
             case ModelActivities.TYPE_LIMIT_FREE:
                 GotoManager.showView(ConfigClass.VIEW_FREE_BILL);

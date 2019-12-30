@@ -64,7 +64,7 @@ class RewardBase extends memberRewardBaseUI{
 	public function RewardBase() {
 	}
 
-	private function set dataSource(source:Array):void {
+    override public function set dataSource(source:*):void {
         img_icon.skin = ModelItem.getItemIconAssetUI(source[0], false);
         txt_name.text = ModelItem.getItemName(source[0]);
         txt_num.text = 'X' + source[1];

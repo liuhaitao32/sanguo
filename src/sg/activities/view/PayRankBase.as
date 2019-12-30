@@ -19,7 +19,7 @@ package sg.activities.view
             img_reward.on(Event.CLICK, this, this._onClick);
         }
 
-        private function set dataSource(source:Object):void {
+        override public function set dataSource(source:*):void {
             if (!source) return;
 			this._dataSource = source;
             txt_name.text = source.name;
