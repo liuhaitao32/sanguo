@@ -55,13 +55,6 @@ package sg.view.com
 			super.dataSource = data;
 			(data is Array) && (data[0] is String) && (data[1] is Number) &&  (data[2] is Number) && this.setData(data[0], data[1], data[2]);
 		}
-		
-		/**
-		 * Added by Thor.
-		 */
-		private function get dataSource():* {
-			return _dataSource;
-		}
 
 		public function comIcon(_id:String="",num:Number=-1):void{
 			if(Tools.isNullString(_id)){

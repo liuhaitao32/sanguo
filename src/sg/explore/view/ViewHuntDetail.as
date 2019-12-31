@@ -86,7 +86,7 @@ package sg.explore.view
                 txt_garbed.text = Tools.getMsgById('_explore057', [grabedNum]);
                 txt_battle.text = Tools.getMsgById('_explore040', _data.grabbedArr);   
                 txt_name.text = Tools.getMsgById(magicData ? magicData.name : '_explore053');
-                img_name.width = txt_name.width + 15;
+                img_name.width = txt_name.textField.textWidth + 15;
                 txt_info.text = magicData ? Tools.getMsgById(magicData.info) : '';
             }
             else {

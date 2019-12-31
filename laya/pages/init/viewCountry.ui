@@ -2,7 +2,6 @@
     "x":0,
     "type":"ViewScenes",
     "selectedBox":1,
-    "selecteID":53,
     "referenceLines":[
         {
             "value":115,
@@ -48,63 +47,22 @@
                 {
                     "x":30,
                     "type":"Image",
-                    "props":{"y":0,"x":0,"var":"adImg","skin":"country/bg_country.png"},
+                    "props":{"y":0,"x":0,"var":"img_bg","skin":"country/bg_country.png"},
                     "nodeParent":5,
-                    "label":"Image(adImg)",
+                    "label":"Image(img_bg)",
                     "isDirectory":false,
                     "isAniNode":true,
                     "hasChild":false,
                     "compId":8,
-                    "child":[
-                        ],
-                    "$LOCKED":true,
-                    "$HIDDEN":false
-                },
-                {
-                    "x":30,
-                    "type":"Image",
-                    "props":{"y":252,"x":432,"var":"vb0","skin":"ui/icon_jian.png"},
-                    "nodeParent":5,
-                    "label":"Image(vb0)",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":43,
-                    "child":[
-                        ]
-                },
-                {
-                    "x":30,
-                    "type":"Image",
-                    "props":{"y":409,"x":192,"var":"vb1","skin":"ui/icon_jian.png"},
-                    "nodeParent":5,
-                    "label":"Image(vb1)",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":44,
-                    "child":[
-                        ]
-                },
-                {
-                    "x":30,
-                    "type":"Image",
-                    "props":{"y":473,"x":492,"var":"vb2","skin":"ui/icon_jian.png"},
-                    "nodeParent":5,
-                    "label":"Image(vb2)",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":45,
                     "child":[
                         ]
                 },
                 {
                     "x":30,
                     "type":"Box",
-                    "props":{"y":214,"x":41,"var":"c0"},
+                    "props":{"y":214,"x":41,"mouseThrough":true},
                     "nodeParent":5,
-                    "label":"Box(c0)",
+                    "label":"Box",
                     "isOpen":true,
                     "isDirectory":true,
                     "isAniNode":true,
@@ -114,38 +72,46 @@
                         {
                             "x":45,
                             "type":"Image",
-                            "props":{"var":"btn_img0","skin":"country/icon_country2.png"},
+                            "props":{"var":"btn_img0","stateNum":1,"skin":"country/icon_country2.png"},
                             "nodeParent":11,
                             "label":"Image(btn_img0)",
-                            "isDirectory":false,
+                            "isDirectory":true,
                             "isAniNode":true,
-                            "hasChild":false,
+                            "hasChild":true,
                             "compId":9,
                             "child":[
-                                ],
-                            "$HIDDEN":false
+                                {
+                                    "type":"Poly",
+                                    "props":{"y":104,"x":297,"renderType":"hit","points":"-176.86956362347706,-31.70500898170627,-19.799982891987298,-31.258978651643815,72.53186367357915,-88.80045947233964,191.61125707233026,-79.55246660882483,261.61571737563094,-3.3258832011532604,260.4631750027496,117.15404543399404,199.0894015861573,106.51622206200472,157.10526315789474,139.73684210526312,71.78947368421046,164.31578947368422,-33.52631578947364,165.5263157894737,-82.48954578226386,92.04253785147841,-212.2174672809257,85.0844647025043,-272.3423557733432,31.653599403663918,-298.9480649615679,-50.30447374531013,-241.98999181259384,-108.97976366502476","lineWidth":1,"lineColor":"#ff0000","fillColor":"#ff0000"},
+                                    "nodeParent":9,
+                                    "label":"Poly",
+                                    "isDirectory":false,
+                                    "isAniNode":true,
+                                    "hasChild":false,
+                                    "compId":56,
+                                    "child":[
+                                        ]
+                                }]
                         },
                         {
                             "x":45,
                             "type":"Image",
-                            "props":{"y":43,"x":297,"width":135,"skin":"ui/icon_country1.png","height":140},
+                            "props":{"y":43,"x":297,"width":135,"var":"img_flag0","skin":"ui/icon_country1.png","height":140},
                             "nodeParent":11,
-                            "label":"Image",
-                            "isOpen":false,
+                            "label":"Image(img_flag0)",
                             "isDirectory":false,
                             "isAniNode":true,
                             "hasChild":false,
                             "compId":10,
                             "child":[
-                                ],
-                            "$HIDDEN":false
+                                ]
                         },
                         {
                             "x":45,
                             "type":"Image",
-                            "props":{"y":38,"x":401,"var":"v0","skin":"ui/icon_jian.png"},
+                            "props":{"y":38,"x":401,"var":"img_recommend0","skin":"ui/icon_jian.png"},
                             "nodeParent":11,
-                            "label":"Image(v0)",
+                            "label":"Image(img_recommend0)",
                             "isDirectory":false,
                             "isAniNode":true,
                             "hasChild":false,
@@ -166,86 +132,14 @@
                             "compId":40,
                             "child":[
                                 ]
-                        }],
-                    "$HIDDEN":false
+                        }]
                 },
                 {
                     "x":30,
                     "type":"Box",
-                    "props":{"y":402,"x":127,"var":"c2"},
+                    "props":{"y":401,"x":0,"mouseThrough":true},
                     "nodeParent":5,
-                    "label":"Box(c2)",
-                    "isOpen":true,
-                    "isDirectory":true,
-                    "isAniNode":true,
-                    "hasChild":true,
-                    "compId":17,
-                    "child":[
-                        {
-                            "x":45,
-                            "type":"Image",
-                            "props":{"var":"btn_img2","skin":"country/icon_country1.png"},
-                            "nodeParent":17,
-                            "label":"Image(btn_img2)",
-                            "isDirectory":false,
-                            "isAniNode":true,
-                            "hasChild":false,
-                            "compId":16,
-                            "child":[
-                                ],
-                            "$HIDDEN":false
-                        },
-                        {
-                            "x":45,
-                            "type":"Image",
-                            "props":{"y":71,"x":269,"width":135,"skin":"ui/icon_country3.png","height":140},
-                            "nodeParent":17,
-                            "label":"Image",
-                            "isOpen":true,
-                            "isDirectory":false,
-                            "isAniNode":true,
-                            "hasChild":false,
-                            "compId":15,
-                            "child":[
-                                ],
-                            "$HIDDEN":false
-                        },
-                        {
-                            "x":45,
-                            "type":"Image",
-                            "props":{"y":66,"x":371,"var":"v2","skin":"ui/icon_jian.png"},
-                            "nodeParent":17,
-                            "label":"Image(v2)",
-                            "isDirectory":false,
-                            "isAniNode":true,
-                            "hasChild":false,
-                            "compId":18,
-                            "child":[
-                                ],
-                            "$HIDDEN":false
-                        },
-                        {
-                            "x":45,
-                            "type":"UIView",
-                            "source":"bag/bagItem.ui",
-                            "props":{"y":205,"x":297,"var":"award2","scaleY":0.6,"scaleX":0.6},
-                            "nodeParent":17,
-                            "label":"UIView(award2)",
-                            "isDirectory":false,
-                            "isAniNode":true,
-                            "hasChild":false,
-                            "compId":41,
-                            "child":[
-                                ]
-                        }],
-                    "$HIDDEN":false
-                },
-                {
-                    "x":30,
-                    "type":"Box",
-                    "props":{"y":401,"x":0,"var":"c1"},
-                    "nodeParent":5,
-                    "label":"Box(c1)",
+                    "label":"Box",
                     "isOpen":true,
                     "isDirectory":true,
                     "isAniNode":true,
@@ -258,34 +152,43 @@
                             "props":{"var":"btn_img1","skin":"country/icon_country3.png"},
                             "nodeParent":14,
                             "label":"Image(btn_img1)",
-                            "isDirectory":false,
+                            "isDirectory":true,
                             "isAniNode":true,
-                            "hasChild":false,
+                            "hasChild":true,
                             "compId":13,
                             "child":[
-                                ],
-                            "$HIDDEN":false
+                                {
+                                    "type":"Poly",
+                                    "props":{"y":87,"x":66,"renderType":"hit","points":"28.03677000720988,-49.746935832732106,69.14203316510458,-80.32588320115318,183.13668080114385,-80.39992423594347,242.24071737563094,0.1280641672678371,293.8920331651047,-3.746935832732106,306.98413842826255,42.49286152161625,229.47720236419926,66.85054883197301,161.06578947368416,93.0986842105263,100.68421052631584,183.94736842105254,-64.0684931506849,197.3056957462154,-62.75270367700062,48.62148521989951","lineWidth":1,"lineColor":"#ff0000","fillColor":"#ff0000"},
+                                    "nodeParent":13,
+                                    "label":"Poly",
+                                    "isDirectory":false,
+                                    "isAniNode":true,
+                                    "hasChild":false,
+                                    "compId":57,
+                                    "child":[
+                                        ]
+                                }]
                         },
                         {
                             "x":45,
                             "type":"Image",
-                            "props":{"y":8,"x":99,"width":135,"skin":"ui/icon_country2.png","height":140},
+                            "props":{"y":8,"x":99,"width":135,"var":"img_flag1","skin":"ui/icon_country2.png","height":140},
                             "nodeParent":14,
-                            "label":"Image",
+                            "label":"Image(img_flag1)",
                             "isDirectory":false,
                             "isAniNode":true,
                             "hasChild":false,
                             "compId":12,
                             "child":[
-                                ],
-                            "$HIDDEN":false
+                                ]
                         },
                         {
                             "x":45,
                             "type":"Image",
-                            "props":{"y":7,"x":203,"var":"v1","skin":"ui/icon_jian.png"},
+                            "props":{"y":7,"x":203,"var":"img_recommend1","skin":"ui/icon_jian.png"},
                             "nodeParent":14,
-                            "label":"Image(v1)",
+                            "label":"Image(img_recommend1)",
                             "isDirectory":false,
                             "isAniNode":true,
                             "hasChild":false,
@@ -306,120 +209,84 @@
                             "compId":42,
                             "child":[
                                 ]
-                        }],
-                    "$HIDDEN":false
+                        }]
                 },
                 {
                     "x":30,
-                    "type":"Image",
-                    "props":{"y":409,"x":58,"width":244,"var":"btn_1","skin":"ui/icon_shaizi01.png","height":160,"alpha":0},
+                    "type":"Box",
+                    "props":{"y":402,"x":127,"mouseThrough":true},
                     "nodeParent":5,
-                    "label":"Image(btn_1)",
-                    "isDirectory":false,
+                    "label":"Box",
+                    "isOpen":true,
+                    "isDirectory":true,
                     "isAniNode":true,
-                    "hasChild":false,
-                    "compId":23,
+                    "hasChild":true,
+                    "compId":17,
                     "child":[
-                        ],
-                    "$HIDDEN":false
-                },
-                {
-                    "x":30,
-                    "type":"Image",
-                    "props":{"y":475,"x":366,"width":241,"var":"btn_2","skin":"ui/icon_shaizi01.png","height":206,"alpha":0},
-                    "nodeParent":5,
-                    "label":"Image(btn_2)",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":26,
-                    "child":[
-                        ],
-                    "$HIDDEN":false
-                },
-                {
-                    "x":30,
-                    "type":"Image",
-                    "props":{"y":237,"x":272,"width":295,"var":"btn_0","skin":"ui/icon_shaizi01.png","height":235,"alpha":0},
-                    "nodeParent":5,
-                    "label":"Image(btn_0)",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":27,
-                    "child":[
-                        ],
-                    "$HIDDEN":false
-                },
-                {
-                    "x":30,
-                    "type":"Image",
-                    "props":{"y":564,"x":263,"width":177,"var":"btn_22","skin":"ui/icon_shaizi01.png","height":164,"alpha":0},
-                    "nodeParent":5,
-                    "label":"Image(btn_22)",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":31,
-                    "child":[
-                        ],
-                    "$HIDDEN":false
-                },
-                {
-                    "x":30,
-                    "type":"Image",
-                    "props":{"y":225,"x":69,"width":216,"var":"btn_00","skin":"ui/icon_shaizi01.png","height":177,"alpha":0},
-                    "nodeParent":5,
-                    "label":"Image(btn_00)",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":32,
-                    "child":[
-                        ],
-                    "$HIDDEN":false
-                },
-                {
-                    "x":30,
-                    "type":"Image",
-                    "props":{"y":732,"x":122,"width":177,"var":"btn_222","skin":"ui/icon_shaizi01.png","rotation":-51,"height":66,"alpha":0},
-                    "nodeParent":5,
-                    "label":"Image(btn_222)",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":33,
-                    "child":[
-                        ],
-                    "$HIDDEN":false
-                },
-                {
-                    "x":30,
-                    "type":"Image",
-                    "props":{"y":534,"x":12,"width":180,"var":"btn_11","skin":"ui/icon_shaizi01.png","height":141,"alpha":0},
-                    "nodeParent":5,
-                    "label":"Image(btn_11)",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":34,
-                    "child":[
-                        ],
-                    "$HIDDEN":false
-                },
-                {
-                    "x":30,
-                    "type":"Image",
-                    "props":{"y":484,"x":282,"width":90,"var":"btn_111","skin":"ui/icon_shaizi01.png","height":71,"alpha":0},
-                    "nodeParent":5,
-                    "label":"Image(btn_111)",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":35,
-                    "child":[
-                        ],
-                    "$HIDDEN":false
+                        {
+                            "x":45,
+                            "type":"Image",
+                            "props":{"var":"btn_img2","skin":"country/icon_country1.png"},
+                            "nodeParent":17,
+                            "label":"Image(btn_img2)",
+                            "isDirectory":true,
+                            "isAniNode":true,
+                            "hasChild":true,
+                            "compId":16,
+                            "child":[
+                                {
+                                    "type":"Poly",
+                                    "props":{"y":208,"x":119,"renderType":"hit","points":"-24.121124729632115,-19.694304253784708,18.82624369142046,-44.48377793799523,88.8788752703677,-60.58904109588994,131.35255948089412,-83.58904109588994,117.86395829879444,-123.14716099456723,228.0367700072099,-134.2732516222058,288.5630857966836,-181.64167267483737,386.0526315789473,-136.5789473684211,309.9473684210526,31.42105263157879,-74.5948089401586,201.253064167268,-118.01586157173746,119.67411679884691","lineWidth":1,"lineColor":"#ff0000","fillColor":"#ff0000"},
+                                    "nodeParent":16,
+                                    "label":"Poly",
+                                    "isDirectory":false,
+                                    "isAniNode":true,
+                                    "hasChild":false,
+                                    "compId":58,
+                                    "child":[
+                                        ]
+                                }]
+                        },
+                        {
+                            "x":45,
+                            "type":"Image",
+                            "props":{"y":71,"x":269,"width":135,"var":"img_flag2","skin":"ui/icon_country3.png","height":140},
+                            "nodeParent":17,
+                            "label":"Image(img_flag2)",
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":15,
+                            "child":[
+                                ]
+                        },
+                        {
+                            "x":45,
+                            "type":"Image",
+                            "props":{"y":66,"x":371,"var":"img_recommend2","skin":"ui/icon_jian.png"},
+                            "nodeParent":17,
+                            "label":"Image(img_recommend2)",
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":18,
+                            "child":[
+                                ]
+                        },
+                        {
+                            "x":45,
+                            "type":"UIView",
+                            "source":"bag/bagItem.ui",
+                            "props":{"y":205,"x":297,"var":"award2","scaleY":0.6,"scaleX":0.6},
+                            "nodeParent":17,
+                            "label":"UIView(award2)",
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":41,
+                            "child":[
+                                ]
+                        }]
                 }]
         },
         {
@@ -432,20 +299,6 @@
             "isAniNode":true,
             "hasChild":false,
             "compId":51,
-            "child":[
-                ],
-            "$HIDDEN":false
-        },
-        {
-            "x":15,
-            "type":"Image",
-            "props":{"y":0,"x":233,"top":0,"skin":"ui/icon_circle0.png","centerX":0},
-            "nodeParent":1,
-            "label":"Image",
-            "isDirectory":false,
-            "isAniNode":true,
-            "hasChild":false,
-            "compId":29,
             "child":[
                 ]
         },
@@ -487,8 +340,7 @@
             "hasChild":false,
             "compId":47,
             "child":[
-                ],
-            "$HIDDEN":false
+                ]
         },
         {
             "x":15,
@@ -501,8 +353,7 @@
             "hasChild":false,
             "compId":53,
             "child":[
-                ],
-            "$HIDDEN":true
+                ]
         },
         {
             "x":15,
@@ -559,7 +410,7 @@
         {
             "x":15,
             "type":"Button",
-            "props":{"y":1190,"x":210,"width":220,"var":"btn_start","stateNum":"1","skin":"ui/btn_ok.png","labelSize":28,"labelColors":"#ffef7d","label":"开始游戏","height":60,"centerX":0,"bottom":30},
+            "props":{"y":1190,"x":210,"width":220,"var":"btn_start","stateNum":1,"skin":"ui/btn_ok.png","labelSize":28,"labelColors":"#ffef7d","label":"开始游戏","height":60,"centerX":0,"bottom":30},
             "nodeParent":1,
             "label":"Button(btn_start)",
             "isDirectory":false,

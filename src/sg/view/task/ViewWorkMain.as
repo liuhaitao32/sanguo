@@ -311,7 +311,7 @@ package sg.view.task
             this.tTimes.text = timesNum+" / "+timesMax;//"今日可用次数:"+
             var rt:Number = (ModelTask.gTask_gtask_brush()[0]-ModelTask.gTask_refresh_refresh_times());
             this.btn_re.label = rt>0?Tools.getMsgById("_public235",[rt,ModelTask.gTask_gtask_brush()[0]]):Tools.getMsgById("_public78");//免费刷新:刷新
-            this.heroIcon.setHeroIcon("hero747");
+            this.heroIcon.setHeroIcon(ConfigServer.gtask.gtask_herotalk || "hero747");
             //
             this.box_null.visible = (timesNum==0 && !this.mHadAcpt);
             this.box_had.visible = !this.box_null.visible;
@@ -320,7 +320,7 @@ package sg.view.task
             //
             if(this.box_null.visible){
                 this.tTalk.text = ModelTask.gTask_get_talk();//Tools.getMsgById("gtask_talk02");
-                this.heroIcon2.setHeroIcon("hero747");
+                this.heroIcon2.setHeroIcon(ConfigServer.gtask.gtask_herotalk || "hero747");
             }
         }
         private function click_btn(type:int):void
