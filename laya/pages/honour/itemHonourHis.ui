@@ -2,7 +2,7 @@
     "x":0,
     "type":"ItemBase",
     "selectedBox":1,
-    "selecteID":22,
+    "selecteID":17,
     "props":{"width":574,"sceneColor":"#000000","height":85},
     "nodeParent":-1,
     "label":"ItemBase",
@@ -107,9 +107,9 @@
         {
             "x":15,
             "type":"Label",
-            "props":{"y":30,"x":353,"width":70,"text":"50级","fontSize":22,"color":"#ffec6a","align":"center"},
+            "props":{"y":30,"x":353,"width":70,"var":"tLv","text":"50级","fontSize":22,"color":"#ffec6a","align":"center"},
             "nodeParent":1,
-            "label":"Label",
+            "label":"Label(tLv)",
             "isOpen":true,
             "isDirectory":false,
             "isAniNode":true,
@@ -122,9 +122,9 @@
         {
             "x":15,
             "type":"Label",
-            "props":{"y":34,"x":162,"width":188,"text":"正在进行中","height":16,"fontSize":16,"color":"#96ff56","align":"center"},
+            "props":{"y":34,"x":162,"width":188,"var":"tStatus","text":"正在进行中","height":16,"fontSize":16,"color":"#96ff56","align":"center"},
             "nodeParent":1,
-            "label":"Label",
+            "label":"Label(tStatus)",
             "isOpen":true,
             "isDirectory":false,
             "isAniNode":true,
@@ -140,13 +140,14 @@
             "props":{"y":46,"x":13},
             "nodeParent":1,
             "label":"Box",
-            "isOpen":false,
+            "isOpen":true,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":15,
             "child":[
                 {
+                    "x":30,
                     "type":"Image",
                     "props":{"y":0,"x":0,"width":120,"skin":"ui/icon_zhanli01.png","height":24},
                     "nodeParent":15,
@@ -159,10 +160,11 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Label",
-                    "props":{"y":3,"x":15,"width":84,"text":"赛季第六","height":18,"fontSize":16,"color":"#ffffff","align":"center"},
+                    "props":{"y":3,"x":15,"width":84,"var":"tRank","text":"赛季第六","height":18,"fontSize":16,"color":"#ffffff","align":"center"},
                     "nodeParent":15,
-                    "label":"Label",
+                    "label":"Label(tRank)",
                     "isOpen":true,
                     "isDirectory":false,
                     "isAniNode":true,
@@ -172,6 +174,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "props":{"y":3,"x":4,"width":214,"skin":"ui/bar_30_1.png","scaleY":0.5,"scaleX":0.5,"height":36},
                     "nodeParent":15,
@@ -182,19 +185,20 @@
                     "compId":16,
                     "child":[
                         ]
-                }]
+                }],
+            "$HIDDEN":false
         },
         {
             "x":15,
             "type":"UIView",
-            "source":"com/award_box4.ui",
-            "props":{"y":-8,"x":449,"scaleY":0.5,"scaleX":0.5},
+            "source":"com/award_box_honour.ui",
+            "props":{"y":-3,"x":453,"var":"boxReward","scaleY":0.5,"scaleX":0.5},
             "nodeParent":1,
-            "label":"UIView",
+            "label":"UIView(boxReward)",
             "isDirectory":false,
             "isAniNode":true,
             "hasChild":false,
-            "compId":22,
+            "compId":24,
             "child":[
                 ]
         }],

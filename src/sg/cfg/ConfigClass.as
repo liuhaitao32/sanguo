@@ -216,6 +216,12 @@ package sg.cfg
 	import sg.view.init.ViewCountryWW;
 	import sg.activities.view.ViewSalePayAlert;
 	import sg.festival.view.ViewFestivalPayAgain;
+	import sg.view.honour.ViewHonourMain;
+	import sg.view.honour.ViewHonourHistroy;
+	import sg.view.honour.ViewHonourRank;
+	import sg.view.honour.ViewHonourChallenge;
+	import sg.view.honour.ViewHonourFinish;
+	import sg.view.honour.ViewHonourReward;
 	/**
 	 * 显示场景、面板配置
 	 * @author
@@ -504,6 +510,14 @@ package sg.cfg
 		public static const VIEW_SALE_PAY_ALERT:Array = ["ViewSalePayAlert",ViewSalePayAlert];
 		public static const VIEW_FESTIVAL_PAYAGAIN:Array = ["ViewFestivalPayAgain",ViewFestivalPayAgain];
 		public static const View_QQDT:Array = ["ViewQQDT",ViewQQDT];//qqdating
+
+		//----------------------赛季
+		public static const VIEW_HONOUR_MAIN:Array = ["ViewHonourMain",ViewHonourMain];
+		public static const VIEW_HONOUR_HISTROY:Array = ["ViewHonourHistroy",ViewHonourHistroy];
+		public static const VIEW_HONOUR_RANK:Array = ["ViewHonourRank",ViewHonourRank];
+		public static const VIEW_HONOUR_CHALLENGE:Array = ["ViewHonourChallenge",ViewHonourChallenge];
+		public static const VIEW_HONOUR_FINISH:Array = ["ViewHonourFinish",ViewHonourFinish];
+		public static const VIEW_HONOUR_REWARD:Array = ["ViewHonourReward",ViewHonourReward];
 	}
 
 }

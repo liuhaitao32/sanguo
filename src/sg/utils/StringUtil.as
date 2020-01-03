@@ -200,29 +200,21 @@ package sg.utils
 		 * @param	是否在前方加入空格
 		 * @param	空格符
 		 */
-		public static function fillSpace(str:String, num:int, isFront:Boolean = true, char:String = ' '):String{
-			// var len:int = str.length;
-			// var space:String = '';
-			// for (var i:int = len; i < num; i++) 
-			// {
-			// 	space += char;
-			// }
-			// return isFront?space+str:str + space;
+		public static function fillSpace(str:String, num:int, isFront:Boolean = true, char:String = ' '):String {
 			return StringUtil.padding(str, num, char, !isFront);
 		}
 		
 		/**
 		 * 构造并返回一个新字符串，该字符串包含被连接在一起的指定数量的字符串的副本。
 		 * @param	str 原始字符串
-		 * @param	count	在新构造的字符串中重复了多少遍原字符串。
+		 * @param	times	在新构造的字符串中重复了多少遍原字符串。
 		 * @return	包含指定字符串的指定数量副本的新字符串。
 		 */
-		public static function repeat(str:String, count:int = 0):String {
-			if (count >= 0) {
-				return ArrayUtil.fill(new Array(Math.floor(count)), str).join('');
-			}
-			else {
-				throw(new Error('repeat count must be positive and less than inifinity'));
+		public static function repeat(str:String, times:int = 0):String {
+			if (times >= 0) {
+				return (new Array(times + 1)).join(str);
+			} else {
+				throw(new Error('repeat times must be positive and less than inifinity'));
 			}
 		}
 		

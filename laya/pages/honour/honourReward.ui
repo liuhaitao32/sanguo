@@ -54,7 +54,7 @@
                 {
                     "x":30,
                     "type":"Image",
-                    "props":{"y":64,"x":320,"top":32,"skin":"ui/honour_wenzi2.png","centerX":0,"anchorY":0.5,"anchorX":0.5},
+                    "props":{"y":64,"x":320,"top":32,"skin":"later/honour_wenzi2.png","centerX":0,"anchorY":0.5,"anchorX":0.5},
                     "nodeParent":2,
                     "label":"Image",
                     "isDirectory":false,
@@ -67,24 +67,10 @@
                 },
                 {
                     "x":30,
-                    "type":"Image",
-                    "props":{"y":27,"skin":"later/img_name22.png","scaleY":0.8,"scaleX":0.8,"centerX":0},
-                    "nodeParent":2,
-                    "label":"Image",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":6,
-                    "child":[
-                        ],
-                    "$HIDDEN":true
-                },
-                {
-                    "x":30,
                     "type":"Label",
-                    "props":{"y":266,"x":256,"top":266,"text":"可随机获得以上奖励","fontSize":16,"color":"#ffffff","centerX":-1,"align":"center"},
+                    "props":{"y":266,"x":256,"var":"tTips","top":266,"text":"可随机获得以上奖励","fontSize":16,"color":"#ffffff","centerX":-1,"align":"center"},
                     "nodeParent":2,
-                    "label":"Label",
+                    "label":"Label(tTips)",
                     "isDirectory":false,
                     "isAniNode":true,
                     "hasChild":false,
@@ -95,9 +81,9 @@
                 {
                     "x":30,
                     "type":"List",
-                    "props":{"y":131,"x":48,"spaceX":20,"scaleY":0.8,"scaleX":0.8,"repeatY":1,"repeatX":2,"height":153,"hScrollBarSkin":"comp/hscroll.png","centerX":0},
+                    "props":{"y":131,"x":48,"var":"list","spaceX":20,"scaleY":0.8,"scaleX":0.8,"repeatY":1,"repeatX":2,"height":153,"hScrollBarSkin":"comp/hscroll.png","centerX":0},
                     "nodeParent":2,
-                    "label":"List",
+                    "label":"List(list)",
                     "isOpen":true,
                     "isDirectory":true,
                     "isAniNode":true,

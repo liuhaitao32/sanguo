@@ -500,22 +500,23 @@ package sg.model
                     b = true;
                 }
             }
-            else{
-                if(ModelManager.instance.modelUser.records.hasOwnProperty("science_day_get_ids")){
-                    var hasArr:Array = ModelManager.instance.modelUser.records.science_day_get_ids;
-                    var day_get:Object = ConfigServer.science_type[TYPE_DAY_GET];
-                    var smd:ModelScience;
-                    for(var key:String in day_get){
-                        smd = ModelManager.instance.modelGame.getModelScience(key);
-                        if(smd && smd.isMine()){
-                            if(hasArr.indexOf(smd.id)<0){
-                                b = true;
-                                break;
-                            }
+            if(b) return true;
+
+            if(ModelManager.instance.modelUser.records.hasOwnProperty("science_day_get_ids")){
+                var hasArr:Array = ModelManager.instance.modelUser.records.science_day_get_ids;
+                var day_get:Object = ConfigServer.science_type[TYPE_DAY_GET][TYPE_DAY_GET];
+                var smd:ModelScience;
+                for(var key:String in day_get){
+                    smd = ModelManager.instance.modelGame.getModelScience(key);
+                    if(smd && smd.isMine()){
+                        if(hasArr.indexOf(smd.id)<0){
+                            b = true;
+                            break;
                         }
                     }
                 }
             }
+
             return b;
         }
         /**

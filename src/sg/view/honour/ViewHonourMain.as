@@ -34,14 +34,15 @@ package sg.view.honour
 			this.btnRank.on(Event.CLICK,this,this.btnClick,[btnRank]);
 
 			this.tTips.text = "获得战功提升战绩等级，可在国战中获得属性加成";
-			this.text0.text = "总等级战绩";
 			this.btnRank.label = "查看排名";
 
 			this.list.renderHandler = new Handler(this,listRender);
 			this.list.scrollBar.visible = false;
+			this.boxReward.on(Event.CLICK,this,rewardClick);
 		}
 
 		override public function onAdded():void{
+			this.comTitle.setViewTitle("战绩");
 			mRankData = this.currArg;
 			mModel = ModelHonour.instance;
 			mCfg = ConfigServer.honour;
@@ -49,14 +50,19 @@ package sg.view.honour
 			var n:Number = mRankData[1].rank ? mRankData[1].rank : 0;
 			var cfgNum:Number = mCfg.honour_rank;
 			this.tRank.text = n<=cfgNum ? "当前排名："+ n : "大于"+cfgNum+"名";
+			this.tTask.text = "赛季挑战：已完成："+0+"/"+mModel.maxTaskNum();
 			this.tLv.text = mModel.totalLv + '';
 
 			heroList = mModel.getHeroList();
 			this.list.array = heroList;
 
 			this.tTime.text = '';
+			this.boxReward.setRewardBox2(0);
 			setTime();
-			
+		}
+
+		private function rewardClick():void{
+			ViewManager.instance.showView(ConfigClass.VIEW_HONOUR_REWARD);
 		}
 
 		private function setTime():void{
@@ -104,26 +110,22 @@ package sg.view.honour
 					break;
 				case this.btnRank:
 					ViewManager.instance.showView(ConfigClass.VIEW_HONOUR_RANK,mRankData);
-					// NetSocket.instance.send("get_honour_history_reward",{"history_index":0},new Handler(this,function(np:NetPackage):void{
-					// 	ModelManager.instance.modelUser.updateData(np.receiveData);
-					// 	ViewManager.instance.showRewardPanel(np.receiveData.gift_dict);
-					// }));
 					break;
 			}
 		}
 
 		private function listRender(cell:heroHonourUI,index:int):void{
 			var o:Object = this.list.array[index];
-			var hmd:ModelHero = ModelManager.instance.modelGame.getModelHero(o.id);
+			var hmd:ModelHero = ModelManager.instance.modelGame.getModelHero(o.hid);
 			cell.comHero.setHeroIcon(hmd.getHeadId(),true,hmd.getStarGradeColor());
 			cell.comLv.setHonourLv(o.lv);
 
-			cell.comHero.on(Event.CLICK,this,itemClick);
-			cell.comHero.off(Event.CLICK,this,itemClick,[index]);
+			cell.comHero.off(Event.CLICK,this,itemClick);
+			cell.comHero.on(Event.CLICK,this,itemClick,[index]);
 		}
 
 		private function itemClick(index:int):void{
-			ViewManager.instance.showView(ConfigClass.VIEW_HERO_INFO,this.list.array[index].id);
+			ViewManager.instance.showView(ConfigClass.VIEW_HERO_INFO,this.list.array[index].hid);
         }
 
 

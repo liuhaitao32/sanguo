@@ -276,4 +276,6 @@
    <item name="ui/bg_006.png" type="Image" compress="0" pack="2" quality="80" props="" picType="0" scale="0"/>
    <item name="lanzuan" type="" compress="0" pack="1" quality="80" props="" picType="0" scale="0"/>
    <item name="ui/bar_50.png" type="Image" compress="0" pack="0" quality="80" props="sizeGrid=3,4,4,3" picType="0" scale="0"/>
+   <item name="ui/bg_estate.png" type="Image" compress="0" pack="0" quality="80" props="sizeGrid=0,35,0,41" picType="0" scale="0"/>
+   <item name="ui/bg_zhangong20.png" type="Image" compress="0" pack="0" quality="80" props="sizeGrid=23,27,26,21" picType="0" scale="0"/>
 </res>

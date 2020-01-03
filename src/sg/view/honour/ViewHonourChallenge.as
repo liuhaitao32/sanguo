@@ -19,29 +19,34 @@ package sg.view.honour
 	 */
 	public class ViewHonourChallenge extends honourChallengeUI{
 		public function ViewHonourChallenge(){
-			this.comTitle.setViewTitle("赛季挑战");
 			this.list.renderHandler = new Handler(this,listRender);
 			this.list.scrollBar.visible = false;
+			this.comHero.setHeroIcon(ConfigServer.honour.show_hero,false);
 		}
 
 		override public function onAdded():void{
-			this.comHero.setHeroIcon(ConfigServer.honour.show_hero,false);
+			this.comTitle.setViewTitle("赛季挑战");
 			setData();
 		}
 
 		private function setData():void{
-			var arr:Array = ModelHonour.instance.getHonourTaskData();
+			var arr:Array = ModelHonour.instance.getHonourTaskList();
 			this.list.array = arr;
 		}
 
 		private function listRender(cell:itemHonourClgUI,index:int):void{
+			cell.box0.visible = true;
+			cell.box1.visible = false;
+
 			var o:Object = this.list.array[index];
 			cell.tName.text = o.name;
 			cell.tInfo.text = o.info;
+			cell.tTime.text = '限时挑战剩余时间：';
 
 			cell.btn.mouseEnabled = !o.isGet;
 			cell.btn.label = o.isGet ? "已领取" : "领取";
-			cell.btn.visible = o.isFinish;			
+			cell.btn.visible = o.isFinish;
+			cell.tStatus.text = o.isFinish ? "" : "进行中";	
 
 			cell.btn.off(Event.CLICK,this,btnClick);
 			cell.btn.on(Event.CLICK,this,btnClick,[index]);
@@ -49,16 +54,16 @@ package sg.view.honour
 			var reward:Array = o.reward;
 			if(reward.length > 0){
 				if(reward.length == 1){
-					cell.reward0.visible = false;
-					cell.reward1.setData(reward[0][0],reward[0][1],-1);
+					cell.award0.visible = false;
+					cell.award1.setData(reward[0][0],reward[0][1],-1);
 				}else{
-					cell.reward0.visible = true;
-					cell.reward0.setData(reward[0][0],reward[0][1],-1);
-					cell.reward1.setData(reward[1][0],reward[1][1],-1);
+					cell.award0.visible = true;
+					cell.award0.setData(reward[0][0],reward[0][1],-1);
+					cell.award1.setData(reward[1][0],reward[1][1],-1);
 				}
 			}else{
-				cell.reward0.visible = cell.reward1.visible = false;
-			}
+				cell.award0.visible = cell.award1.visible = false;
+			}			
 		}
 
 

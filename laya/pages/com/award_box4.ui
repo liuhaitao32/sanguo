@@ -2,7 +2,7 @@
     "x":0,
     "type":"ComPayType",
     "selectedBox":9,
-    "selecteID":10,
+    "selecteID":5,
     "props":{"y":0,"x":0,"width":200,"sceneColor":"#000000","name":"type10000","height":200},
     "nodeParent":-1,
     "label":"ComPayType(type10000)",

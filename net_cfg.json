@@ -682,8 +682,8 @@
     "com.tghd.game.sg":"http://cdn2.ptkill.com/static/h5/meng52/index.html?mppf=test_sgqx&lbimg=xjsg3&ilimg=sgqx1&mlogo=sgqx3&v=online000327&mssl=no&ussl=no",
     "######zqwz##############":"##########",
     "a########################################":"下面是线上自己的游戏", 
-    "com.djcy.game.sg.tw.huawei":"http://cdn3.ptkill.com/static/h5/tw_hk/index.html?mppf=hw_tw&mlogo=no&ilimg=bg_clsgz&v=online1200046&mssl=yes&ussl=no",
-    "meng52.game.sg.google":"http://cdn3.ptkill.com/static/h5/tw_hk/index.html?mppf=google&ilimg=bg_clsgz&v=online1200046&mssl=yes&ussl=no",
+    "com.djcy.game.sg.tw.huawei":"http://cdn3.ptkill.com/static/h5/tw_hk/index.html?mppf=hw_tw&mlogo=no&ilimg=bg_clsgz&v=online1200048&mssl=yes&ussl=no",
+    "meng52.game.sg.google":"http://cdn3.ptkill.com/static/h5/tw_hk/index.html?mppf=google&ilimg=bg_clsgz&v=online1200048&mssl=yes&ussl=no",
     "wx_web":"http://sg.ptkill.com/static/h5/sg/index.html?v=3",
     "com.djcy.game.sg":"https://sg.ptkill.com/static/h5/meng52/index.html?mppf=test&v=online000327&mssl=yes&ussl=no",  
     "com.djcy.game.sg_yyjh":"https://h5.h5youyou.com/youxi-h5s/?tid=1422&mob=ios&gid=09fe331c3dc8a3d5a10d05345f1b7e17&idfa=", 
@@ -792,8 +792,8 @@
     "com.r2.sgmnz.kr":"http://r2cdn-kol.r2game.com/static/h5/kr/index.html?mppf=r2g_kr_ad&mlogo=no&ilimg=kr1&v=online29000036&mssl=yes&ussl=no",
     "com.r2.sgmnz.krone":"http://r2cdn-kol.r2game.com/static/h5/kr/index.html?mppf=r2g_kr_os&mlogo=no&ilimg=kr1&v=online29000036&mssl=yes&ussl=no",
     "r2g_kr_ios_game":"http://r2cdn-kol.r2game.com/static/h5/kr/index.html?mppf=r2g_kr_ios&mlogo=no&ilimg=kr1&v=online29000036&mssl=yes&ussl=no",
-    "h5_game_y5":"https://cdn3.ptkill.com/static/h5/tw_hk/indexy5.html?mppf=h5_y5&v=online1200046&mssl=yes&ussl=yes&mlan=tw&pclogo=hztx1",
-    "h5_game_wakool":"https://cdn3.ptkill.com/static/h5/tw_hk/indexwakool.html?mppf=h5_wakool&v=online1200046&mssl=yes&ussl=yes&mlan=tw&pclogo=hztx1",
+    "h5_game_y5":"https://cdn3.ptkill.com/static/h5/tw_hk/indexy5.html?mppf=h5_y5&v=online1200048&mssl=yes&ussl=yes&mlan=tw&pclogo=hztx1",
+    "h5_game_wakool":"https://cdn3.ptkill.com/static/h5/tw_hk/indexwakool.html?mppf=h5_wakool&v=online1200048&mssl=yes&ussl=yes&mlan=tw&pclogo=hztx1",
     "e##############################":"下面是ios最新版分语言配置,旧版在上面",
     
     "other_cfg":{
@@ -815,7 +815,7 @@
             "channel":"ios_tw",
             "serverAndLocal":"",
             "serverdir":"/static/h5/sg2/",
-            "url":"http://cdn2.ptkill.com/static/h5/tw_hk/index.html?mppf=ios_tw&ilimg=bg_clsgz&v=online1200046&mssl=yes&ussl=no"
+            "url":"http://cdn2.ptkill.com/static/h5/tw_hk/index.html?mppf=ios_tw&ilimg=bg_clsgz&v=online1200048&mssl=yes&ussl=no"
         },
         "com.djcy.game.ios.sg_tw_review":{
             "channel":"ios_tw",
@@ -823,7 +823,7 @@
             "serverdir":"/static/h5/sg2/",
             "url1":"http://localhost:8080/game/index.html?mppf=ios&mlogo=clsgz_tw&v=4&disloading=yes&ilimg=sgqx1",
             "url2":"http://cdn2.ptkill.com/static/h5/meng52/ios.html?mppf=ios_sh&ilimg=bg_clsgz&v=online000327&mssl=no&ussl=no",
-            "url":"http://cdn2.ptkill.com/static/h5/tw_hk/index.html?mppf=ios_tw&ilimg=bg_clsgz&v=online1200046&mssl=yes&ussl=no"
+            "url":"http://cdn2.ptkill.com/static/h5/tw_hk/index.html?mppf=ios_tw&ilimg=bg_clsgz&v=online1200048&mssl=yes&ussl=no"
         }    
     }
 }

@@ -14,6 +14,7 @@ package sg.view.task
     import sg.utils.Tools;
     import sg.manager.LoadeManager;
     import sg.manager.AssetsManager;
+    import sg.cfg.ConfigServer;
 
     public class ViewWorkDonation extends work_donationUI
     {
@@ -66,7 +67,7 @@ package sg.view.task
             //
             //this.tInfo.text = Tools.getMsgById("_gtask7",[ModelBuiding.material_type_name[cfg[0]]+this.mRe[0],this.mRe[1]]);//"需要上缴"++" 到 "++"之间数量获得不同评价奖励";
             this.tInfo.text = Tools.getMsgById("_gtask7",[Tools.getNameByID(mItemId)+this.mRe[0],this.mRe[1]]);//"需要上缴"++" 到 "++"之间数量获得不同评价奖励";
-            this.heroIcon.setHeroIcon("hero747");
+            this.heroIcon.setHeroIcon(ConfigServer.gtask.gtask_herotalk || "hero747");
         }
         private function click_num(type:int):void
         {

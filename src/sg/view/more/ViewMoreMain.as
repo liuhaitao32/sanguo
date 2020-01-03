@@ -23,12 +23,11 @@ package sg.view.more
     import sg.model.ModelUser;
     import sg.cfg.ConfigApp;
     import laya.utils.Browser;
+    import sg.model.ModelHonour;
 
     public class ViewMoreMain extends more_mainUI{
 
-        //private var lock_key_arr:Array=["more_office","more_country","more_world","more_rank","estate","","",""];
         private var mData:Array=[{"text":Tools.getMsgById("add_office"),  "lock_key":"more_office",  "key":"office",   "skin":"icon_more01.png"},
-                                 //{"text":Tools.getMsgById("_country16"),"lock_key":"more_country", "key":"country2", "skin":"icon_more02.png"},
                                  {"text":Tools.getMsgById("_country36"),  "lock_key":"more_rank",    "key":"rank",     "skin":"icon_more04.png"},
                                  {"text":Tools.getMsgById("_country37"),  "lock_key":"estate",       "key":"estate",   "skin":"icon_more05.png"},
                                  {"text":Tools.getMsgById("_country38"),  "lock_key":"",             "key":"mail",     "skin":"icon_more06.png"},
@@ -39,6 +38,8 @@ package sg.view.more
                                  {"text":Tools.getMsgById("_jia0137"),    "lock_key":"more_binding",  "key":"binding",  "skin":"icon_more12.png"},
                                  {"text":Tools.getMsgById("_jia0137"),    "lock_key":"more_unbinding","key":"unbinding","skin":"icon_more12.png"},
                                  {"text":Tools.getMsgById("_jia0138"),    "lock_key":"more_bbs",      "key":"bbs",      "skin":"icon_more13.png"},
+
+                                 {"text":Tools.getMsgById("_country35"),    "lock_key":"",            "key":"country",  "skin":"icon_more03.png"},
                                  ];
 
         public function ViewMoreMain(){
@@ -52,6 +53,12 @@ package sg.view.more
             //var a:Array=lock_key_arr;//.concat();
             for(var i:int=0;i<mData.length;i++){
                 var o:Object=mData[i];
+                if(o["key"] == "country"){//天下大势 开启赛季功能时增加
+                    if(ModelHonour.instance.isOpen()){
+                        arr.push(o);    
+                    }
+                    continue;
+                }
                 if(isShowByKey(o["lock_key"] ? o["lock_key"] : "")){
                     arr.push(o);
                 }
@@ -192,6 +199,9 @@ package sg.view.more
                         Platform.restart();
                     }
                     break;
+                case "country"://天下大势
+                    ViewManager.instance.showView(ConfigClass.VIEW_COUNTRY_INVADE_MAIN);
+                    break; 
             }
             this.closeSelf();
         }

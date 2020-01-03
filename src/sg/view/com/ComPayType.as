@@ -41,6 +41,7 @@ package sg.view.com
 	import sg.manager.ModelManager;
 	import sg.model.ModelTalent;
 	import sg.cfg.HelpConfig;
+	import sg.model.ModelHonour;
 	
 	/**
 	 * ...
@@ -1249,6 +1250,17 @@ package sg.view.com
 		}
 
 		/**
+		 * 设定奖励宝箱状态(只有开启和关闭两种状态) 0可开 1已开
+		 */
+		public function setRewardBox2(type:int):void{
+			var box:Box = this.getChildByName("box") as Box;
+			var boxImg:Image = box.getChildByName("boxImg") as Image;
+			var canImg:Image = box.getChildByName("canImg") as Image;
+			if(boxImg) boxImg.visible = (type == 1);
+			if(canImg) canImg.visible = (type == 0);
+		}
+
+		/**
 		 * 组件btn_icon_double_txt的设置
 		 */
 		public function setDoubleTxt(num0:Number,num1:Number,costId:String="coin"):void{
@@ -1426,7 +1438,11 @@ package sg.view.com
 		 * 设置赛季等级
 		 */
 		public function setHonourLv(lv:int):void{
-
+			var label:Label = this.getChildByName("label") as Label;
+			var img:Image = this.getChildByName("img") as Image;
+			label.text = lv + '';
+			img.skin = ModelHonour.honourIconUrl(lv);
+			
 		}
 
 

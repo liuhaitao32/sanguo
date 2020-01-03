@@ -131,25 +131,26 @@ package sg.view.more
                 var obj:Object = this.mTabData[index];
                 var type:int = obj.index;
                 this.item_rank_user.visible = this.item_rank_kill.visible = false;
+                var _this:* = this;
                 NetSocket.instance.send("get_rank_by_type",{"rank_type":mTabData[index].type_key},Handler.create(this,function(np:NetPackage):void{                        
                     //trace("================",np.receiveData);
                     curRankType=mTabData[index].type_key;
                     mListData=[];
                     mListData=np.receiveData;
-                    this.list.array = [];
+                    _this.list.array = [];
                     switch(curRankType)
                     {
                         case "power"://个人战力(atk)
-                            this.checkList(0,new Handler(this,this.list_render_0));
+                            _this.checkList(0,new Handler(_this,_this.list_render_0));
                             break;
                         case "hero_power"://英雄战力(hero_atk)
-                            this.checkList(2,new Handler(this,this.list_render_2));
+                            _this.checkList(2,new Handler(_this,_this.list_render_2));
                             break; 
                         case "kill_num"://杀敌数(kill_num)
-                            this.checkList(1,new Handler(this,this.list_render_3));
+                            _this.checkList(1,new Handler(_this,_this.list_render_3));
                             break; 
                         case "build_num"://建设值(build_num)
-                            this.checkList(0,new Handler(this,this.list_render_0));
+                            _this.checkList(0,new Handler(_this,_this.list_render_0));
                             break;                                                                                      
                         default:
                             break;

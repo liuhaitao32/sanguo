@@ -388,6 +388,10 @@ import sg.utils.Tools
 		}
 		/**
 		 * 时间格式化
+		 * type 0 yyyy年mm月dd日 h:m:s
+		 * type 1 yyyy-mm-dd h:m:s
+		 * type 2 h:m:s
+		 * type 3 yyyy-mm-dd
 		 */
 		public static function dateFormat(dt:*,type:int=0):String{
 			var ms:Number = 0;
@@ -403,18 +407,18 @@ import sg.utils.Tools
 				var _hour:String=d.getHours()<10?"0"+d.getHours():d.getHours()+"";
 				var _min:String=d.getMinutes()<10?"0"+d.getMinutes():d.getMinutes()+"";
 				var _secend:String=d.getSeconds()<10?"0"+d.getSeconds():d.getSeconds()+"";
-
-
+				var _month:String = (d.getMonth()+1) < 10 ? "0"+(d.getMonth()+1) : (d.getMonth()+1)+"";
+				var _Date:String  = d.getDate()<10 ? "0"+d.getDate() : d.getDate()+"";
 
 				if(type==0)
 					//d.getFullYear()+"年"+(d.getMonth()+1)+"月"+d.getDate()+
 					s = Tools.getMsgById("msg_Tools_1",[d.getFullYear(),(d.getMonth()+1),d.getDate()]) +_hour+":"+_min+":"+_secend;
 				else if(type==1){
-					var _month:String = (d.getMonth()+1) < 10 ? "0"+(d.getMonth()+1) : (d.getMonth()+1)+"";
-					var _Date:String  = d.getDate()<10 ? "0"+d.getDate() : d.getDate()+"";
 					s = d.getFullYear()+"-"+_month+"-"+_Date+" "+_hour+":"+_min+":"+_secend;
 				}else if(type==2){
 					s = _hour+":"+_min+":"+_secend;
+				}else{
+					s = d.getFullYear()+"-"+_month+"-"+_Date;
 				}
 					
 			}			
@@ -1418,9 +1422,9 @@ import sg.utils.Tools
 		}
 
 		public static function resetHelpData():void {
-			if (!TestUtils.sgDebug) {
-				return;
-			}
+			// if (!TestUtils.sgDebug) {
+			// 	return;
+			// }
 
 			var vm:ViewManager = ViewManager.instance,
 				user:ModelUser = ModelManager.instance.modelUser,

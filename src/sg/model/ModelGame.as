@@ -135,6 +135,7 @@ package sg.model
 			pushEffort();
 			pushAuction();
 			pushNewTask();
+			pushHonour();
 
 			QueueManager.instance.on(QueueManager.EVENT_CLOSE_PANEL,this,queueCallBack);
 		}
@@ -851,6 +852,13 @@ package sg.model
 				ModelOfficial.buffs_check_open = true;
 				ModelManager.instance.modelGame.event(ModelOfficial.EVENT_UPDATE_ORDER_ICON);
 			}
+		}
+
+		private function pushHonour():void{
+			NetSocket.instance.registerHandler("push_honour",new Handler(this,function(np:NetPackage):void{
+				ModelManager.instance.modelUser.updateData(np.receiveData);
+				trace("=========收到赛季等级改变推送");
+			}));
 		}
 
 

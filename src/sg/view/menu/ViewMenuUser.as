@@ -34,6 +34,7 @@ package sg.view.menu
 	import sg.model.ModelBlessHero;
 	import sg.cfg.ConfigApp;
 	import sg.model.ModelNewTask;
+	import sg.model.ModelHonour;
 
 	/**
 	 * ...
@@ -70,6 +71,8 @@ package sg.view.menu
 			this.btn_estate.on(Event.CLICK, this, click, [8]);		
 
 			this.btnNewTask.on(Event.CLICK,this, click ,[9]);
+
+			this.btnHonour.on(Event.CLICK, this, click, [10]);
 			//
 			if(!ConfigApp.isPC){
 				var tempAni:Animation = EffectManager.loadAnimation("world_light");//这是一道光
@@ -92,6 +95,7 @@ package sg.view.menu
 			if(ConfigApp.isPC){
 				v_box.right = 150;
 				btnCountry.right = 175;
+				btnHonour.right = 175;
 				btnNpcInfo.right = 243;
 				btnNewTask.right = 311;
 			}
@@ -222,11 +226,19 @@ package sg.view.menu
 			}
 			this.btn_zong.visible = ModelManager.instance.modelGame.isInside;
 			this.boxRight.visible = this.boxMap.visible = !ModelManager.instance.modelGame.isInside;
-			//this.btn_log.visible = this.bgCredit.visible = this.testMap.visible = this.btn_credit.visible = !ModelManager.instance.modelGame.isInside;
+
 			if(this.btnNpcInfo.visible){
 				this.btnNpcInfo.visible = !ModelManager.instance.modelGame.isInside;
 			}
-			this.btnCountry.visible = !ModelManager.instance.modelGame.isInside;
+			if(ModelHonour.instance.isOpen()){
+				this.btnHonour.visible = !ModelManager.instance.modelGame.isInside;
+				this.btnCountry.visible = false;
+			}else{
+				this.btnCountry.visible = !ModelManager.instance.modelGame.isInside;
+				this.btnHonour.visible = false;
+			}
+			
+
 			v_box.visible = !ModelManager.instance.modelGame.isInside;
 
 			this.btnNewTask.visible = !ModelManager.instance.modelGame.isInside &&  ModelManager.instance.modelNewTask.isOpen();
@@ -268,14 +280,13 @@ package sg.view.menu
 			this.creditPan.height = creditRed || arr[0]==-1 ? 40 : 30 * ( n > 1 ? 1 : n) + 5;
 			checkRed(2);
 			this.heroIcon.setHeroIcon(ModelManager.instance.modelUser.getHead(1));
-			// this.btn_estate.visible = !ModelGame.unlock(null,"estate").stop;
+
 			this.testate.text = Tools.getMsgById("_lht67",[ModelManager.instance.modelUser.estate.length,ModelEstate.getTotalVacancy()]);
-			//v_box.refreshBox();
+
 		}
 		private function refresh_power(power:Number):void
 		{
 			this.comPower.setNum(power);
-			//this.tPower.text = power+"";
 		}
 		private function click(type:int):void{
 			var _this:* = this;
@@ -309,11 +320,15 @@ package sg.view.menu
 					GotoManager.boundForPanel(GotoManager.VIEW_ESTATE_MAIN,"",null,{lock:true});
 					break;	
 				case 9:
-					if(ModelGame.unlock(null,"new_task").stop){
+					if(ModelGame.unlock(null,"new_task").stop)
 						return;
-					}
 					ViewManager.instance.showView(ConfigClass.VIEW_NEW_TASK_MAIN);
-					break;																		 	
+					break;
+				case 10:
+					NetSocket.instance.send("get_honour_rank",{},new Handler(this,function(np:NetPackage):void{
+						ViewManager.instance.showView(ConfigClass.VIEW_HONOUR_MAIN,np.receiveData);
+					}));
+					break;
 				default:
 					break;
 			}

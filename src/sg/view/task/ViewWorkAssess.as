@@ -48,7 +48,7 @@ package sg.view.task
             this.comTitle.setViewTitle(Tools.getMsgById("_gtask5"));
             
             (this.panelBg.getChildByName("btn_close") as Button).visible = false;
-            this.heroIcon.setHeroIcon("hero747");
+            this.heroIcon.setHeroIcon(ConfigServer.gtask.gtask_herotalk || "hero747");
             //
             this.mTask = this.currArg[0];
             this.isCost = (this.currArg[1] ==1);

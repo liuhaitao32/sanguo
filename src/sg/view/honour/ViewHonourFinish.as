@@ -12,7 +12,7 @@ package sg.view.honour
 		}
 
 		override public function onAdded():void{
-
+			this.comTitle.setViewTitle("战绩结算");
 		}
 
 		override public function onRemoved():void{

@@ -206,6 +206,11 @@ package sg.model
 
 		public var new_task:Object;             // 朝廷密旨
 
+		public var honour_log:Array;            //赛季历史
+		public var honour_task:Object;          //赛季任务
+		public var honour_hero:Object;          //赛季英雄数据
+		public var honour_start_time:*;         //赛季开始时间
+
 		/**
 		 * 合服后的区  如果没合服 就还是原区
 		 */
@@ -471,6 +476,7 @@ package sg.model
 
 				ModelHero.setFestivalHids();
 				ModelSalePay.initModels();
+				ModelHonour.instance.initHounour();
 				
 				re.legend_awaken && ModelLegendAwaken.instance.refreshData(re.legend_awaken); // 初始化传奇觉醒
 				
@@ -658,12 +664,14 @@ package sg.model
 					for(var hid:String in userRe[key]){
 						this.hero[hid] = userRe[key][hid];
 					}
-					//trace("=========heros ",userRe[key]);
 				}else if(key == "records"){//
 					for(var record:String in userRe[key]){
 						this.records[record] = userRe[key][record];
 					}
-					//trace("=========records ",userRe[key]);
+				}else if(key == "honour_hero"){//赛季英雄数据 不全覆盖
+					for(var heroId:String in userRe[key]){
+						this.honour_hero[heroId] = userRe[key][heroId];
+					}
 				}else{
 					if(this.hasOwnProperty(key)){
 						this[key] = userRe[key];

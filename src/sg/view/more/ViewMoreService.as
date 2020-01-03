@@ -56,13 +56,41 @@ package sg.view.more
 
 		public function setData():void{
 			arr=[];
+			
 			for(var i:int=0;i<mData.length;i++){
 				if(mData[i].st==0 || mData[i].st==1){
+					var n:Number = mData[i-1] ? Tools.getTimeStamp(mData[i-1].time) : 0;
+					var o:Object = mData[i];
+					chatHandler(o,n);
 					arr.push(mData[i]);
 				}
 			}
-			this.list.array=arr;
+
+			this.list.array = arr;
 			this.list.scrollBar.value=this.list.scrollBar.max;
+		}
+				/**
+		 * o 聊天数据  n 上一条的时间
+		 */
+		private function chatHandler(o:Object,n:Number):void{
+			var t:Number = Tools.getTimeStamp(o.time);
+			var tDt:Date = new Date(t);
+			var nDt:Date = new Date(ConfigServer.getServerTimer());
+			if(n == 0 || t - n > 1800 * 1000){
+				var str0:String = '';
+				if(tDt.getFullYear()!=nDt.getFullYear() || tDt.getMonth()!=nDt.getMonth() || tDt.getDate()!=nDt.getDate()){
+					var _month:String = (tDt.getMonth()+1) < 10 ? "0"+(tDt.getMonth()+1) : (tDt.getMonth()+1)+"";
+					var _Date:String  = tDt.getDate()<10 ? "0"+tDt.getDate() : tDt.getDate()+"";
+					str0 = tDt.getFullYear() + '/' + _month + '/' + _Date;
+				}
+				var _hour:String    = tDt.getHours()<10   ? "0"+tDt.getHours()   : tDt.getHours()+"";
+				var _min:String     = tDt.getMinutes()<10 ? "0"+tDt.getMinutes() : tDt.getMinutes()+"";
+				var _secend:String  = tDt.getSeconds()<10 ? "0"+tDt.getSeconds() : tDt.getSeconds()+"";
+				var str1:String = _hour + ":" + _min + ":" + _secend;
+				o["showTime"] = str0 + ' '+ str1;
+			}else{
+				o["showTime"] = '';
+			}
 		}
 
 		public function listRender(cell:Item,index:int):void{
@@ -113,32 +141,43 @@ class Item extends chatItemUI{
 	}
 
 	public function setData(obj:Object,data:Object=null):void{
-		if(this.getChildByName("item")){
-			this.removeChild(this.getChildByName("item"));
-		}
-		if(obj.st==0){//我
-			var it:chatItem0UI=new chatItem0UI();
-			it.name="item";
-			it.text0.text=obj.content;
-			it.lvLabel.text=ModelManager.instance.modelInside.getBase().lv+"";
+
+		if(obj.st == 0){//我
+			var it:chatItem0UI
+			if(this.getChildByName("item")) this.removeChild(this.getChildByName("item"));	
+			if(this.getChildByName("itemMe")){
+				it = this.getChildByName("itemMe") as chatItem0UI;
+			}else{
+				it=new chatItem0UI();
+				this.addChild(it);
+			}
+			it.name = "itemMe";
+			it.text0.text = obj.content;
+			it.lvLabel.text = ModelManager.instance.modelInside.getBase().lv+"";
 			it.com0.setHeroIcon(ModelManager.instance.modelUser.getHead());
-			it.img0.visible=it.lvLabel.visible=false;
-			this.addChild(it);
-		}else if(obj.st==1){
-			var it2:chatItem1UI=new chatItem1UI();
+			it.img0.visible = it.lvLabel.visible = false;
+			it.tTime.text = obj.showTime;
+		}else if(obj.st == 1){
+			var it2:chatItem1UI;
+			if(this.getChildByName("itemMe")) this.removeChild(this.getChildByName("itemMe"));	
+			if(this.getChildByName("item")){
+				it2 = this.getChildByName("item") as chatItem1UI;
+			}else{
+				it2 = new chatItem1UI();
+				this.addChild(it2);
+			}
+			it2.name = "item";
+
 			var cid:String = obj.content;
             var cidi:int = obj.content.indexOf("|");
             if(cidi>-1){
                 cid = obj.content.substring(cidi+1,obj.content.length);
             }
-			
-			it2.text0.text=cid;
-			it2.name="item";
-			it2.img0.visible=it2.lvLabel.visible=false;
-			//it2.lvLabel.text=data.lv;
+			it2.text0.text = cid;
+			it2.img0.visible = it2.lvLabel.visible = false;
 			it2.com0.setHeroIcon(ModelUser.getUserHead(ConfigServer.system_simple.auto_reply_bug_msg[2]));
+			it2.tTime.text = obj.showTime;
 
-			this.addChild(it2);
 		}
 	}
 }

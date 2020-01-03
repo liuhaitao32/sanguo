@@ -2,7 +2,7 @@
     "x":0,
     "type":"ItemBase",
     "selectedBox":1,
-    "selecteID":3,
+    "selecteID":22,
     "referenceLines":[
         {
             "value":-537,
@@ -214,7 +214,7 @@
             "compId":22,
             "child":[
                 ],
-            "$HIDDEN":false
+            "$HIDDEN":true
         }],
     "animations":[
         {

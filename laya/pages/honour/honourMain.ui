@@ -1,8 +1,8 @@
 {
     "x":0,
     "type":"ViewPanel",
-    "selectedBox":1,
-    "selecteID":2,
+    "selectedBox":2,
+    "selecteID":67,
     "props":{"width":640,"sceneColor":"#000000","height":1280},
     "nodeParent":-1,
     "label":"ViewPanel",
@@ -56,7 +56,7 @@
                 {
                     "x":30,
                     "type":"Image",
-                    "props":{"y":40,"x":6,"skin":"ui/honour_bg.png"},
+                    "props":{"y":40,"x":6,"skin":"later/honour_bg.png"},
                     "nodeParent":2,
                     "label":"Image",
                     "isDirectory":false,
@@ -95,7 +95,7 @@
                 {
                     "x":30,
                     "type":"Image",
-                    "props":{"y":268,"x":22,"skin":"ui/honour_wenzi1.png"},
+                    "props":{"y":268,"x":22,"skin":"later/honour_wenzi1.png"},
                     "nodeParent":2,
                     "label":"Image",
                     "isDirectory":false,
@@ -108,7 +108,7 @@
                 {
                     "x":30,
                     "type":"Image",
-                    "props":{"y":273,"x":268,"width":108,"skin":"ui/bg_26.png","height":43},
+                    "props":{"y":276,"x":260,"width":91,"skin":"ui/bg_26.png","height":43},
                     "nodeParent":2,
                     "label":"Image",
                     "isDirectory":false,
@@ -134,21 +134,7 @@
                 {
                     "x":30,
                     "type":"Label",
-                    "props":{"y":299,"x":36,"width":139,"var":"text0","valign":"middle","text":"总战绩等级：","height":41,"fontSize":22,"color":"#b2d6ff","align":"left"},
-                    "nodeParent":2,
-                    "label":"Label(text0)",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":44,
-                    "child":[
-                        ],
-                    "$HIDDEN":true
-                },
-                {
-                    "x":30,
-                    "type":"Label",
-                    "props":{"y":274,"x":286,"width":74,"var":"tLv","valign":"middle","text":"50","height":41,"fontSize":40,"color":"#b2d6ff","align":"center"},
+                    "props":{"y":277,"x":272,"width":68,"var":"tLv","valign":"middle","text":"50","height":41,"fontSize":40,"color":"#b2d6ff","align":"center"},
                     "nodeParent":2,
                     "label":"Label(tLv)",
                     "isDirectory":false,
@@ -174,9 +160,9 @@
                 {
                     "x":30,
                     "type":"Label",
-                    "props":{"y":378,"x":20,"width":237,"valign":"middle","text":"赛季挑战：已完成20/24","height":32,"fontSize":20,"color":"#ffffff","align":"left"},
+                    "props":{"y":378,"x":20,"width":237,"var":"tTask","valign":"middle","text":"赛季挑战：已完成20/24","height":32,"fontSize":20,"color":"#ffffff","align":"left"},
                     "nodeParent":2,
-                    "label":"Label",
+                    "label":"Label(tTask)",
                     "isDirectory":false,
                     "isAniNode":true,
                     "hasChild":false,
@@ -194,20 +180,6 @@
                     "isAniNode":true,
                     "hasChild":false,
                     "compId":47,
-                    "child":[
-                        ]
-                },
-                {
-                    "x":30,
-                    "type":"UIView",
-                    "source":"com/award_box4.ui",
-                    "props":{"y":232,"x":375,"scaleY":0.7,"scaleX":0.7},
-                    "nodeParent":2,
-                    "label":"UIView",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":49,
                     "child":[
                         ]
                 },
@@ -313,6 +285,20 @@
                     "isAniNode":true,
                     "hasChild":false,
                     "compId":65,
+                    "child":[
+                        ]
+                },
+                {
+                    "x":30,
+                    "type":"UIView",
+                    "source":"com/award_box_honour.ui",
+                    "props":{"y":220,"x":362,"var":"boxReward","scaleY":0.7,"scaleX":0.7},
+                    "nodeParent":2,
+                    "label":"UIView(boxReward)",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":67,
                     "child":[
                         ]
                 }]

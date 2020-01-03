@@ -2,7 +2,7 @@
     "x":0,
     "type":"ViewPanel",
     "selectedBox":39,
-    "selecteID":91,
+    "selecteID":5,
     "props":{"width":640,"sceneColor":"#000000","height":1280},
     "nodeParent":-1,
     "label":"ViewPanel",
@@ -206,7 +206,8 @@
                             "child":[
                                 ],
                             "$HIDDEN":false
-                        }]
+                        }],
+                    "$HIDDEN":false
                 },
                 {
                     "x":30,
@@ -247,6 +248,91 @@
                             "$HIDDEN":false
                         }],
                     "$HIDDEN":false
+                },
+                {
+                    "x":30,
+                    "type":"Box",
+                    "props":{"y":345,"x":382,"width":103,"var":"boxAtk","height":103},
+                    "nodeParent":39,
+                    "label":"Box(boxAtk)",
+                    "isOpen":false,
+                    "isDirectory":true,
+                    "isAniNode":true,
+                    "hasChild":true,
+                    "compId":5,
+                    "child":[
+                        {
+                            "x":45,
+                            "type":"Image",
+                            "props":{"top":0,"skin":"ui/icon_army01.png","right":0,"left":0,"bottom":0},
+                            "nodeParent":5,
+                            "label":"Image",
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":15,
+                            "child":[
+                                ],
+                            "$HIDDEN":false
+                        },
+                        {
+                            "x":45,
+                            "type":"Image",
+                            "props":{"y":21,"x":30,"visible":false,"skin":"ui/icon_army07.png","name":"armyImg0"},
+                            "nodeParent":5,
+                            "label":"Image(armyImg0)",
+                            "isOpen":false,
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":62,
+                            "child":[
+                                ],
+                            "$HIDDEN":false
+                        },
+                        {
+                            "x":45,
+                            "type":"Image",
+                            "props":{"y":21,"x":31,"visible":false,"skin":"ui/icon_army08.png","name":"armyImg1"},
+                            "nodeParent":5,
+                            "label":"Image(armyImg1)",
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":63,
+                            "child":[
+                                ],
+                            "$HIDDEN":false
+                        },
+                        {
+                            "x":45,
+                            "type":"Image",
+                            "props":{"y":23,"x":32,"visible":false,"skin":"ui/icon_army09.png","name":"armyImg3"},
+                            "nodeParent":5,
+                            "label":"Image(armyImg3)",
+                            "isOpen":true,
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":64,
+                            "child":[
+                                ],
+                            "$HIDDEN":false
+                        },
+                        {
+                            "x":45,
+                            "type":"Image",
+                            "props":{"y":24,"x":32,"visible":false,"skin":"ui/icon_army10.png","name":"armyImg2"},
+                            "nodeParent":5,
+                            "label":"Image(armyImg2)",
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":65,
+                            "child":[
+                                ],
+                            "$HIDDEN":false
+                        }]
                 },
                 {
                     "x":30,
@@ -330,97 +416,16 @@
                 {
                     "x":30,
                     "type":"Box",
-                    "props":{"y":345,"x":382,"width":103,"var":"boxAtk","height":103},
-                    "nodeParent":39,
-                    "label":"Box(boxAtk)",
-                    "isOpen":false,
-                    "isDirectory":true,
-                    "isAniNode":true,
-                    "hasChild":true,
-                    "compId":5,
-                    "child":[
-                        {
-                            "type":"Image",
-                            "props":{"top":0,"skin":"ui/icon_army01.png","right":0,"left":0,"bottom":0},
-                            "nodeParent":5,
-                            "label":"Image",
-                            "isDirectory":false,
-                            "isAniNode":true,
-                            "hasChild":false,
-                            "compId":15,
-                            "child":[
-                                ],
-                            "$HIDDEN":false
-                        },
-                        {
-                            "type":"Image",
-                            "props":{"y":21,"x":30,"visible":false,"skin":"ui/icon_army07.png","name":"armyImg0"},
-                            "nodeParent":5,
-                            "label":"Image(armyImg0)",
-                            "isOpen":false,
-                            "isDirectory":false,
-                            "isAniNode":true,
-                            "hasChild":false,
-                            "compId":62,
-                            "child":[
-                                ],
-                            "$HIDDEN":false
-                        },
-                        {
-                            "type":"Image",
-                            "props":{"y":21,"x":31,"visible":false,"skin":"ui/icon_army08.png","name":"armyImg1"},
-                            "nodeParent":5,
-                            "label":"Image(armyImg1)",
-                            "isDirectory":false,
-                            "isAniNode":true,
-                            "hasChild":false,
-                            "compId":63,
-                            "child":[
-                                ],
-                            "$HIDDEN":false
-                        },
-                        {
-                            "type":"Image",
-                            "props":{"y":23,"x":32,"visible":false,"skin":"ui/icon_army09.png","name":"armyImg3"},
-                            "nodeParent":5,
-                            "label":"Image(armyImg3)",
-                            "isOpen":true,
-                            "isDirectory":false,
-                            "isAniNode":true,
-                            "hasChild":false,
-                            "compId":64,
-                            "child":[
-                                ],
-                            "$HIDDEN":false
-                        },
-                        {
-                            "type":"Image",
-                            "props":{"y":24,"x":32,"visible":false,"skin":"ui/icon_army10.png","name":"armyImg2"},
-                            "nodeParent":5,
-                            "label":"Image(armyImg2)",
-                            "isDirectory":false,
-                            "isAniNode":true,
-                            "hasChild":false,
-                            "compId":65,
-                            "child":[
-                                ],
-                            "$HIDDEN":false
-                        }]
-                },
-                {
-                    "x":30,
-                    "type":"Box",
                     "props":{"y":42,"x":15,"width":84,"var":"boxTopLeft","height":124},
                     "nodeParent":39,
                     "label":"Box(boxTopLeft)",
-                    "isOpen":true,
+                    "isOpen":false,
                     "isDirectory":true,
                     "isAniNode":true,
                     "hasChild":true,
                     "compId":74,
                     "child":[
                         {
-                            "x":45,
                             "type":"Image",
                             "props":{"top":0,"skin":"ui/icon_army02.png","right":0,"left":0,"bottom":0},
                             "nodeParent":74,
@@ -433,7 +438,6 @@
                                 ]
                         },
                         {
-                            "x":45,
                             "type":"Image",
                             "props":{"y":11,"var":"armyIcon","skin":"ui/icon_bu.png","scaleY":0.8,"scaleX":0.8,"centerX":0},
                             "nodeParent":74,
@@ -447,7 +451,6 @@
                             "$HIDDEN":false
                         },
                         {
-                            "x":45,
                             "type":"Image",
                             "props":{"y":74,"x":5,"width":77,"skin":"ui/img_icon_15.png","height":31,"alpha":0.5},
                             "nodeParent":74,
@@ -461,7 +464,6 @@
                             "$HIDDEN":false
                         },
                         {
-                            "x":45,
                             "type":"Label",
                             "props":{"y":59,"var":"text15","text":"兵种科技","fontSize":14,"color":"#b2b2b2","centerX":0},
                             "nodeParent":74,
@@ -474,7 +476,6 @@
                                 ]
                         },
                         {
-                            "x":45,
                             "type":"Label",
                             "props":{"y":81,"var":"text16","text":"10级","fontSize":18,"color":"#ffffff","centerX":0},
                             "nodeParent":74,
@@ -723,14 +724,13 @@
                     "props":{"y":509,"x":64,"width":220,"var":"boxProp0","height":18},
                     "nodeParent":39,
                     "label":"Box(boxProp0)",
-                    "isOpen":true,
+                    "isOpen":false,
                     "isDirectory":true,
                     "isAniNode":true,
                     "hasChild":true,
                     "compId":82,
                     "child":[
                         {
-                            "x":45,
                             "type":"Label",
                             "props":{"y":0,"x":-18,"width":83,"var":"text6","text":"弩兵攻击","height":16,"fontSize":16,"color":"#b7d9ff","align":"right"},
                             "nodeParent":82,
@@ -743,7 +743,6 @@
                                 ]
                         },
                         {
-                            "x":45,
                             "type":"Label",
                             "props":{"y":-1,"x":70,"text":"200000","name":"propNum0","height":18,"fontSize":18,"color":"#ffffff","align":"left"},
                             "nodeParent":82,
@@ -756,7 +755,6 @@
                                 ]
                         },
                         {
-                            "x":45,
                             "type":"Label",
                             "props":{"y":-1,"x":156,"text":"200000","name":"propNum1","height":18,"fontSize":18,"color":"#67ff98","align":"left"},
                             "nodeParent":82,
@@ -769,7 +767,6 @@
                                 ]
                         },
                         {
-                            "x":45,
                             "type":"Image",
                             "props":{"y":1,"x":133,"skin":"ui/icon_70.png","name":"propImg0"},
                             "nodeParent":82,
@@ -788,14 +785,13 @@
                     "props":{"y":509,"x":317,"width":220,"var":"boxProp1","height":18},
                     "nodeParent":39,
                     "label":"Box(boxProp1)",
-                    "isOpen":true,
+                    "isOpen":false,
                     "isDirectory":true,
                     "isAniNode":true,
                     "hasChild":true,
                     "compId":86,
                     "child":[
                         {
-                            "x":45,
                             "type":"Label",
                             "props":{"y":1,"x":-18,"width":83,"var":"text7","text":"弩兵攻击","height":16,"fontSize":16,"color":"#b7d9ff","align":"right"},
                             "nodeParent":86,
@@ -808,7 +804,6 @@
                                 ]
                         },
                         {
-                            "x":45,
                             "type":"Label",
                             "props":{"y":-1,"x":68,"text":"200000","name":"propNum0","height":18,"fontSize":18,"color":"#ffffff","align":"left"},
                             "nodeParent":86,
@@ -821,7 +816,6 @@
                                 ]
                         },
                         {
-                            "x":45,
                             "type":"Label",
                             "props":{"y":-1,"x":159,"text":"200000","name":"propNum1","height":18,"fontSize":18,"color":"#67ff98","align":"left"},
                             "nodeParent":86,
@@ -834,7 +828,6 @@
                                 ]
                         },
                         {
-                            "x":45,
                             "type":"Image",
                             "props":{"y":2,"x":134,"skin":"ui/icon_70.png","name":"propImg0"},
                             "nodeParent":86,
@@ -853,14 +846,13 @@
                     "props":{"y":535,"x":64,"width":220,"var":"boxProp2","height":18},
                     "nodeParent":39,
                     "label":"Box(boxProp2)",
-                    "isOpen":true,
+                    "isOpen":false,
                     "isDirectory":true,
                     "isAniNode":true,
                     "hasChild":true,
                     "compId":91,
                     "child":[
                         {
-                            "x":45,
                             "type":"Label",
                             "props":{"y":1,"x":-18,"width":83,"var":"text8","text":"弩兵攻击","height":16,"fontSize":16,"color":"#b7d9ff","align":"right"},
                             "nodeParent":91,
@@ -873,7 +865,6 @@
                                 ]
                         },
                         {
-                            "x":45,
                             "type":"Label",
                             "props":{"y":0,"x":71,"text":"200000","name":"propNum0","height":18,"fontSize":18,"color":"#ffffff","align":"left"},
                             "nodeParent":91,
@@ -886,7 +877,6 @@
                                 ]
                         },
                         {
-                            "x":45,
                             "type":"Label",
                             "props":{"y":0,"x":157,"text":"200000","name":"propNum1","height":18,"fontSize":18,"color":"#67ff98","align":"left"},
                             "nodeParent":91,
@@ -899,7 +889,6 @@
                                 ]
                         },
                         {
-                            "x":45,
                             "type":"Image",
                             "props":{"y":2,"x":133,"skin":"ui/icon_70.png","name":"propImg0"},
                             "nodeParent":91,
@@ -918,14 +907,13 @@
                     "props":{"y":278,"width":500,"var":"comAlert","height":110,"centerX":0},
                     "nodeParent":39,
                     "label":"Box(comAlert)",
-                    "isOpen":true,
+                    "isOpen":false,
                     "isDirectory":true,
                     "isAniNode":true,
                     "hasChild":true,
                     "compId":101,
                     "child":[
                         {
-                            "x":45,
                             "type":"Image",
                             "props":{"x":0,"width":500,"var":"imgAlert0","skin":"ui/icon_zhanli01.png","height":76,"centerX":0,"bottom":0},
                             "nodeParent":101,
@@ -938,7 +926,6 @@
                                 ]
                         },
                         {
-                            "x":45,
                             "type":"Image",
                             "props":{"y":0,"var":"imgAlert1","skin":"later/img_name05.png","centerX":0},
                             "nodeParent":101,
@@ -951,7 +938,6 @@
                                 ]
                         },
                         {
-                            "x":45,
                             "type":"Label",
                             "props":{"width":200,"var":"text14","text":"强化值+1000","strokeColor":"#ff6c00","stroke":1,"fontSize":20,"color":"#fffb83","centerY":28,"centerX":0,"align":"center"},
                             "nodeParent":101,

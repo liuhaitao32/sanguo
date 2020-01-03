@@ -82,7 +82,10 @@ package sg.activities.view
         private function _onClickBuy(key:String):void {
             if(ModelEquip.canBuyEquipItem(rewardItem.item_id,true)==false){
 				return;
-			}
+			} else if (_dataSource.awaken && ModelManager.instance.modelGame.getModelHero(_dataSource.awaken).getAwaken() === 1) {
+                ViewManager.instance.showTipsTxt(Tools.getMsgById('193011'));
+                return;
+            }
             var pos:Point = Point.TEMP.setTo(rewardItem.x + rewardItem.width * 0.5, rewardItem.y);
             pos = rewardItem['parent'].localToGlobal(pos, true);
             switch(key){

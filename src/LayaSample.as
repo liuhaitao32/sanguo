@@ -114,6 +114,9 @@
 			// 
 			if(ConfigApp.lan()=="kr"){
 				Font.defaultFamily = "SunBatang-Light";
+			}			
+			if(ConfigApp.lan()=="ja"){
+				Font.defaultFamily = "A-OTF Sei Kaisho CB1 Std";
 			}
 			if(ConfigApp.isPC){
 				Font.defaultFamily = "Microsoft-Yahei";

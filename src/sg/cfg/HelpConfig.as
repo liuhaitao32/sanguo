@@ -12,6 +12,7 @@ package sg.cfg {
 
 		public static const CC_test:Object = { // 本地开发测试用
 			http_url: 'http://192.168.1.116:8888/gateway/',
+			// http_url: 'http://sg3sh.ptkill.com/gateway/', // 简体审核
 			// http_url: 'http://qh.ptkill.com/gateway/',
 			//  area_check:"http://gw.niuwank.com/ccc/"
 			//http_url: 'http://res-kol.r2game.com/gateway/'

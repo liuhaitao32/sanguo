@@ -2,7 +2,7 @@
     "x":0,
     "type":"ViewPanel",
     "selectedBox":2,
-    "selecteID":65,
+    "selecteID":72,
     "props":{"width":640,"sceneColor":"#000000","height":1280},
     "nodeParent":-1,
     "label":"ViewPanel",
@@ -56,7 +56,7 @@
                 {
                     "x":30,
                     "type":"Image",
-                    "props":{"y":39,"x":6,"skin":"ui/honour_bg.png"},
+                    "props":{"y":39,"x":6,"skin":"later/honour_bg.png"},
                     "nodeParent":2,
                     "label":"Image",
                     "isDirectory":false,
@@ -233,7 +233,7 @@
                 {
                     "x":30,
                     "type":"Image",
-                    "props":{"y":128,"x":367,"skin":"ui/bg_guang01.png","scaleY":0.8,"scaleX":0.8},
+                    "props":{"y":127,"x":368,"skin":"ui/bg_guang01.png","scaleY":0.8,"scaleX":0.8},
                     "nodeParent":2,
                     "label":"Image",
                     "isDirectory":false,
@@ -245,8 +245,22 @@
                 },
                 {
                     "x":30,
+                    "type":"UIView",
+                    "source":"com/award_box_honour.ui",
+                    "props":{"y":131,"x":372},
+                    "nodeParent":2,
+                    "label":"UIView",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":89,
+                    "child":[
+                        ]
+                },
+                {
+                    "x":30,
                     "type":"Image",
-                    "props":{"y":307,"x":386,"width":149,"skin":"ui/bar_22_1.png","height":30},
+                    "props":{"y":307,"x":387,"width":149,"skin":"ui/bar_22_1.png","height":30},
                     "nodeParent":2,
                     "label":"Image",
                     "isDirectory":false,
@@ -267,20 +281,6 @@
                     "isAniNode":true,
                     "hasChild":false,
                     "compId":61,
-                    "child":[
-                        ]
-                },
-                {
-                    "x":30,
-                    "type":"UIView",
-                    "source":"com/award_box4.ui",
-                    "props":{"y":119,"x":360},
-                    "nodeParent":2,
-                    "label":"UIView",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":65,
                     "child":[
                         ]
                 },

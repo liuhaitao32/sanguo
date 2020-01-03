@@ -12,7 +12,6 @@ package sg.cfg
 	import sg.sdks.H5SG7477;
 	import sg.sdks.H5SG5599;
 	import sg.sdks.H5SGMengyou;
-	import sg.sdks.H5SGY5;
 	import sg.sdks.H5SGWakool;
 
 	public class ConfigApp{
@@ -694,8 +693,6 @@ package sg.cfg
 					Platform.h5_sdk = new H5SGMengyou(pf, Tools.getURLexpToObj(ConfigApp.url_params)) as H5sdk;
 					break;
 				case PF_Y5_h5:
-					Platform.h5_sdk = new H5SGY5(pf, Tools.getURLexpToObj(ConfigApp.url_params)) as H5sdk;
-					break;
 				case PF_wakool_h5:
 					Platform.h5_sdk = new H5SGWakool(pf, Tools.getURLexpToObj(ConfigApp.url_params)) as H5sdk;
 					break;
